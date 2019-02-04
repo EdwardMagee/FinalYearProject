@@ -91,10 +91,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../external libraries/SFML/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/external libraries/SFML/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../external libraries/SFML/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/external libraries/SFML/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -146,13 +146,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameOne.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Unit.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\StaticSprite.cpp" />
+    <ClCompile Include="src\TextureHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\Unit.h" />
+    <ClInclude Include="include\GameOne.h" />
+    <ClInclude Include="include\GameInterface.h" />
+    <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\SceneInterface.h" />
+    <ClInclude Include="include\StaticSprite.h" />
+    <ClInclude Include="include\SpriteInterface.h" />
+    <ClInclude Include="include\TextureHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
