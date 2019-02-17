@@ -5,7 +5,7 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1200, 800), "Vampires Vs Knights");
+	sf::RenderWindow window(sf::VideoMode(64 * 16 + 200, 64 * 8 + 100), "Vampires Vs Knights");
 	GameOne m_game;
 
 	sf::Clock timer;

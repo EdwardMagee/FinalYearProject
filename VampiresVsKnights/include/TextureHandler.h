@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ private:
 	map<string, sf::Texture> m_mapOfTextures; 
 	static TextureHandler * s_Instance; 
 	TextureHandler();	
+	std::vector<std::string> IDs;
 
 public:
 	~TextureHandler(); 

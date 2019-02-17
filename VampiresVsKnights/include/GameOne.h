@@ -11,6 +11,8 @@ private:
 
 	Scene * m_currentScene;
 	TextureHandler * m_textureHandler;
+	sf::Sprite m_backgroundSprite;
+	sf::Texture m_backgroundTexture;
 
 public:
 	GameOne();

@@ -1,7 +1,8 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
+
 #include <vector>
+//class S
 
 class SceneInterface 
 {
