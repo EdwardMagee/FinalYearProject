@@ -16,7 +16,7 @@ NormalNode::~NormalNode()
 void NormalNode::updateNode(float p_time)
 {
 	if(m_spriteUnit != nullptr)
-	m_spriteUnit->setSpritePos(id.x, id.y);
+	m_spriteUnit->setSpritePos(m_id.x, m_id.y);
 }
 
 sf::Sprite * NormalNode::getSprite()
@@ -24,15 +24,15 @@ sf::Sprite * NormalNode::getSprite()
 	return m_sprite;
 }
 
-void NormalNode::constructNode(int p_col, int p_row, sf::Texture p_T)
+void NormalNode::constructNode(int p_x, int p_y, sf::Texture p_T)
 {
-	id.x = p_col;
-	id.y = p_row;
+	m_id.x = p_x;
+	m_id.y = p_y;
 
 	m_texture = p_T;
 	m_sprite = new sf::Sprite;
 	m_sprite->setTexture(m_texture);
-	m_sprite->setPosition(p_col* 64 + 100, p_row * 64 + 50);
+	m_sprite->setPosition(p_x* 64 + 100, p_y * 64 + 50);
 }
 
 SpriteInterface * NormalNode::getSpriteAttachedToNode()
@@ -59,32 +59,55 @@ void NormalNode::removeSprite()
 
 float NormalNode::getG()
 {
-	return 0.0f;
+	return m_gValue;
 }
 
 float NormalNode::getH()
 {
-	return 0.0f;
+	return m_hValue;
 }
 
 float NormalNode::getF()
 {
-	return 0.0f;
+	return m_fValue;
+}
+
+float NormalNode::getTerrainCost()
+{
+	return m_movementCost;
 }
 
 sf::Vector2i NormalNode::getID()
 {
-	return sf::Vector2i();
+	return m_id;
 }
 
 void NormalNode::setG(float p_g)
 {
+	m_gValue = p_g;
 }
 
 void NormalNode::setF(float p_f)
 {
+	m_fValue = p_f;
 }
 
 void NormalNode::setH(float p_H)
 {
+	m_hValue = p_H;
+}
+
+void NormalNode::setDiagonal(bool p_b)
+{
+	m_isDiagonal = p_b;
+}
+
+std::string NormalNode::checkNodeType()
+{
+	return "NormalNode";
+}
+
+bool NormalNode::isDiagonal()
+{
+	return m_isDiagonal;
 }

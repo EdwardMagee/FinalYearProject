@@ -3,6 +3,7 @@
 #include "SceneInterface.h"
 #include <array>
 #include <list>
+#include <math.h>
 
 class TextureHandler;
 class SpriteInterface;
@@ -19,14 +20,19 @@ private:
 	std::vector<SpriteInterface*> m_vectorSprites;
 	std::vector<sf::Sprite*> m_vectorTemp;
 	std::array<std::array<NodeInterface*, m_iCol>, m_iRow> m_Graph;
+	std::list<NodeInterface*> tempList;
+	int counter;
+	int counter2;
 	
 public:
 
-	sf::Vector2i aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos);
+	std::list<NodeInterface*> aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos);
 	void updateScene(float p_time) override;
 	bool loadLevel(std::string p_level) override;
 	std::vector<sf::Sprite*> getSpriteVector() override;
-	float calculateFValue(sf::Vector2i p_currentNode, sf::Vector2i p_goalNode);
+	std::list<NodeInterface*> gatherChildren(NodeInterface* p_currentNode);
+	float calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos);
+	void increaseCounter();
 	
 	Scene();
 	~Scene();

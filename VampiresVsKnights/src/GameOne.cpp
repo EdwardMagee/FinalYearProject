@@ -8,6 +8,7 @@ GameOne::GameOne(){
     m_textureHandler->instance()->insertTexture("Harold", "../VampiresVsKnights/Assests/Sprites/Harold.png");
 	m_textureHandler->instance()->insertTexture("Owl", "../VampiresVsKnights/Assests/Sprites/Owl.jpg");
 	m_textureHandler->instance()->insertTexture("Normal", "../VampiresVsKnights/Assests/Sprites/Normal.png");
+	m_textureHandler->instance()->insertTexture("Empty", "../VampiresVsKnights/Assests/Sprites/Empty.png");
 	m_textureHandler->instance()->insertTexture("space", "../VampiresVsKnights/Assests/Sprites/space.jpg");
 	m_currentScene = new Scene();
 	m_backgroundTexture = m_textureHandler->instance()->getTexture("space");
@@ -38,4 +39,15 @@ void GameOne::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 void GameOne::handleInput(int p_InputEvent)
 {
+	switch (p_InputEvent)
+	{
+	case sf::Keyboard::Left:
+		std::cout << "yes" << std::endl;
+		m_currentScene->increaseCounter();
+		break;
+
+	default:
+		break;
+	}
+
 }

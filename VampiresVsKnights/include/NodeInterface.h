@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <string>
 
 class SpriteInterface;
 
@@ -16,11 +17,19 @@ public:
 	virtual float getG() = 0;
 	virtual float getH() = 0;
 	virtual float getF() = 0;	
+	virtual float getTerrainCost() = 0;
 	virtual sf::Vector2i getID() = 0;
 
 	virtual void setG(float p_g) = 0;
 	virtual void setF(float p_f) = 0; 
 	virtual void setH(float p_H) = 0;
+	virtual void setDiagonal(bool p_b) = 0;
+
+	virtual std::string checkNodeType() = 0;
+	virtual bool isDiagonal() = 0;
+	
+
+	
 
 protected:
 	

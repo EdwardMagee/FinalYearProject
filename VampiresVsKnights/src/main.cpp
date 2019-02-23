@@ -27,9 +27,8 @@ int main()
 					break;
 			case sf::Event::KeyPressed:
 
-
+				m_game.handleInput(event.key.code);
 				break;
-
 
 			}
 

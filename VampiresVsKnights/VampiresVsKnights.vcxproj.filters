@@ -13,54 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Nodes">
+      <UniqueIdentifier>{d0964a03-42a6-461b-9c07-4fd58a8d3dfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sprites">
+      <UniqueIdentifier>{215ee022-06d7-48dd-80ef-d55a645223e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{e4060e1e-7868-4983-a5de-caa05d8c685d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{e2077274-0663-4111-8946-c2b4d03250f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Nodes">
+      <UniqueIdentifier>{9ce322bb-fdac-4223-874c-7e336b8d7b29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sprites">
+      <UniqueIdentifier>{051c4a2a-4b59-44d5-bb3c-95ed49f30efa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Other">
+      <UniqueIdentifier>{0b6c486c-c6d6-4f59-bf85-30e0b9f09b8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\NormalNode.cpp">
+      <Filter>Source Files\Nodes</Filter>
     </ClCompile>
-    <ClCompile Include="src\TextureHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameOne.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Scene.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\EmptyNode.cpp">
+      <Filter>Source Files\Nodes</Filter>
     </ClCompile>
     <ClCompile Include="src\StaticSprite.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="src\NormalNode.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\TextureHandler.cpp">
+      <Filter>Source Files\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameOne.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene.cpp">
+      <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\TextureHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GameInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GameOne.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SceneInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SpriteInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StaticSprite.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\EmptyNode.h">
+      <Filter>Header Files\Nodes</Filter>
     </ClInclude>
     <ClInclude Include="include\NodeInterface.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Nodes</Filter>
     </ClInclude>
     <ClInclude Include="include\NormalNode.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StaticSprite.h">
+      <Filter>Header Files\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextureHandler.h">
+      <Filter>Header Files\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteInterface.h">
+      <Filter>Header Files\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameInterface.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameOne.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneInterface.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

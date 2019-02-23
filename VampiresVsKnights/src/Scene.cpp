@@ -2,11 +2,16 @@
 #include "../include/TextureHandler.h"
 #include "../include/StaticSprite.h"
 #include "../include/NormalNode.h"
+#include "../include/EmptyNode.h"
 
 Scene::Scene()
 {
-	int temp1 = 0;
-	int temp2 = 3;
+	int temp1 = 2;
+	int temp2 = 4;
+
+	counter2 = 0;
+	//int tempG1 = 6;
+	//int tempG2 = 5;
 
 	m_vectorSprites.push_back(new StaticSprite(temp1, temp2, m_textureHandler->instance()->getTexture("Harold")));
 	//m_vectorSprites.push_back(new StaticSprite(0, 0, m_textureHandler->instance()->getTexture("Harold")));
@@ -15,14 +20,29 @@ Scene::Scene()
 	{
 		for (int j = 0; j < m_iRow; j++)
 		{
-			m_Graph[j][i] = new NormalNode(1);
-			m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Normal"));
-			
-			if (temp1 == j)
+			if (j == 0 or i == 0)
 			{
-				if (temp2 == i)
+				m_Graph[j][i] = new EmptyNode(1000);
+				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
+				
+			}
+			else if (j == m_iRow - 1 or i == m_iCol - 1) {
+
+				m_Graph[j][i] = new EmptyNode(1000);
+				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
+
+			}
+			else {
+
+				m_Graph[j][i] = new NormalNode(1);
+				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Normal"));
+
+				if (temp1 == j)
 				{
-					m_Graph[j][i]->containSprite(m_vectorSprites[0]);
+					if (temp2 == i)
+					{
+						m_Graph[j][i]->containSprite(m_vectorSprites[0]);
+					}
 				}
 			}
 		}
@@ -50,11 +70,12 @@ Scene::~Scene()
 	m_vectorSprites.clear();
 }
 
-sf::Vector2i Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
+std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
 {
 	std::list<NodeInterface*> closedList;
 	std::list<NodeInterface*> openList;
 
+	float GValueTemp;
 	NodeInterface* tempNode;
 
 	openList.empty();
@@ -84,21 +105,86 @@ sf::Vector2i Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
 		if (tempNode->getID().x == p_endPos.x and tempNode->getID().y == p_endPos.y) {
 
 			std::cout << "found GOAL NODE!!" << std::endl;
+			return closedList;
+		}
+
+		for (auto* j : gatherChildren(tempNode))
+		{
+			if (j->checkNodeType() == "EmptyNode")
+				continue;
+
+			for (auto* k : closedList)
+			{
+				if (k != j) {
+
+					if (j->isDiagonal()) {
+						GValueTemp = tempNode->getG() + (j->getTerrainCost() * 1.4);
+					}
+					else {
+						GValueTemp = tempNode->getG() + (j->getTerrainCost() * 1);
+					}
+
+					j->setG(GValueTemp);
+					j->setH(calculateHValue(tempNode->getID(), p_endPos));
+					j->setF(j->getG() + j->getH());
+
+					for (auto* l : openList)
+					{
+						if (j == l)
+						{
+							if (j->getG() > l->getG())
+							{
+								continue;
+							}
+						}
+
+					}
+
+				}
+			}
+
+			openList.push_back(j);
+			
 		}
 
 
 
 
 	}
-
-	return sf::Vector2i();
 }
 
 void Scene::updateScene(float p_time)
 {
+	counter++;
+
 	for (auto* i : m_vectorSprites)
 	{
+		if (counter == 101)
+		{
+			tempList = aStar(sf::Vector2i(2, 4), sf::Vector2i(4, 6));
+
+			//for (auto* j : tempList)
+		//	{
+				//i->setSpritePos(j->getID().x, j->getID().y);#
+
+		}
+
+
+				if (counter2 == 2)
+				{
+					std::cout << "X:" << tempList.front()->getID().x << "Y:" << tempList.front()->getID().y << std::endl;
+					m_Graph[tempList.front()->getID().x][tempList.front()->getID().y]->containSprite(m_vectorSprites[0]);
+					tempList.pop_front();
+					counter2 = 0;
+				}
+				
+		//	}
+
+		
+
 		i->update(p_time);
+
+		
 	}
 
 	for (int i = 0; i < m_iCol; i++)
@@ -115,8 +201,13 @@ void Scene::updateScene(float p_time)
 				}
 			}*/
 			
+
+
 		}
 	}
+
+
+	
 
 }
 
@@ -147,16 +238,63 @@ std::vector<sf::Sprite*> Scene::getSpriteVector(){
 	
 }
 
-float Scene::calculateFValue(sf::Vector2i p_currentNode, sf::Vector2i p_goalNode)
+std::list<NodeInterface*> Scene::gatherChildren(NodeInterface * p_currentNode)
 {
-	for (int i = p_currentNode.x; i == p_goalNode.x;)
-	{
-		if (p_currentNode.x < p_goalNode.x)
-		{
+	std::list<NodeInterface*> tempList;
 
-		}
+	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]); //Right (1)
+	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]->setDiagonal(false); 
 
-	}
+	tempList.push_back(m_Graph[p_currentNode->getID().x][p_currentNode->getID().y + 1]); //Up (2)
+	m_Graph[p_currentNode->getID().x][p_currentNode->getID().y + 1]->setDiagonal(false);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y + 1]); //RightUp (3)
+	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y + 1]->setDiagonal(true);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]); //Left (4)
+	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]->setDiagonal(false);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]);//Left Up (5)
+	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]->setDiagonal(true);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x][p_currentNode->getID().y - 1]); //Down (6)
+	m_Graph[p_currentNode->getID().x][p_currentNode->getID().y - 1]->setDiagonal(false);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y - 1]); // Down Left (7)
+	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y - 1]->setDiagonal(true);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y - 1]); // Down Right (8)
+	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y - 1]->setDiagonal(true);
+
+	return tempList;
 }
+
+float Scene::calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
+{
+	float tempx;
+	float tempy;
+	float tempH;
+
+	tempx = (float)p_startPos.x - p_endPos.x;
+	tempy = (float)p_startPos.y - p_endPos.y;
+	tempH = sqrt((tempx * tempx) + (tempy * tempy));
+
+	if (tempH < 0)
+	{
+		tempH = tempH * -1;
+	}
+
+	return tempH;
+
+
+}
+
+void Scene::increaseCounter()
+{
+	counter2++;
+}
+
+
+
 
 
