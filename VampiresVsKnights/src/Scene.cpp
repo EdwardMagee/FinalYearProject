@@ -6,8 +6,8 @@
 
 Scene::Scene()
 {
-	int temp1 = 2;
-	int temp2 = 4;
+	int temp1 = 7;
+	int temp2 = 3;
 
 	counter2 = 0;
 	//int tempG1 = 6;
@@ -31,6 +31,11 @@ Scene::Scene()
 				m_Graph[j][i] = new EmptyNode(1000);
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 
+			}
+			else if (j == 6 and i == 6)
+			{
+				m_Graph[j][i] = new EmptyNode(1000);
+				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 			}
 			else {
 
@@ -86,26 +91,26 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 	
 	openList.push_back(m_Graph[p_startPos.x][p_startPos.y]);
 
-
 	while (!openList.empty())
 	{
 		tempNode = openList.front();
 
 		for (auto* i : openList)
 		{
-			if (i->getF() > tempNode->getF())
+			if (i->getF() < tempNode->getF())
 			{
 				tempNode = i;
 			}
 		}
 
+		counter3++;
 		openList.remove(tempNode);
 		closedList.push_back(tempNode);
 
 		if (tempNode->getID().x == p_endPos.x and tempNode->getID().y == p_endPos.y) {
 
 			std::cout << "found GOAL NODE!!" << std::endl;
-			return closedList;
+			return getPath(m_Graph[p_startPos.x][p_startPos.y], m_Graph[p_endPos.x][p_endPos.y]);
 		}
 
 		for (auto* j : gatherChildren(tempNode))
@@ -113,42 +118,66 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 			if (j->checkNodeType() == "EmptyNode")
 				continue;
 
+			isInClosedList = false;
 			for (auto* k : closedList)
 			{
-				if (k != j) {
-
-					if (j->isDiagonal()) {
-						GValueTemp = tempNode->getG() + (j->getTerrainCost() * 1.4);
-					}
-					else {
-						GValueTemp = tempNode->getG() + (j->getTerrainCost() * 1);
-					}
-
-					j->setG(GValueTemp);
-					j->setH(calculateHValue(tempNode->getID(), p_endPos));
-					j->setF(j->getG() + j->getH());
-
-					for (auto* l : openList)
-					{
-						if (j == l)
-						{
-							if (j->getG() > l->getG())
-							{
-								continue;
-							}
-						}
-
-					}
-
+				if (k == j) {
+					isInClosedList = true;
 				}
 			}
 
-			openList.push_back(j);
+			if (isInClosedList)
+				continue;
+
+
+			if (j->isDiagonal()) {
+				GValueTemp = tempNode->getG() + (j->getTerrainCost() * 1.4);
+			}
+			else if (!j->isDiagonal()) {
+				GValueTemp = tempNode->getG() + (j->getTerrainCost() * 1);
+			}
+
+
+			isInOpenList = false;
+			for (auto* l : openList)
+			{
+				if (l == j) {
+					isInOpenList = true;
+				}
+			}
+
+			if (GValueTemp < j->getG() or !isInOpenList) {
+
+				j->setG(GValueTemp);
+
+				j->setH(calculateHValue(tempNode->getID(), p_endPos));
+
+				j->setF(j->getG() + j->getH());
+
+				j->setPerant(tempNode);
 			
+				if (!isInOpenList)
+				openList.push_back(j);
+
+			}
+
+			
+
+		/*	float lowestValue = tempNode->getF();
+			if (j->getF() >= lowestValue)
+				continue;
+
+			pathList.push_back(tempNode);
+			*/
+			/*if (isInOpenList)
+			{
+				if (j->getG() > tempNode->getG())
+				{
+					continue;
+				}
+			}*/
+
 		}
-
-
-
 
 	}
 }
@@ -161,15 +190,15 @@ void Scene::updateScene(float p_time)
 	{
 		if (counter == 101)
 		{
-			tempList = aStar(sf::Vector2i(2, 4), sf::Vector2i(4, 6));
+			tempList = aStar(sf::Vector2i(7, 3), sf::Vector2i(1, 1));
 
 			//for (auto* j : tempList)
 		//	{
 				//i->setSpritePos(j->getID().x, j->getID().y);#
 
+			std::cout << tempList.size() << std::endl;
+
 		}
-
-
 				if (counter2 == 2)
 				{
 					std::cout << "X:" << tempList.front()->getID().x << "Y:" << tempList.front()->getID().y << std::endl;
@@ -292,6 +321,20 @@ float Scene::calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
 void Scene::increaseCounter()
 {
 	counter2++;
+}
+
+std::list<NodeInterface*> Scene::getPath(NodeInterface * p_start, NodeInterface * p_end)
+{
+	std::list<NodeInterface*> pathList;
+	NodeInterface* currentNode = p_end;
+
+	while (currentNode != p_start)
+	{
+		pathList.push_front(currentNode);
+		currentNode = currentNode->getPerant();
+	}
+
+	return pathList;
 }
 
 

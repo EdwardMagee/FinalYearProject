@@ -102,6 +102,16 @@ void NormalNode::setDiagonal(bool p_b)
 	m_isDiagonal = p_b;
 }
 
+NodeInterface * NormalNode::getPerant()
+{
+	return m_perant;
+}
+
+void NormalNode::setPerant(NodeInterface * p_NI)
+{
+	m_perant = p_NI;
+}
+
 std::string NormalNode::checkNodeType()
 {
 	return "NormalNode";

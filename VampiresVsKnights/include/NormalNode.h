@@ -27,6 +27,9 @@ public:
 	void setH(float p_H) override;
 	void setDiagonal(bool p_b) override;
 
+	NodeInterface* getPerant();
+	void setPerant(NodeInterface* p_NI);
+
 	std::string checkNodeType() override;
 	bool isDiagonal() override;
 
@@ -35,6 +38,7 @@ private:
 	sf::Sprite* m_sprite;
 	sf::Texture m_texture;
 	SpriteInterface* m_spriteUnit;
+	NodeInterface* m_perant;
 	
 	sf::Vector2i m_id;
 	float m_movementCost;

@@ -23,6 +23,9 @@ private:
 	std::list<NodeInterface*> tempList;
 	int counter;
 	int counter2;
+	int counter3;
+	bool isInClosedList;
+	bool isInOpenList;
 	
 public:
 
@@ -33,6 +36,7 @@ public:
 	std::list<NodeInterface*> gatherChildren(NodeInterface* p_currentNode);
 	float calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos);
 	void increaseCounter();
+	std::list<NodeInterface*> getPath(NodeInterface* p_start, NodeInterface* p_end);
 	
 	Scene();
 	~Scene();

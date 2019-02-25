@@ -25,6 +25,9 @@ public:
 	virtual void setH(float p_H) = 0;
 	virtual void setDiagonal(bool p_b) = 0;
 
+	virtual NodeInterface* getPerant() = 0;
+	virtual void setPerant(NodeInterface* p_NI) = 0;
+
 	virtual std::string checkNodeType() = 0;
 	virtual bool isDiagonal() = 0;
 	

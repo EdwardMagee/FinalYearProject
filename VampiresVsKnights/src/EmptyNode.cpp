@@ -102,6 +102,16 @@ void EmptyNode::setDiagonal(bool p_b)
 	m_isDiagonal = p_b;
 }
 
+NodeInterface * EmptyNode::getPerant()
+{
+	return m_perant;
+}
+
+void EmptyNode::setPerant(NodeInterface * p_NI)
+{
+	 m_perant = p_NI;
+}
+
 std::string EmptyNode::checkNodeType()
 {
 	return "EmptyNode";
