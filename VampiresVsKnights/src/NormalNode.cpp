@@ -5,6 +5,7 @@ NormalNode::NormalNode(int p_cost)
 {
 	m_movementCost = p_cost;
 	m_spriteUnit = nullptr;
+	//m_
 }
 
 NormalNode::~NormalNode()
@@ -15,8 +16,9 @@ NormalNode::~NormalNode()
 
 void NormalNode::updateNode(float p_time)
 {
-	if(m_spriteUnit != nullptr)
-	m_spriteUnit->setSpritePos(m_id.x, m_id.y);
+	//if (m_spriteUnit != nullptr) {
+	//	m_spriteUnit->setSpritePos(m_id.x, m_id.y);
+	//}
 }
 
 sf::Sprite * NormalNode::getSprite()

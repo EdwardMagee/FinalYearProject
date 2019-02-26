@@ -45,6 +45,10 @@ void GameOne::handleInput(int p_InputEvent)
 		std::cout << "yes" << std::endl;
 		m_currentScene->increaseCounter();
 		break;
+	case sf::Keyboard::Right:
+		std::cout << "yes!!" << std::endl;
+		m_currentScene->increaseOtherCounter();
+		break;
 
 	default:
 		break;

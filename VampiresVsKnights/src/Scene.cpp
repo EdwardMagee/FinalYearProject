@@ -6,14 +6,16 @@
 
 Scene::Scene()
 {
-	int temp1 = 7;
+	m_prevoiusNode = nullptr;
+
+	int temp1 = 3;
 	int temp2 = 3;
 
 	counter2 = 0;
 	//int tempG1 = 6;
 	//int tempG2 = 5;
 
-	m_vectorSprites.push_back(new StaticSprite(temp1, temp2, m_textureHandler->instance()->getTexture("Harold")));
+	m_vectorSprites.push_back(new StaticSprite(temp1, temp2, m_textureHandler->instance()->getTexture("Harold"), 4.2f));
 	//m_vectorSprites.push_back(new StaticSprite(0, 0, m_textureHandler->instance()->getTexture("Harold")));
 
 	for (int i = 0; i < m_iCol; i++)
@@ -46,7 +48,7 @@ Scene::Scene()
 				{
 					if (temp2 == i)
 					{
-						m_Graph[j][i]->containSprite(m_vectorSprites[0]);
+						m_vectorSprites[0]->setNode(m_Graph[j][i]); // ->containSprite(m_vectorSprites[0]);
 					}
 				}
 			}
@@ -75,21 +77,29 @@ Scene::~Scene()
 	m_vectorSprites.clear();
 }
 
-std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
+std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos, float p_speed)
 {
-	std::list<NodeInterface*> closedList;
-	std::list<NodeInterface*> openList;
-
+	float tempSpeed = 0;
 	float GValueTemp;
 	NodeInterface* tempNode;
 
-	openList.empty();
-	closedList.empty();
+	openList.clear();
+	closedList.clear();
 
 	m_Graph[p_startPos.x][p_startPos.y]->setG(0.0f);
 	m_Graph[p_startPos.x][p_startPos.y]->setF(0.0f);
 	
 	openList.push_back(m_Graph[p_startPos.x][p_startPos.y]);
+
+
+	for (int i = 0; i < m_iCol; i++)
+	{
+		for (int j = 0; j < m_iRow; j++)
+		{
+			m_Graph[j][i]->setPerant(nullptr);
+
+		}
+	}
 
 	while (!openList.empty())
 	{
@@ -111,6 +121,11 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 
 			std::cout << "found GOAL NODE!!" << std::endl;
 			return getPath(m_Graph[p_startPos.x][p_startPos.y], m_Graph[p_endPos.x][p_endPos.y]);
+		}
+
+		if (tempSpeed > p_speed) {
+			std::cout << "Too tired" << std::endl;
+			return getPath(m_Graph[p_startPos.x][p_startPos.y], tempNode);
 		}
 
 		for (auto* j : gatherChildren(tempNode))
@@ -155,6 +170,8 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 				j->setF(j->getG() + j->getH());
 
 				j->setPerant(tempNode);
+
+				tempSpeed =+ j->getG();
 			
 				if (!isInOpenList)
 				openList.push_back(j);
@@ -186,34 +203,44 @@ void Scene::updateScene(float p_time)
 {
 	counter++;
 
-	for (auto* i : m_vectorSprites)
+	if (counter4 == 2)
 	{
-		if (counter == 101)
-		{
-			tempList = aStar(sf::Vector2i(7, 3), sf::Vector2i(1, 1));
+		std::cout << "yep" << std::endl;
+		tempList = aStar(sf::Vector2i(1, 1), sf::Vector2i(5, 5), m_vectorSprites[0]->getSpeed());
+		counter4 = 0;
+	}
 
-			//for (auto* j : tempList)
-		//	{
-				//i->setSpritePos(j->getID().x, j->getID().y);#
+	if (counter == 2)
+	{
+		tempList = aStar(sf::Vector2i(3, 3), sf::Vector2i(1, 1), m_vectorSprites[0]->getSpeed());
 
-			std::cout << tempList.size() << std::endl;
-
-		}
-				if (counter2 == 2)
-				{
-					std::cout << "X:" << tempList.front()->getID().x << "Y:" << tempList.front()->getID().y << std::endl;
-					m_Graph[tempList.front()->getID().x][tempList.front()->getID().y]->containSprite(m_vectorSprites[0]);
-					tempList.pop_front();
-					counter2 = 0;
-				}
-				
-		//	}
+		std::cout << tempList.size() << std::endl;
 
 		
 
-		i->update(p_time);
+	}
+	if (counter2 == 2)
+	{
+		if (m_prevoiusNode != nullptr)
+			m_prevoiusNode->removeSprite();
+
+		m_prevoiusNode = nullptr;
+
+		m_vectorSprites[0]->setNode(m_Graph[tempList.front()->getID().x][tempList.front()->getID().y]);
+		std::cout << "X:" << tempList.front()->getID().x << "Y:" << tempList.front()->getID().y << std::endl;
+		//m_Graph[tempList.front()->getID().x][tempList.front()->getID().y]->containSprite(m_vectorSprites[0]);
+		//m_prevoiusNode = m_Graph[tempList.front()->getID().x][tempList.front()->getID().y];
+		tempList.pop_front();
+		counter2 = 0;
 
 		
+
+	}
+
+
+	for (auto* i : m_vectorSprites)
+	{			
+		i->update(p_time);	
 	}
 
 	for (int i = 0; i < m_iCol; i++)
@@ -221,16 +248,6 @@ void Scene::updateScene(float p_time)
 		for (int j = 0; j < m_iRow; j++)
 		{
 			m_Graph[j][i]->updateNode(p_time);
-
-			/*if (i == 0)
-			{
-				if (j == 6)
-				{
-					m_Graph[j][i]->containSprite(m_vectorSprites[1]);
-				}
-			}*/
-			
-
 
 		}
 	}
@@ -269,7 +286,8 @@ std::vector<sf::Sprite*> Scene::getSpriteVector(){
 
 std::list<NodeInterface*> Scene::gatherChildren(NodeInterface * p_currentNode)
 {
-	std::list<NodeInterface*> tempList;
+	//std::list<NodeInterface*> tempList;
+	tempList.clear();
 
 	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]); //Right (1)
 	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]->setDiagonal(false); 
@@ -321,11 +339,18 @@ float Scene::calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
 void Scene::increaseCounter()
 {
 	counter2++;
+	//cout << m_vectorSprites[0]->
+}
+
+void Scene::increaseOtherCounter() {
+	counter4++;
+
 }
 
 std::list<NodeInterface*> Scene::getPath(NodeInterface * p_start, NodeInterface * p_end)
 {
-	std::list<NodeInterface*> pathList;
+	
+	pathList.clear();
 	NodeInterface* currentNode = p_end;
 
 	while (currentNode != p_start)
