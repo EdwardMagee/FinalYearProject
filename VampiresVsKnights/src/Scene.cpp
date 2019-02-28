@@ -3,20 +3,21 @@
 #include "../include/StaticSprite.h"
 #include "../include/NormalNode.h"
 #include "../include/EmptyNode.h"
+#include "../include/FileReader.h"
 
 Scene::Scene()
 {
 	m_prevoiusNode = nullptr;
 
-	int temp1 = 3;
-	int temp2 = 3;
+	m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
 
 	counter2 = 0;
-	//int tempG1 = 6;
-	//int tempG2 = 5;
 
-	m_vectorSprites.push_back(new StaticSprite(temp1, temp2, m_textureHandler->instance()->getTexture("Harold"), 4.2f));
-	//m_vectorSprites.push_back(new StaticSprite(0, 0, m_textureHandler->instance()->getTexture("Harold")));
+	for (int j = 0; j < m_fileReader->getPositions().size(); j++) {
+
+		m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture("Harold"), m_fileReader->getSpeedValues().at(j)));
+		//m_vectorSprites.push_back(new StaticSprite(0, 0, m_textureHandler->instance()->getTexture("Harold")));
+	}
 
 	for (int i = 0; i < m_iCol; i++)
 	{
@@ -44,15 +45,14 @@ Scene::Scene()
 				m_Graph[j][i] = new NormalNode(1);
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Normal"));
 
-				if (temp1 == j)
-				{
-					if (temp2 == i)
-					{
-						m_vectorSprites[0]->setNode(m_Graph[j][i]); // ->containSprite(m_vectorSprites[0]);
-					}
-				}
+				
 			}
 		}
+	}
+
+	for (int k = 0; k < m_fileReader->getPositions().size(); k++) {
+
+		m_vectorSprites[k]->setNode(m_Graph[m_fileReader->getPositions().at(k).x][m_fileReader->getPositions().at(k).y]); // ->containSprite(m_vectorSprites[0]);
 	}
 
 
@@ -141,6 +141,16 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 				}
 			}
 
+			isOccupied = false;
+			for (auto* m : m_vectorSprites) {
+
+				if (m->getNode() == j)
+					isOccupied = true;
+			}
+
+			if (isOccupied)
+				continue;
+
 			if (isInClosedList)
 				continue;
 
@@ -206,13 +216,13 @@ void Scene::updateScene(float p_time)
 	if (counter4 == 2)
 	{
 		std::cout << "yep" << std::endl;
-		tempList = aStar(sf::Vector2i(1, 1), sf::Vector2i(5, 5), m_vectorSprites[0]->getSpeed());
+		tempList = aStar(sf::Vector2i(1, 1), sf::Vector2i(6, 4), m_vectorSprites[0]->getSpeed());
 		counter4 = 0;
 	}
 
 	if (counter == 2)
 	{
-		tempList = aStar(sf::Vector2i(3, 3), sf::Vector2i(1, 1), m_vectorSprites[0]->getSpeed());
+		tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), sf::Vector2i(1, 1), m_vectorSprites[0]->getSpeed());
 
 		std::cout << tempList.size() << std::endl;
 

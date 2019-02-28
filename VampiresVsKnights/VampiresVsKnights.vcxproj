@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\EmptyNode.cpp" />
+    <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\GameOne.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\NormalNode.cpp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EmptyNode.h" />
+    <ClInclude Include="include\FileReader.h" />
     <ClInclude Include="include\GameOne.h" />
     <ClInclude Include="include\GameInterface.h" />
     <ClInclude Include="include\NodeInterface.h" />

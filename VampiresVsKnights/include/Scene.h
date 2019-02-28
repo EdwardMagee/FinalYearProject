@@ -9,6 +9,7 @@ class TextureHandler;
 class SpriteInterface;
 class StaticSprite;
 class NodeInterface;
+class FileReader;
 
 class Scene : public SceneInterface
 {
@@ -17,6 +18,8 @@ private:
 	static const int m_iCol = 8;
 	static const int m_iRow = 16;
 	TextureHandler * m_textureHandler;
+	FileReader * m_fileReader;
+
 	std::vector<SpriteInterface*> m_vectorSprites;
 	std::vector<sf::Sprite*> m_vectorTemp;
 	std::array<std::array<NodeInterface*, m_iCol>, m_iRow> m_Graph;
@@ -31,6 +34,7 @@ private:
 	int counter4;
 	bool isInClosedList;
 	bool isInOpenList;
+	bool isOccupied;
 	
 public:
 
