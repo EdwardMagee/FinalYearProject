@@ -12,8 +12,9 @@ int main()
 	float fFrameTime = 1.f / 60.f;
 	float fElapsedTime = 0.f;
 
+	bool gameOver(false);
 
-	while(window.isOpen())
+	while(window.isOpen() and !gameOver)
 	{
 
 		sf::Event event;
@@ -44,8 +45,17 @@ int main()
 		window.clear();
 		window.draw(m_game);
 		window.display();
+
+		if (m_game.isOver())
+		{
+			gameOver = true;
+		}
+
 	}
 
+	window.close();
+
+	std::cout << "Game Over" << std::endl;
 	system("pause");
 	return 0;
 }

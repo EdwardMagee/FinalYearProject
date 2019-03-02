@@ -12,7 +12,9 @@ public:
 	 virtual void setNode(NodeInterface* p_NI) = 0;
 	 virtual NodeInterface* getNode() = 0;
 	 virtual float getSpeed() = 0;
-
+	 virtual float getAttack() = 0;
+	 virtual float getHealth() = 0;
+	 virtual void setHealth(float p_damageTaken) = 0;
 protected:
 
 	virtual void message(const std::string p_message) = 0;

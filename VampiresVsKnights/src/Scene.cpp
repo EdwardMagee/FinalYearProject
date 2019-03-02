@@ -9,13 +9,15 @@ Scene::Scene()
 {
 	m_prevoiusNode = nullptr;
 
+	m_gameOver = false;
+
 	m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
 
 	counter2 = 0;
 
 	for (int j = 0; j < m_fileReader->getPositions().size(); j++) {
 
-		m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture("Harold"), m_fileReader->getSpeedValues().at(j)));
+		m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture(m_fileReader->getTexture().at(j)), m_fileReader->getSpeedValues().at(j), m_fileReader->getHealth().at(j), m_fileReader->getAttack().at(j)));
 		//m_vectorSprites.push_back(new StaticSprite(0, 0, m_textureHandler->instance()->getTexture("Harold")));
 	}
 
@@ -79,6 +81,8 @@ Scene::~Scene()
 
 std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos, float p_speed)
 {
+	reachedGoal = false;
+
 	float tempSpeed = 0;
 	float GValueTemp;
 	NodeInterface* tempNode;
@@ -120,6 +124,7 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 		if (tempNode->getID().x == p_endPos.x and tempNode->getID().y == p_endPos.y) {
 
 			std::cout << "found GOAL NODE!!" << std::endl;
+			reachedGoal = true;
 			return getPath(m_Graph[p_startPos.x][p_startPos.y], m_Graph[p_endPos.x][p_endPos.y]);
 		}
 
@@ -188,22 +193,6 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 
 			}
 
-			
-
-		/*	float lowestValue = tempNode->getF();
-			if (j->getF() >= lowestValue)
-				continue;
-
-			pathList.push_back(tempNode);
-			*/
-			/*if (isInOpenList)
-			{
-				if (j->getG() > tempNode->getG())
-				{
-					continue;
-				}
-			}*/
-
 		}
 
 	}
@@ -211,6 +200,29 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 
 void Scene::updateScene(float p_time)
 {
+	std::cout << m_vectorSprites[0]->getHealth() << std::endl;
+
+	if (m_vectorSprites[0]->getHealth() < 0)
+	{
+		m_gameOver = true;
+	}
+
+	if (counter2 == 2)
+	{
+		for (int j = 1; j < m_fileReader->getPositions().size(); j++) {
+			tempList = aStar(sf::Vector2i(m_vectorSprites[j]->getNode()->getID().x, m_vectorSprites[j]->getNode()->getID().y), getGoal(), m_vectorSprites[j]->getSpeed());
+			m_vectorSprites[j]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+
+			if (reachedGoal)
+				m_vectorSprites[0]->setHealth(m_vectorSprites[j]->getAttack());
+			
+		}
+
+		counter2 = 0;
+	}
+
+	//m_gameOver = true;
+	/*
 	counter++;
 
 	if (counter4 == 2)
@@ -246,7 +258,7 @@ void Scene::updateScene(float p_time)
 		
 
 	}
-
+	*/
 
 	for (auto* i : m_vectorSprites)
 	{			
@@ -355,6 +367,39 @@ void Scene::increaseCounter()
 void Scene::increaseOtherCounter() {
 	counter4++;
 
+}
+
+bool Scene::getGameOver()
+{
+	return m_gameOver;
+}
+
+sf::Vector2i Scene::getGoal()
+{
+	sf::Vector2i temp;
+
+	for (auto* i : gatherChildren(m_vectorSprites[0]->getNode()))
+	{
+		if (i->checkNodeType() == "EmptyNode")
+			continue;
+
+		isOccupied = false;
+		for (auto* m : m_vectorSprites) {
+
+			if (m->getNode() == i)
+				isOccupied = true;
+		}
+
+		if (isOccupied)
+			continue;
+
+		temp.x = i->getID().x;
+		temp.y = i->getID().y;
+
+		return temp;
+	}
+
+	return sf::Vector2i();
 }
 
 std::list<NodeInterface*> Scene::getPath(NodeInterface * p_start, NodeInterface * p_end)

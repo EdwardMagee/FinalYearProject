@@ -12,10 +12,12 @@ private:
 	sf::Texture m_texture;
 	NodeInterface* m_node;
 	float m_speed;
+	float m_attack;
+	float m_health;
 
 public:
 
-	StaticSprite(int p_col, int p_row, sf::Texture p_T, float p_speed);
+	StaticSprite(int p_col, int p_row, sf::Texture p_T, float p_speed, float p_health, float p_damage);
 	~StaticSprite();
 	void update(float p_time) override;
 	void message(const std::string p_message) override;
@@ -24,4 +26,7 @@ public:
 	void setNode(NodeInterface* p_NI) override;
 	NodeInterface* getNode() override;
 	float getSpeed() override;
+    float getAttack() override;
+	float getHealth() override;
+	void setHealth(float p_damageTaken) override;
 };

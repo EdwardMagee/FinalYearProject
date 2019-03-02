@@ -35,6 +35,9 @@ private:
 	bool isInClosedList;
 	bool isInOpenList;
 	bool isOccupied;
+
+	bool m_gameOver;
+	bool reachedGoal;
 	
 public:
 
@@ -47,7 +50,8 @@ public:
 	void increaseCounter();
 	std::list<NodeInterface*> getPath(NodeInterface* p_start, NodeInterface* p_end);
 	void increaseOtherCounter();
-	
+	bool getGameOver();
+	sf::Vector2i getGoal();
 	Scene();
 	~Scene();
 

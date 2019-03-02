@@ -2,13 +2,15 @@
 #include "../include/NodeInterface.h"
 #include <iostream>
 
-StaticSprite::StaticSprite(int p_col, int p_row, sf::Texture p_T, float p_speed){
+StaticSprite::StaticSprite(int p_col, int p_row, sf::Texture p_T, float p_speed, float p_health, float p_damage){
 
 	m_texture = p_T;
 	m_sprite = new sf::Sprite;
 	m_sprite->setTexture(m_texture);
 	m_sprite->setPosition((p_col * 64) + 100, (p_row * 64) + 50);
 	m_speed = p_speed;
+	m_attack = p_damage;
+	m_health = p_health;
 
 }
 
@@ -50,4 +52,19 @@ NodeInterface * StaticSprite::getNode()
 float StaticSprite::getSpeed()
 {
 	return m_speed;
+}
+
+float StaticSprite::getAttack()
+{
+	return m_attack;
+}
+
+float StaticSprite::getHealth()
+{
+	return m_health;
+}
+
+void StaticSprite::setHealth(float p_damageTaken)
+{
+	m_health = m_health - p_damageTaken;
 }
