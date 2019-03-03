@@ -8,6 +8,12 @@
 Scene::Scene()
 {
 	m_prevoiusNode = nullptr;
+	m_gameState = PlayersTurn;
+
+	m_selectorTexture = m_textureHandler->instance()->getTexture("Selector");
+	m_selector.setTexture(m_selectorTexture);
+	m_selectorPos = sf::Vector2i(1, 1);
+	m_selector.setPosition(m_selectorPos.x * 64 + 100, m_selectorPos.y * 64 + 50);
 
 	m_gameOver = false;
 
@@ -200,26 +206,71 @@ std::list<NodeInterface*> Scene::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 
 void Scene::updateScene(float p_time)
 {
-	std::cout << m_vectorSprites[0]->getHealth() << std::endl;
+	//std::cout << m_vectorSprites[0]->getHealth() << std::endl;
 
-	if (m_vectorSprites[0]->getHealth() < 0)
+	//m_selector.set
+
+	switch (m_gameState)
 	{
-		m_gameOver = true;
-	}
+	case PlayersTurn:
+		m_selector.setPosition((m_selectorPos.x * 64) + 100, (m_selectorPos.y * 64) + 50);
+		break;
+	case PlayersMoved:
 
-	if (counter2 == 2)
-	{
-		for (int j = 1; j < m_fileReader->getPositions().size(); j++) {
-			tempList = aStar(sf::Vector2i(m_vectorSprites[j]->getNode()->getID().x, m_vectorSprites[j]->getNode()->getID().y), getGoal(), m_vectorSprites[j]->getSpeed());
-			m_vectorSprites[j]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+		temp = m_Graph[m_selectorPos.x][m_selectorPos.y];
 
-			if (reachedGoal)
-				m_vectorSprites[0]->setHealth(m_vectorSprites[j]->getAttack());
+		if (temp->checkNodeType() == "EmptyNode") {
+			m_gameState = PlayersTurn;
+			break;
+		}
+		
+		for (int i = 1; i < m_vectorSprites.size(); i++)
+		{
 			
+			if (m_vectorSprites[i]->getNode() == temp)
+			{
+				tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), getGoal(m_vectorSprites[i]->getNode()), m_vectorSprites[0]->getSpeed());
+				m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+
+				if (reachedGoal) {
+					m_vectorSprites[i]->setHealth(m_vectorSprites[0]->getAttack());
+					m_gameState = EnemyTurn;
+					break;
+				}
+
+				m_gameState = EnemyTurn;
+				break;
+
+			}
 		}
 
-		counter2 = 0;
+		if (m_gameState != EnemyTurn)
+		{
+			tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), temp->getID(), m_vectorSprites[0]->getSpeed());
+			m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+			m_gameState = EnemyTurn;
+		}
+
+		break;
+
+	case EnemyTurn:
+		for (int j = 1; j < m_vectorSprites.size(); j++) {
+
+			if (4.2f > calculateHValue(sf::Vector2i(m_vectorSprites[j]->getNode()->getID().x, m_vectorSprites[j]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y)))
+			{
+				tempList = aStar(sf::Vector2i(m_vectorSprites[j]->getNode()->getID().x, m_vectorSprites[j]->getNode()->getID().y), getGoal(m_vectorSprites[0]->getNode()), m_vectorSprites[j]->getSpeed());
+				m_vectorSprites[j]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+
+				if (reachedGoal)
+					m_vectorSprites[0]->setHealth(m_vectorSprites[j]->getAttack());
+			}
+
+		}
+
+		m_gameState = PlayersTurn;
+		break;
 	}
+	
 
 	//m_gameOver = true;
 	/*
@@ -274,8 +325,25 @@ void Scene::updateScene(float p_time)
 		}
 	}
 
+	if (m_vectorSprites[0]->getHealth() < 0)
+	{
+		m_gameOver = true;
+	}
 
+	if (m_vectorSprites.back()->getHealth() < 0)
+	{
+		m_gameOver = true;
+	}
 	
+	int tempSize = m_vectorSprites.size() - 1;
+	for (int j = 1; j < tempSize; j++) {
+
+		if (m_vectorSprites[j]->getHealth() < 0)
+		{
+			m_vectorSprites.erase(m_vectorSprites.begin() + j);
+		}
+	}
+
 
 }
 
@@ -311,23 +379,26 @@ std::list<NodeInterface*> Scene::gatherChildren(NodeInterface * p_currentNode)
 	//std::list<NodeInterface*> tempList;
 	tempList.clear();
 
-	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]); //Right (1)
-	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]->setDiagonal(false); 
-
-	tempList.push_back(m_Graph[p_currentNode->getID().x][p_currentNode->getID().y + 1]); //Up (2)
-	m_Graph[p_currentNode->getID().x][p_currentNode->getID().y + 1]->setDiagonal(false);
-
-	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y + 1]); //RightUp (3)
-	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y + 1]->setDiagonal(true);
-
-	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]); //Left (4)
+	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]); //Left (1)
 	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]->setDiagonal(false);
 
-	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]);//Left Up (5)
+	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]); //Right (2)
+	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y]->setDiagonal(false); 
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x][p_currentNode->getID().y + 1]); //Up (3)
+	m_Graph[p_currentNode->getID().x][p_currentNode->getID().y + 1]->setDiagonal(false);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x][p_currentNode->getID().y - 1]); //Down (4)
+	m_Graph[p_currentNode->getID().x][p_currentNode->getID().y - 1]->setDiagonal(false);
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y + 1]); //RightUp (5)
+	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y + 1]->setDiagonal(true);
+
+
+	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]);//Left Up (6)
 	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]->setDiagonal(true);
 
-	tempList.push_back(m_Graph[p_currentNode->getID().x][p_currentNode->getID().y - 1]); //Down (6)
-	m_Graph[p_currentNode->getID().x][p_currentNode->getID().y - 1]->setDiagonal(false);
+	
 
 	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y - 1]); // Down Left (7)
 	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y - 1]->setDiagonal(true);
@@ -374,11 +445,11 @@ bool Scene::getGameOver()
 	return m_gameOver;
 }
 
-sf::Vector2i Scene::getGoal()
+sf::Vector2i Scene::getGoal(NodeInterface* p_Node)
 {
 	sf::Vector2i temp;
 
-	for (auto* i : gatherChildren(m_vectorSprites[0]->getNode()))
+	for (auto* i : gatherChildren(p_Node))
 	{
 		if (i->checkNodeType() == "EmptyNode")
 			continue;
@@ -400,6 +471,34 @@ sf::Vector2i Scene::getGoal()
 	}
 
 	return sf::Vector2i();
+}
+
+sf::Sprite Scene::getSelector()
+{
+	return m_selector;
+}
+
+void Scene::incrementSelector(sf::Vector2i p_newPos)
+{
+	if (m_selectorPos.x != 14)
+	m_selectorPos.x += p_newPos.x;
+
+	if (m_selectorPos.y != 6)
+	m_selectorPos.y += p_newPos.y;
+}
+
+void Scene::decreaseSelector(sf::Vector2i p_newPos)
+{
+	if(m_selectorPos.x != 1)
+	m_selectorPos.x -= p_newPos.x;
+
+	if(m_selectorPos.y != 1)
+	m_selectorPos.y -= p_newPos.y;
+}
+
+void Scene::PlayersMove()
+{
+	m_gameState = PlayersMoved;
 }
 
 std::list<NodeInterface*> Scene::getPath(NodeInterface * p_start, NodeInterface * p_end)

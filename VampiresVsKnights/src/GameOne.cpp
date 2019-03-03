@@ -16,6 +16,7 @@ GameOne::GameOne(){
 	m_textureHandler->instance()->insertTexture("Speed", "../VampiresVsKnights/Assests/Sprites/Speed.png");
 	m_textureHandler->instance()->insertTexture("Splash", "../VampiresVsKnights/Assests/Sprites/Splash.png");
 	m_textureHandler->instance()->insertTexture("Vampire", "../VampiresVsKnights/Assests/Sprites/Vampire.png");
+	m_textureHandler->instance()->insertTexture("Selector", "../VampiresVsKnights/Assests/Sprites/Selector.png");
 
 	m_currentScene = new Scene();
 	m_backgroundTexture = m_textureHandler->instance()->getTexture("space");
@@ -48,6 +49,7 @@ void GameOne::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		target.draw(*object);
 	}
+	target.draw(m_currentScene->getSelector());
 }
 
 void GameOne::handleInput(int p_InputEvent)
@@ -56,11 +58,23 @@ void GameOne::handleInput(int p_InputEvent)
 	{
 	case sf::Keyboard::Left:
 		std::cout << "yes" << std::endl;
-		m_currentScene->increaseCounter();
+		m_currentScene->decreaseSelector(sf::Vector2i(1, 0));
 		break;
 	case sf::Keyboard::Right:
 		std::cout << "yes!!" << std::endl;
-		m_currentScene->increaseOtherCounter();
+		m_currentScene->incrementSelector(sf::Vector2i(1, 0));
+		break;
+	case sf::Keyboard::Up:
+		std::cout << "yes" << std::endl;
+		m_currentScene->decreaseSelector(sf::Vector2i(0, 1));
+		break;
+	case sf::Keyboard::Down:
+		std::cout << "yes!!" << std::endl;
+		m_currentScene->incrementSelector(sf::Vector2i(0, 1));
+		break;
+	case sf::Keyboard::Enter:
+		std::cout << "yo" << std::endl;
+		m_currentScene->PlayersMove();
 		break;
 
 	default:

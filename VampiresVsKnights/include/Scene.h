@@ -19,6 +19,12 @@ private:
 	static const int m_iRow = 16;
 	TextureHandler * m_textureHandler;
 	FileReader * m_fileReader;
+	enum gameState {PlayersTurn, PlayersMoved, PlayersMoving, EnemyTurn, EnemyMove};
+	gameState m_gameState;
+
+	sf::Sprite m_selector;
+	sf::Texture m_selectorTexture;
+	sf::Vector2i m_selectorPos;
 
 	std::vector<SpriteInterface*> m_vectorSprites;
 	std::vector<sf::Sprite*> m_vectorTemp;
@@ -28,6 +34,7 @@ private:
 	std::list<NodeInterface*> pathList;
 	std::list<NodeInterface*> tempList;
 	NodeInterface* m_prevoiusNode;
+	NodeInterface * temp;
 	int counter;
 	int counter2;
 	int counter3;
@@ -51,7 +58,11 @@ public:
 	std::list<NodeInterface*> getPath(NodeInterface* p_start, NodeInterface* p_end);
 	void increaseOtherCounter();
 	bool getGameOver();
-	sf::Vector2i getGoal();
+	sf::Vector2i getGoal(NodeInterface* p_Node);
+	sf::Sprite getSelector();
+	void incrementSelector(sf::Vector2i p_newPos);
+	void decreaseSelector(sf::Vector2i p_newPos);
+	void PlayersMove();
 	Scene();
 	~Scene();
 

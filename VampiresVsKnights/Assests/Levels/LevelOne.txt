@@ -1,4 +1,4 @@
-x 2 y 2 atk 1.5 Hp 12.0 spd 4.9 id Micheal
+x 4 y 5 atk 40.5 Hp 12.0 spd 4.9 id Micheal
 x 3 y 4 atk 1.5 Hp 6.0 spd 3.6 id Harold
 x 4 y 6 atk 2.3 Hp 2.4 spd 6.2 id Bat
 x 10 y 4 atk 4.0 Hp 11.0 spd 3.5 id Vampire
