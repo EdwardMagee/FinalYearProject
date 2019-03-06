@@ -14,6 +14,8 @@ public:
 	 virtual float getSpeed() = 0;
 	 virtual float getAttack() = 0;
 	 virtual float getHealth() = 0;
+	 virtual bool isDoingDamage() = 0;
+	 virtual void doDamage(bool p_bool) = 0;
 	 virtual void setHealth(float p_damageTaken) = 0;
 protected:
 

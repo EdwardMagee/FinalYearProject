@@ -68,3 +68,13 @@ void StaticSprite::setHealth(float p_damageTaken)
 {
 	m_health = m_health - p_damageTaken;
 }
+
+bool StaticSprite::isDoingDamage()
+{
+	return m_isDoingDamage;
+}
+
+void StaticSprite::doDamage(bool p_bool)
+{
+	m_isDoingDamage = p_bool;
+}

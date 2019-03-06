@@ -39,6 +39,8 @@ private:
 	int counter2;
 	int counter3;
 	int counter4;
+	int currentEnemy;
+	float movingCounter;
 	bool isInClosedList;
 	bool isInOpenList;
 	bool isOccupied;

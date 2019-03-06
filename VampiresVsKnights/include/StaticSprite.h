@@ -14,6 +14,7 @@ private:
 	float m_speed;
 	float m_attack;
 	float m_health;
+	bool m_isDoingDamage;
 
 public:
 
@@ -29,4 +30,6 @@ public:
     float getAttack() override;
 	float getHealth() override;
 	void setHealth(float p_damageTaken) override;
+	bool isDoingDamage() override;
+	void doDamage(bool p_bool) override;
 };

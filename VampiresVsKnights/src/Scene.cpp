@@ -9,6 +9,7 @@ Scene::Scene()
 {
 	m_prevoiusNode = nullptr;
 	m_gameState = PlayersTurn;
+	currentEnemy = 1;
 
 	m_selectorTexture = m_textureHandler->instance()->getTexture("Selector");
 	m_selector.setTexture(m_selectorTexture);
@@ -43,7 +44,7 @@ Scene::Scene()
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 
 			}
-			else if (j == 6 and i == 6)
+			else if (j == 6 and i == 4)
 			{
 				m_Graph[j][i] = new EmptyNode(1000);
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
@@ -215,6 +216,33 @@ void Scene::updateScene(float p_time)
 	case PlayersTurn:
 		m_selector.setPosition((m_selectorPos.x * 64) + 100, (m_selectorPos.y * 64) + 50);
 		break;
+
+	case PlayersMoving:
+
+		movingCounter += p_time;
+
+		if (movingCounter > 0.61f)
+		{
+			if (!tempList.empty()) {
+				m_vectorSprites[0]->setNode(m_Graph[tempList.front()->getID().x][tempList.front()->getID().y]);
+				tempList.pop_front();
+			}
+			else {
+				for (int i = 1; i < m_vectorSprites.size(); i++)
+				{
+					if (m_vectorSprites[i]->getNode() == temp)
+					{
+						if (reachedGoal) {
+							m_vectorSprites[i]->setHealth(m_vectorSprites[0]->getAttack());
+						}
+					}
+				}
+				m_gameState = EnemyTurn;
+			}
+			movingCounter = 0.0f;
+		}
+		break;
+
 	case PlayersMoved:
 
 		temp = m_Graph[m_selectorPos.x][m_selectorPos.y];
@@ -226,50 +254,87 @@ void Scene::updateScene(float p_time)
 		
 		for (int i = 1; i < m_vectorSprites.size(); i++)
 		{
-			
 			if (m_vectorSprites[i]->getNode() == temp)
 			{
 				tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), getGoal(m_vectorSprites[i]->getNode()), m_vectorSprites[0]->getSpeed());
-				m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+				//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
 				if (reachedGoal) {
-					m_vectorSprites[i]->setHealth(m_vectorSprites[0]->getAttack());
-					m_gameState = EnemyTurn;
+					//m_vectorSprites[i]->setHealth(m_vectorSprites[0]->getAttack());
+					m_gameState = PlayersMoving;
 					break;
 				}
 
-				m_gameState = EnemyTurn;
+				m_gameState = PlayersMoving;
 				break;
 
 			}
 		}
 
-		if (m_gameState != EnemyTurn)
+		if (m_gameState != PlayersMoving)
 		{
 			tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), temp->getID(), m_vectorSprites[0]->getSpeed());
-			m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
-			m_gameState = EnemyTurn;
+			//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+			m_gameState = PlayersMoving;
 		}
 
 		break;
 
 	case EnemyTurn:
-		for (int j = 1; j < m_vectorSprites.size(); j++) {
 
-			if (4.2f > calculateHValue(sf::Vector2i(m_vectorSprites[j]->getNode()->getID().x, m_vectorSprites[j]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y)))
+		//for (int j = 1; j < m_vectorSprites.size(); j++) {
+		if (currentEnemy != m_vectorSprites.size()) {
+			if (4.2f > calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y)))
 			{
-				tempList = aStar(sf::Vector2i(m_vectorSprites[j]->getNode()->getID().x, m_vectorSprites[j]->getNode()->getID().y), getGoal(m_vectorSprites[0]->getNode()), m_vectorSprites[j]->getSpeed());
-				m_vectorSprites[j]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
+				tempList = aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), getGoal(m_vectorSprites[0]->getNode()), m_vectorSprites[currentEnemy]->getSpeed());
+				//m_vectorSprites[currentEnemy]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
 				if (reachedGoal)
-					m_vectorSprites[0]->setHealth(m_vectorSprites[j]->getAttack());
+					m_vectorSprites[currentEnemy]->doDamage(true);
+				//m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 			}
+			m_gameState = EnemyMove;
+			break;
+		}
+		else {
+			currentEnemy = 1;
+			m_gameState = PlayersTurn;
+			break;
+		}
+	
+	case EnemyMove:
+		
+		if (tempList.empty()) {
 
+			//if (reachedGoal)
+			//	m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
+
+			if (m_vectorSprites[currentEnemy]->isDoingDamage()){
+				m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
+				m_vectorSprites[currentEnemy]->doDamage(false);
 		}
 
-		m_gameState = PlayersTurn;
-		break;
+			m_gameState = EnemyTurn;
+			currentEnemy++;
+			break;
+		}
+		else {
+			movingCounter += p_time;
+
+			if (movingCounter > 0.37f)
+			{
+
+				m_vectorSprites[currentEnemy]->setNode(m_Graph[tempList.front()->getID().x][tempList.front()->getID().y]);
+				tempList.pop_front();
+				movingCounter = 0.0f;
+			}
+
+			break;
+		}
 	}
+	
+
+		
 	
 
 	//m_gameOver = true;
@@ -498,7 +563,11 @@ void Scene::decreaseSelector(sf::Vector2i p_newPos)
 
 void Scene::PlayersMove()
 {
-	m_gameState = PlayersMoved;
+	if (m_gameState == PlayersTurn)
+	{
+		m_gameState = PlayersMoved;
+		std::cout << m_vectorSprites[0]->getHealth() << std::endl;
+	}
 }
 
 std::list<NodeInterface*> Scene::getPath(NodeInterface * p_start, NodeInterface * p_end)
