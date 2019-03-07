@@ -49,6 +49,11 @@ Scene::Scene()
 				m_Graph[j][i] = new EmptyNode(1000);
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 			}
+			else if (j == 4 and i == 5)
+			{
+				m_Graph[j][i] = new EmptyNode(1.3);
+				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Splash"));
+			}
 			else {
 
 				m_Graph[j][i] = new NormalNode(1);
@@ -444,6 +449,20 @@ std::list<NodeInterface*> Scene::gatherChildren(NodeInterface * p_currentNode)
 	//std::list<NodeInterface*> tempList;
 	tempList.clear();
 
+	auto getCloseNode = [&](std::list<NodeInterface*> p_TempList, int x = 0, int y = 0) {
+		tempList.push_back(m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]); //Left (1)
+		m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]->setDiagonal(false);
+	};
+	getCloseNode(tempList, -1, 0);
+	getCloseNode(tempList, 1, 0);
+	getCloseNode(tempList, 0, 1);
+	getCloseNode(tempList, 0, -1);
+	getCloseNode(tempList, 1, 1);
+	getCloseNode(tempList, -1, 1);
+	getCloseNode(tempList, -1, -1);
+	getCloseNode(tempList, 1, -1);
+
+	/*
 	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]); //Left (1)
 	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y]->setDiagonal(false);
 
@@ -462,7 +481,7 @@ std::list<NodeInterface*> Scene::gatherChildren(NodeInterface * p_currentNode)
 
 	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]);//Left Up (6)
 	m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y + 1]->setDiagonal(true);
-
+	
 	
 
 	tempList.push_back(m_Graph[p_currentNode->getID().x - 1][p_currentNode->getID().y - 1]); // Down Left (7)
@@ -470,6 +489,7 @@ std::list<NodeInterface*> Scene::gatherChildren(NodeInterface * p_currentNode)
 
 	tempList.push_back(m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y - 1]); // Down Right (8)
 	m_Graph[p_currentNode->getID().x + 1][p_currentNode->getID().y - 1]->setDiagonal(true);
+	*/
 
 	return tempList;
 }
