@@ -59,67 +59,67 @@ void NormalNode::removeSprite()
 	m_spriteUnit = nullptr;
 }
 
-float NormalNode::getG()
-{
-	return m_gValue;
-}
+//float NormalNode::getG()
+//{
+//	return m_gValue;
+//}
 
-float NormalNode::getH()
-{
-	return m_hValue;
-}
+//float NormalNode::getH()
+//{
+//	return m_hValue;
+//}
 
-float NormalNode::getF()
-{
-	return m_fValue;
-}
+//float NormalNode::getF()
+//{
+//	return m_fValue;
+//}
 
-float NormalNode::getTerrainCost()
-{
-	return m_movementCost;
-}
+//float NormalNode::getTerrainCost()
+//{
+//	return m_movementCost;
+//}
 
-sf::Vector2i NormalNode::getID()
-{
-	return m_id;
-}
+//sf::Vector2i NormalNode::getID()
+//{
+//	return m_id;
+//}
 
-void NormalNode::setG(float p_g)
-{
-	m_gValue = p_g;
-}
+//void NormalNode::setG(float p_g)
+//{
+//	m_gValue = p_g;
+//}
 
-void NormalNode::setF(float p_f)
-{
-	m_fValue = p_f;
-}
+//void NormalNode::setF(float p_f)
+//{
+//	m_fValue = p_f;
+//}
 
-void NormalNode::setH(float p_H)
-{
-	m_hValue = p_H;
-}
+//void NormalNode::setH(float p_H)
+//{
+//	m_hValue = p_H;
+//}
 
-void NormalNode::setDiagonal(bool p_b)
-{
-	m_isDiagonal = p_b;
-}
+//void NormalNode::setDiagonal(bool p_b)
+//{
+//	m_isDiagonal = p_b;
+//}
 
-NodeInterface * NormalNode::getPerant()
-{
-	return m_perant;
-}
+//NodeInterface * NormalNode::getPerant()
+//{
+//	return m_perant;
+//}
 
-void NormalNode::setPerant(NodeInterface * p_NI)
-{
-	m_perant = p_NI;
-}
+//void NormalNode::setPerant(NodeInterface * p_NI)
+//{
+//	m_perant = p_NI;
+//}
 
 std::string NormalNode::checkNodeType()
 {
 	return "NormalNode";
 }
 
-bool NormalNode::isDiagonal()
-{
-	return m_isDiagonal;
-}
+//bool NormalNode::isDiagonal()
+//{
+//	return m_isDiagonal;
+//}

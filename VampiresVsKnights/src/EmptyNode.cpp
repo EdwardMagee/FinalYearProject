@@ -57,67 +57,67 @@ void EmptyNode::removeSprite()
 	m_spriteUnit = nullptr;
 }
 
-float EmptyNode::getG()
-{
-	return m_gValue;
-}
+//float EmptyNode::getG()
+//{
+//	return m_gValue;
+//}
 
-float EmptyNode::getH()
-{
-	return m_hValue;
-}
+//float EmptyNode::getH()
+//{
+//	return m_hValue;
+//}
 
-float EmptyNode::getF()
-{
-	return m_fValue;
-}
+//float EmptyNode::getF()
+//{
+//	return m_fValue;
+//}
 
-float EmptyNode::getTerrainCost()
-{
-	return m_movementCost;
-}
+//float EmptyNode::getTerrainCost()
+//{
+//	return m_movementCost;
+//}
 
-sf::Vector2i EmptyNode::getID()
-{
-	return m_id;
-}
+//sf::Vector2i EmptyNode::getID()
+//{
+//	return m_id;
+//}
 
-void EmptyNode::setG(float p_g)
-{
-	m_gValue = p_g;
-}
+//void EmptyNode::setG(float p_g)
+//{
+//	m_gValue = p_g;
+//}
 
-void EmptyNode::setF(float p_f)
-{
-	m_fValue = p_f;
-}
+//void EmptyNode::setF(float p_f)
+//{
+//	m_fValue = p_f;
+//}
 
-void EmptyNode::setH(float p_H)
-{
-	m_hValue = p_H;
-}
+//void EmptyNode::setH(float p_H)
+//{
+//	m_hValue = p_H;
+//}
 
-void EmptyNode::setDiagonal(bool p_b)
-{
-	m_isDiagonal = p_b;
-}
+//void EmptyNode::setDiagonal(bool p_b)
+//{
+//	m_isDiagonal = p_b;
+//}
 
-NodeInterface * EmptyNode::getPerant()
-{
-	return m_perant;
-}
+//NodeInterface * EmptyNode::getPerant()
+//{
+//	return m_perant;
+//}
 
-void EmptyNode::setPerant(NodeInterface * p_NI)
-{
-	 m_perant = p_NI;
-}
+//void EmptyNode::setPerant(NodeInterface * p_NI)
+//{
+//	 m_perant = p_NI;
+//}
 
 std::string EmptyNode::checkNodeType()
 {
 	return "EmptyNode";
 }
 
-bool EmptyNode::isDiagonal()
-{
-	return m_isDiagonal;
-}
+//bool EmptyNode::isDiagonal()
+//{
+//	return m_isDiagonal;
+//}

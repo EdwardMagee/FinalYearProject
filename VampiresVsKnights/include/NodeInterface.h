@@ -13,30 +13,40 @@ public:
 	virtual SpriteInterface* getSpriteAttachedToNode() = 0;
 	virtual bool containSprite(SpriteInterface* p_sprite) = 0;
 	virtual void removeSprite() = 0;
-
-	virtual float getG() = 0;
-	virtual float getH() = 0;
-	virtual float getF() = 0;	
-	virtual float getTerrainCost() = 0;
-	virtual sf::Vector2i getID() = 0;
-
-	virtual void setG(float p_g) = 0;
-	virtual void setF(float p_f) = 0; 
-	virtual void setH(float p_H) = 0;
-	virtual void setDiagonal(bool p_b) = 0;
-
-	virtual NodeInterface* getPerant() = 0;
-	virtual void setPerant(NodeInterface* p_NI) = 0;
-
 	virtual std::string checkNodeType() = 0;
-	virtual bool isDiagonal() = 0;
+
+	virtual float getG() { return m_gValue;  };
+	virtual float getH() { return m_hValue;  };
+	virtual float getF() { return m_fValue;  };
+	virtual float getTerrainCost() { return m_movementCost; };
+	virtual sf::Vector2i getID() { return m_id; };
+
+	virtual void setG(float p_g) { m_gValue = p_g; };
+	virtual void setF(float p_f) { m_fValue = p_f; };
+	virtual void setH(float p_H) { m_hValue = p_H; };
+	virtual void setDiagonal(bool p_b) { m_isDiagonal = p_b;  };
+
+	virtual NodeInterface* getPerant() { return m_perant;  };
+	virtual void setPerant(NodeInterface* p_NI) { m_perant = p_NI;  };
+
+	virtual bool isDiagonal() { return m_isDiagonal;  };
 	
 
 	
 
 protected:
 	
-	
+	sf::Sprite* m_sprite;
+	sf::Texture m_texture;
+	SpriteInterface* m_spriteUnit;
+	NodeInterface* m_perant;
+
+	sf::Vector2i m_id;
+	float m_movementCost;
+	float m_fValue;
+	float m_gValue;
+	float m_hValue;
+	bool m_isDiagonal;
 
 
 };

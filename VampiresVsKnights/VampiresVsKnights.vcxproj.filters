@@ -66,6 +66,9 @@
     <ClCompile Include="src\FileReader.cpp">
       <Filter>Source Files\FileReader</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graph.cpp">
+      <Filter>Source Files\Nodes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EmptyNode.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="include\FileReader.h">
       <Filter>Header Files\FileReading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graph.h">
+      <Filter>Header Files\Nodes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
