@@ -30,7 +30,7 @@ Graph::Graph()
 			}
 			else if (j == 4 and i == 5)
 			{
-				m_Graph[j][i] = new EmptyNode(1.3);
+				m_Graph[j][i] = new NormalNode(1.3);
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Splash"));
 			}
 			else {

@@ -8,9 +8,14 @@
 
 Scene::Scene()
 {
+	playerkilled = false;
 	m_prevoiusNode = nullptr;
 	m_gameState = PlayersTurn;
-	currentEnemy = 1;
+	currentEnemy = 3;
+	currentPlayer = 0;
+	startofKnights = 0;
+	startofVampires = 3;
+	newcurrentPlayer = false;
 
 	m_Graph = new Graph();
 
@@ -25,6 +30,7 @@ Scene::Scene()
 
 	counter2 = 0;
 
+	totalCharacters = m_fileReader->getPositions().size();
 	for (int j = 0; j < m_fileReader->getPositions().size(); j++) {
 
 		m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture(m_fileReader->getTexture().at(j)), m_fileReader->getSpeedValues().at(j), m_fileReader->getHealth().at(j), m_fileReader->getAttack().at(j)));
@@ -65,6 +71,11 @@ void Scene::updateScene(float p_time)
 
 	//m_selector.set
 
+	if (test == true)
+	{
+
+	}
+
 	switch (m_gameState)
 	{
 	case PlayersTurn:
@@ -80,13 +91,37 @@ void Scene::updateScene(float p_time)
 			m_gameState = PlayersTurn;
 			break;
 		}
+
+			for (int i = 0; i < startofVampires; i++)
+			{
+				if (i == 2)
+				{
+
+				}
+				if (m_vectorSprites[i]->getNode() == temp)
+				{
+					currentPlayer = i;
+					m_gameState = PlayersTurn;
+					newcurrentPlayer = true;
+					break;
+					
+				}
+
+			}
+
+		if (newcurrentPlayer == true)
+		{
+			newcurrentPlayer = false;
+			break;
+		}
 		
-		for (int i = 1; i < m_vectorSprites.size(); i++)
+		
+		for (int i = startofVampires; i < m_vectorSprites.size(); i++)
 		{
 			if (m_vectorSprites[i]->getNode() == temp)
 			{
-				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[i]->getNode(), m_vectorSprites[0]->getNode(), m_vectorSprites),
-					m_vectorSprites[0]->getSpeed(), m_vectorSprites);
+				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[i]->getNode(), m_vectorSprites[currentPlayer]->getNode(), m_vectorSprites),
+					m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
 				//tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y), m_vectorSprites[0]->getSpeed());
 				//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
@@ -110,7 +145,7 @@ void Scene::updateScene(float p_time)
 
 		if (m_gameState != PlayersMoving)
 		{
-			m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), temp->getID(), m_vectorSprites[0]->getSpeed(), m_vectorSprites);
+			m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), temp->getID(), m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
 			//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 			m_gameState = PlayersMoving;
 		}
@@ -126,16 +161,16 @@ void Scene::updateScene(float p_time)
 		{
 			if (!m_pathList.empty()) {
 
-				m_vectorSprites[0]->setNode(m_Graph->getNode(sf::Vector2i(m_pathList.front()->getID().x, m_pathList.front()->getID().y)));
+				m_vectorSprites[currentPlayer]->setNode(m_Graph->getNode(sf::Vector2i(m_pathList.front()->getID().x, m_pathList.front()->getID().y)));
 				m_pathList.pop_front();
 			}
 			else {
-				for (int i = 1; i < m_vectorSprites.size(); i++)
+				for (int i = startofVampires; i < m_vectorSprites.size(); i++)
 				{
 					if (m_vectorSprites[i]->getNode() == temp)
 					{
 						if (m_Graph->isGoalReached()) {
-							m_vectorSprites[i]->setHealth(m_vectorSprites[0]->getAttack());
+							m_vectorSprites[i]->setHealth(m_vectorSprites[currentPlayer]->getAttack());
 						}
 					}
 				}
@@ -149,10 +184,10 @@ void Scene::updateScene(float p_time)
 	case EnemyTurn:
 
 		//for (int j = 1; j < m_vectorSprites.size(); j++) {
-		if (currentEnemy != m_vectorSprites.size()) {
-			if (4.2f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y)))
+		if (currentEnemy != m_vectorSprites.size() and playerkilled != true) {
+			if (4.2f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y)))
 			{
-				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[0]->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites), 
+				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[currentPlayer]->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites), 
 					m_vectorSprites[currentEnemy]->getSpeed(), m_vectorSprites);
 				//m_vectorSprites[currentEnemy]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
@@ -164,7 +199,8 @@ void Scene::updateScene(float p_time)
 			break;
 		}
 		else {
-			currentEnemy = 1;
+			playerkilled = false;
+			currentEnemy = startofVampires;
 			m_gameState = PlayersTurn;
 			break;
 		}
@@ -177,7 +213,7 @@ void Scene::updateScene(float p_time)
 			//	m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 
 			if (m_vectorSprites[currentEnemy]->isDoingDamage()){
-				m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
+				m_vectorSprites[currentPlayer]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 				m_vectorSprites[currentEnemy]->doDamage(false);
 		    }
 
@@ -210,20 +246,37 @@ void Scene::updateScene(float p_time)
 		m_gameOver = true;
 	}
 
+	int tempSize2 = startofVampires;
+	for (int m = 1; m < tempSize2; m++) {
+
+		if (m_vectorSprites[m]->getHealth() < 0)
+		{
+			m_vectorSprites.erase(m_vectorSprites.begin() + m);
+			currentPlayer = 0;
+			startofVampires--;
+			
+			playerkilled = true;
+			std::cout << test << std::endl;
+			
+			std::cout << m_vectorSprites[m]->getHealth() << std::endl;
+			std::cout << m_vectorSprites[m]->getAttack() << std::endl;
+		}
+	}
+
 	if (m_vectorSprites.back()->getHealth() < 0)
 	{
 		m_gameOver = true;
 	}
 	
 	int tempSize = m_vectorSprites.size() - 1;
-	for (int j = 1; j < tempSize; j++) {
+	for (int j = 3; j < tempSize; j++) {
 
 		if (m_vectorSprites[j]->getHealth() < 0)
 		{
 			m_vectorSprites.erase(m_vectorSprites.begin() + j);
 		}
 	}
-
+	////////////////std::cout << m_vectorSprites[1]->getHealth() << std::endl;
 
 }
 
@@ -298,7 +351,8 @@ void Scene::PlayersMove()
 	if (m_gameState == PlayersTurn)
 	{
 		m_gameState = PlayersMoved;
-		std::cout << m_vectorSprites[0]->getHealth() << std::endl;
+		std::cout << m_vectorSprites[currentPlayer]->getHealth() << std::endl;
+		
 	}
 }
 

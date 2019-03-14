@@ -15,7 +15,8 @@ class Graph;
 class Scene : public SceneInterface
 {
 private:
-
+	bool playerkilled;
+	bool test;
 	//static const int m_iCol = 8;
 	//static const int m_iRow = 16;
 	TextureHandler * m_textureHandler;
@@ -28,6 +29,13 @@ private:
 	sf::Vector2i m_selectorPos;
 
 	std::vector<SpriteInterface*> m_vectorSprites;
+	SpriteInterface* m_playerTemp;
+	int currentPlayer;
+	int currentTarget;
+	int startofKnights;
+	int startofVampires;
+	int totalCharacters;
+	bool newcurrentPlayer;
 	std::vector<sf::Sprite*> m_vectorTemp;
 	//std::array<std::array<NodeInterface*, m_iCol>, m_iRow> m_Graph;
 	//std::list<NodeInterface*> closedList;
