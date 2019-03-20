@@ -150,6 +150,7 @@
     <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\GameOne.cpp" />
     <ClCompile Include="src\Graph.cpp" />
+    <ClCompile Include="src\HUD.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\NormalNode.cpp" />
     <ClCompile Include="src\Scene.cpp" />
@@ -161,9 +162,12 @@
     <ClInclude Include="include\FileReader.h" />
     <ClInclude Include="include\GameOne.h" />
     <ClInclude Include="include\GameInterface.h" />
+    <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\Graph.h" />
+    <ClInclude Include="include\HUD.h" />
     <ClInclude Include="include\NodeInterface.h" />
     <ClInclude Include="include\NormalNode.h" />
+    <ClInclude Include="include\SpriteState.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneInterface.h" />
     <ClInclude Include="include\StaticSprite.h" />

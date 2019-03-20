@@ -4,6 +4,7 @@
 
 StaticSprite::StaticSprite(int p_col, int p_row, sf::Texture p_T, float p_speed, float p_health, float p_damage){
 
+	m_spriteState = SpriteState::WaitingState;
 	m_texture = p_T;
 	m_sprite = new sf::Sprite;
 	m_sprite->setTexture(m_texture);
@@ -28,6 +29,15 @@ void StaticSprite::update(float p_time)
 
 void StaticSprite::message(const std::string p_message)
 {
+	if (p_message == "Attack")
+	{
+		m_spriteState = SpriteState::AttackingState;
+	}
+	else if (p_message == "Wait")
+	{
+		m_spriteState = SpriteState::WaitingState;
+	}
+
 }
 
 sf::Sprite* StaticSprite::getSprite(){
@@ -49,20 +59,20 @@ NodeInterface * StaticSprite::getNode()
 	return m_node;
 }
 
-float StaticSprite::getSpeed()
-{
-	return m_speed;
-}
+//float StaticSprite::getSpeed()
+//{
+//	return m_speed;
+//}
 
-float StaticSprite::getAttack()
-{
-	return m_attack;
-}
+//float StaticSprite::getAttack()
+//{/
+	//return m_attack;
+//}
 
-float StaticSprite::getHealth()
-{
-	return m_health;
-}
+//float StaticSprite::getHealth()
+//{
+//	return m_health;
+//}
 
 void StaticSprite::setHealth(float p_damageTaken)
 {

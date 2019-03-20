@@ -8,13 +8,7 @@ class StaticSprite : public SpriteInterface
 {
 private:
 
-	sf::Sprite* m_sprite;
-	sf::Texture m_texture;
-	NodeInterface* m_node;
-	float m_speed;
-	float m_attack;
-	float m_health;
-	bool m_isDoingDamage;
+	
 
 public:
 
@@ -26,9 +20,9 @@ public:
 	void setSpritePos(int p_col, int p_row) override;
 	void setNode(NodeInterface* p_NI) override;
 	NodeInterface* getNode() override;
-	float getSpeed() override;
-    float getAttack() override;
-	float getHealth() override;
+	//float getSpeed() override;
+   // float getAttack() override;
+	//float getHealth() override;
 	void setHealth(float p_damageTaken) override;
 	bool isDoingDamage() override;
 	void doDamage(bool p_bool) override;

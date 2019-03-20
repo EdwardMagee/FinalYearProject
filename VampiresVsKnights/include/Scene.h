@@ -4,6 +4,8 @@
 #include <array>
 #include <list>
 #include <math.h>
+#include "SpriteState.h"
+#include "GameState.h"
 
 class TextureHandler;
 class SpriteInterface;
@@ -11,6 +13,7 @@ class StaticSprite;
 class NodeInterface;
 class FileReader;
 class Graph;
+class HUD;
 
 class Scene : public SceneInterface
 {
@@ -21,8 +24,9 @@ private:
 	//static const int m_iRow = 16;
 	TextureHandler * m_textureHandler;
 	FileReader * m_fileReader;
-	enum gameState {PlayersTurn, PlayersMoved, PlayersMoving, EnemyTurn, EnemyMove};
-	gameState m_gameState;
+	SpriteInterface* Target;
+	//enum gameState {PlayersTurn, PlayersMoved, PlayersMoving, EnemyTurn, EnemyMove};
+	GameState m_gameState;
 
 	sf::Sprite m_selector;
 	sf::Texture m_selectorTexture;
@@ -58,6 +62,10 @@ private:
 	bool m_reachedGoal;
 
 	Graph * m_Graph;
+	HUD * m_gameHud;
+
+	int m_round;
+	float m_time;
 	
 public:
 
@@ -76,6 +84,7 @@ public:
 	void incrementSelector(sf::Vector2i p_newPos);
 	void decreaseSelector(sf::Vector2i p_newPos);
 	void PlayersMove();
+	virtual HUD * getHUD() override;
 	Scene();
 	~Scene();
 

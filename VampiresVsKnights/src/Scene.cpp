@@ -5,12 +5,14 @@
 #include "../include/EmptyNode.h"
 #include "../include/FileReader.h"
 #include "../include/Graph.h"
+#include "../include/SpriteState.h"
+#include "../include/HUD.h"
 
 Scene::Scene()
 {
 	playerkilled = false;
 	m_prevoiusNode = nullptr;
-	m_gameState = PlayersTurn;
+	m_gameState = GameState::PlayersTurn;
 	currentEnemy = 3;
 	currentPlayer = 0;
 	startofKnights = 0;
@@ -18,6 +20,10 @@ Scene::Scene()
 	newcurrentPlayer = false;
 
 	m_Graph = new Graph();
+	m_gameHud = new HUD();
+	m_gameHud->setText(0.0f, 1);
+	m_round = 1;
+	m_time = 0.f;
 
 	m_selectorTexture = m_textureHandler->instance()->getTexture("Selector");
 	m_selector.setTexture(m_selectorTexture);
@@ -42,7 +48,6 @@ Scene::Scene()
 		//m_vectorSprites[k]->setNode(m_Graph[m_fileReader->getPositions().at(k).x][m_fileReader->getPositions().at(k).y]); // ->containSprite(m_vectorSprites[0]);
 		m_vectorSprites[k]->setNode(m_Graph->getNode(sf::Vector2i(m_fileReader->getPositions().at(k).x, m_fileReader->getPositions().at(k).y)));
 	}
-
 
 }
 
@@ -71,37 +76,33 @@ void Scene::updateScene(float p_time)
 
 	//m_selector.set
 
-	if (test == true)
-	{
-
-	}
-
 	switch (m_gameState)
 	{
-	case PlayersTurn:
+	case GameState::PlayersTurn:
 		m_selector.setPosition((m_selectorPos.x * 64) + 100, (m_selectorPos.y * 64) + 50);
+		m_selectorTexture = m_textureHandler->instance()->getTexture("Selector");
+		m_selector.setTexture(m_selectorTexture);
+		m_time += p_time;
+		m_gameHud->setText(m_time, m_round);
 		break;
 
 	
-	case PlayersMoved:
+	case GameState::PlayersMoved:
 
 		temp = m_Graph->getNode(sf::Vector2i(m_selectorPos.x,m_selectorPos.y));
 
 		if (temp->checkNodeType() == "EmptyNode") {
-			m_gameState = PlayersTurn;
+			m_gameState = GameState::PlayersTurn;
 			break;
 		}
 
 			for (int i = 0; i < startofVampires; i++)
 			{
-				if (i == 2)
-				{
-
-				}
+				
 				if (m_vectorSprites[i]->getNode() == temp)
 				{
 					currentPlayer = i;
-					m_gameState = PlayersTurn;
+					m_gameState = GameState::PlayersTurn;
 					newcurrentPlayer = true;
 					break;
 					
@@ -137,23 +138,23 @@ void Scene::updateScene(float p_time)
 				}
 
 
-				m_gameState = PlayersMoving;
+				m_gameState = GameState::PlayersMoving;
 				break;
 
 			}
 		}
 
-		if (m_gameState != PlayersMoving)
+		if (m_gameState != GameState::PlayersMoving)
 		{
 			m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), temp->getID(), m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
 			//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
-			m_gameState = PlayersMoving;
+			m_gameState = GameState::PlayersMoving;
 		}
 
 		break;
 
 
-	case PlayersMoving:
+	case GameState::PlayersMoving:
 
 		movingCounter += p_time;
 
@@ -174,57 +175,84 @@ void Scene::updateScene(float p_time)
 						}
 					}
 				}
-				m_gameState = EnemyTurn;
+				m_round++;
+				m_gameState = GameState::EnemyTurn;
 			}
 			movingCounter = 0.0f;
 		}
 		break;
 
 
-	case EnemyTurn:
+	case GameState::EnemyTurn:
 
 		//for (int j = 1; j < m_vectorSprites.size(); j++) {
 		if (currentEnemy != m_vectorSprites.size() and playerkilled != true) {
-			if (4.2f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y)))
-			{
-				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[currentPlayer]->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites), 
+
+			bool tempTargetFound = false;
+			float tempLowestValue = 100.0f;
+			int tempSize = startofVampires;
+			for (int i = 0; i < tempSize; i++) {
+
+				if (3.8f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
+					sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y))) {
+
+					if (m_vectorSprites[i]->getHealth() < tempLowestValue)
+					{
+						tempLowestValue = m_vectorSprites[i]->getHealth();
+						Target = m_vectorSprites[i];
+						tempTargetFound = true;
+					}
+					else continue;
+
+				}
+				else continue;
+					
+				
+			}
+
+
+			if (tempTargetFound) {
+
+				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
+					m_Graph->getGoal(Target->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites), 
 					m_vectorSprites[currentEnemy]->getSpeed(), m_vectorSprites);
 				//m_vectorSprites[currentEnemy]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
 				if (m_Graph->isGoalReached())
-					m_vectorSprites[currentEnemy]->doDamage(true);
+					m_vectorSprites[currentEnemy]->message("Attack");
 				//m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 			}
-			m_gameState = EnemyMove;
+			m_gameState = GameState::EnemyMove;
 			break;
 		}
 		else {
 			playerkilled = false;
 			currentEnemy = startofVampires;
-			m_gameState = PlayersTurn;
+			m_gameState = GameState::PlayersTurn;
 			break;
 		}
 	
-	case EnemyMove:
+	case GameState::EnemyMove:
 		
 		if (m_pathList.empty()) {
 
 			//if (reachedGoal)
 			//	m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 
-			if (m_vectorSprites[currentEnemy]->isDoingDamage()){
-				m_vectorSprites[currentPlayer]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
-				m_vectorSprites[currentEnemy]->doDamage(false);
+			if (m_vectorSprites[currentEnemy]->getState() == SpriteState::AttackingState) {
+				Target->setHealth(m_vectorSprites[currentEnemy]->getAttack());
+				m_vectorSprites[currentEnemy]->message("Wait");
+			  // m_vectorSprites[currentEnemy]->doDamage(false);
 		    }
 
-			m_gameState = EnemyTurn;
+			m_gameState = GameState::EnemyTurn;
 			currentEnemy++;
 			break;
 		}
 		else {
 			movingCounter += p_time;
 
-			if (movingCounter > 0.37f)
+			if (movingCounter > 0.34f)
 			{
 
 				m_vectorSprites[currentEnemy]->setNode(m_Graph->getNode(sf::Vector2i(m_pathList.front()->getID().x, m_pathList.front()->getID().y)));
@@ -251,10 +279,22 @@ void Scene::updateScene(float p_time)
 
 		if (m_vectorSprites[m]->getHealth() < 0)
 		{
+			sf::Vector2i temp;
+			std::vector<SpriteInterface*>::iterator tempIt;
+
+			temp = m_vectorSprites[m]->getNode()->getID();
 			m_vectorSprites.erase(m_vectorSprites.begin() + m);
 			currentPlayer = 0;
 			startofVampires--;
+
 			
+			tempIt = m_vectorSprites.end(); tempIt--;
+			
+			int tempSize; tempSize = m_vectorSprites.size() - 1;
+			m_vectorSprites.insert(tempIt, new StaticSprite(temp.x, temp.y, m_textureHandler->instance()->getTexture("Zombie"), 2.0f, 1.0f, 0.5f));
+			m_vectorSprites[tempSize]->setNode(m_Graph->getNode(sf::Vector2i(temp.x, temp.y)));
+			//m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture(m_fileReader->getTexture().at(j)), m_fileReader->getSpeedValues().at(j), m_fileReader->getHealth().at(j), m_fileReader->getAttack().at(j)));
+
 			playerkilled = true;
 			std::cout << test << std::endl;
 			
@@ -269,7 +309,7 @@ void Scene::updateScene(float p_time)
 	}
 	
 	int tempSize = m_vectorSprites.size() - 1;
-	for (int j = 3; j < tempSize; j++) {
+	for (int j = startofVampires; j < tempSize; j++) {
 
 		if (m_vectorSprites[j]->getHealth() < 0)
 		{
@@ -348,12 +388,19 @@ void Scene::decreaseSelector(sf::Vector2i p_newPos)
 
 void Scene::PlayersMove()
 {
-	if (m_gameState == PlayersTurn)
+	if (m_gameState == GameState::PlayersTurn)
 	{
-		m_gameState = PlayersMoved;
+		m_gameState = GameState::PlayersMoved;
 		std::cout << m_vectorSprites[currentPlayer]->getHealth() << std::endl;
+		m_selectorTexture = m_textureHandler->instance()->getTexture("Cyan");
+		m_selector.setTexture(m_selectorTexture);
 		
 	}
+}
+
+HUD * Scene::getHUD()
+{
+	return m_gameHud;
 }
 
 
