@@ -8,18 +8,20 @@
 #include "../include/SpriteState.h"
 #include "../include/HUD.h"
 
-Scene::Scene()
+Scene::Scene(std::string p_characters, std::string p_nodes)
 {
+	m_fileReader = new FileReader(p_characters);
+
 	playerkilled = false;
 	m_prevoiusNode = nullptr;
 	m_gameState = GameState::PlayersTurn;
-	currentEnemy = 3;
+	currentEnemy = m_fileReader->getStartOfVamps();
 	currentPlayer = 0;
 	startofKnights = 0;
-	startofVampires = 3;
+	startofVampires = m_fileReader->getStartOfVamps();
 	newcurrentPlayer = false;
 
-	m_Graph = new Graph();
+	m_Graph = new Graph(p_nodes);
 	m_gameHud = new HUD();
 	m_gameHud->setText(0.0f, 1);
 	m_round = 1;
@@ -32,7 +34,8 @@ Scene::Scene()
 
 	m_gameOver = false;
 
-	m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
+	//m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
+	
 
 	counter2 = 0;
 
@@ -193,7 +196,7 @@ void Scene::updateScene(float p_time)
 			int tempSize = startofVampires;
 			for (int i = 0; i < tempSize; i++) {
 
-				if (3.8f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
+				if (3.3f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
 					sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y))) {
 
 					if (m_vectorSprites[i]->getHealth() < tempLowestValue)

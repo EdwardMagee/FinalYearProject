@@ -22,8 +22,15 @@ FileReader::FileReader(std::string p_level)
 			float tempSpd;
 			std::string tempId;
 
+			if (str == "startofvamps:")
+			{
+				isstr >> m_startOfVampires;
+				continue;
+			}
+
 			if (str == "x") {
 				isstr >> tempPos.x;
+				
 			}
 
 			isstr >> str;
@@ -100,4 +107,9 @@ std::vector<float> FileReader::getAttack()
 std::vector<std::string> FileReader::getTexture()
 {
 	return m_texture;
+}
+
+int FileReader::getStartOfVamps()
+{
+	return m_startOfVampires;
 }

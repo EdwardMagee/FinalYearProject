@@ -16,6 +16,7 @@ public:
 	std::vector<float> getHealth();
 	std::vector<float> getAttack();
 	std::vector<std::string> getTexture();
+	int getStartOfVamps();
 
 protected:
 
@@ -23,6 +24,7 @@ protected:
 	std::vector<sf::Vector2i> m_Positions;
 	std::vector<float> m_health;
 	std::vector<float> m_attack;
-	std::vector<std::string> m_texture;
+	std::vector<std::string> m_texture;	
+	int m_startOfVampires;
 
 };

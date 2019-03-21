@@ -34,9 +34,6 @@
     <Filter Include="Header Files\FileReading">
       <UniqueIdentifier>{26b457b9-8dd2-4e04-b6da-9ba55a447f7e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FileReader">
-      <UniqueIdentifier>{8e9a90a4-73df-427b-8715-9151070b15f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{f26624b7-1d75-41f9-853a-0f6a75cd938f}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,9 @@
     </Filter>
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{0b6c486c-c6d6-4f59-bf85-30e0b9f09b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileReading">
+      <UniqueIdentifier>{8e9a90a4-73df-427b-8715-9151070b15f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +67,7 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\FileReader.cpp">
-      <Filter>Source Files\FileReader</Filter>
+      <Filter>Source Files\FileReading</Filter>
     </ClCompile>
     <ClCompile Include="src\Graph.cpp">
       <Filter>Source Files\Nodes</Filter>
@@ -77,6 +77,12 @@
     </ClCompile>
     <ClCompile Include="src\HUD.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileReaderGameAssests.cpp">
+      <Filter>Source Files\FileReading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileReaderNodes.cpp">
+      <Filter>Source Files\FileReading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,12 @@
     </ClInclude>
     <ClInclude Include="include\HUD.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileReaderGameAssests.h">
+      <Filter>Header Files\FileReading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileReaderNodes.h">
+      <Filter>Header Files\FileReading</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

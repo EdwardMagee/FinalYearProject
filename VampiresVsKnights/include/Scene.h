@@ -85,7 +85,7 @@ public:
 	void decreaseSelector(sf::Vector2i p_newPos);
 	void PlayersMove();
 	virtual HUD * getHUD() override;
-	Scene();
+	Scene(std::string p_characters, std::string p_nodes);
 	~Scene();
 
 };

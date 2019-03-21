@@ -148,6 +148,8 @@
   <ItemGroup>
     <ClCompile Include="src\EmptyNode.cpp" />
     <ClCompile Include="src\FileReader.cpp" />
+    <ClCompile Include="src\FileReaderGameAssests.cpp" />
+    <ClCompile Include="src\FileReaderNodes.cpp" />
     <ClCompile Include="src\GameOne.cpp" />
     <ClCompile Include="src\Graph.cpp" />
     <ClCompile Include="src\HUD.cpp" />
@@ -160,6 +162,8 @@
   <ItemGroup>
     <ClInclude Include="include\EmptyNode.h" />
     <ClInclude Include="include\FileReader.h" />
+    <ClInclude Include="include\FileReaderGameAssests.h" />
+    <ClInclude Include="include\FileReaderNodes.h" />
     <ClInclude Include="include\GameOne.h" />
     <ClInclude Include="include\GameInterface.h" />
     <ClInclude Include="include\GameState.h" />

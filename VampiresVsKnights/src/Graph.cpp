@@ -3,15 +3,54 @@
 #include "../include/EmptyNode.h"
 #include "../include/TextureHandler.h"
 #include "../include/StaticSprite.h"
+#include "../include/FileReaderNodes.h"
 
-Graph::Graph()
+Graph::Graph(std::string p_Nodes)
 {
-	
+	m_fileReader = new FileReaderNodes(p_Nodes);
+	m_useCurrent = false;
+
 	for (int i = 0; i < m_iCol; i++)
 	{
 		for (int j = 0; j < m_iRow; j++)
 		{
-			if (j == 0 or i == 0)
+
+			for (int k = 0; k < m_fileReader->getNodeID().size(); k++)
+			{
+				if (j == m_fileReader->getNodeID().at(k).x and i == m_fileReader->getNodeID().at(k).y)
+				{
+					tempCost = m_fileReader->getCost().at(k);
+					tempString = m_fileReader->getNodeTypes().at(k);
+					m_useCurrent = true;
+					break;
+				}
+				else { m_useCurrent = false;  }
+			}
+
+			if (m_useCurrent)
+			{
+
+				if (tempString == "Empty") {
+					m_Graph[j][i] = new EmptyNode(tempCost);
+					m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
+				}
+				else if (tempString == "Slow") {
+					m_Graph[j][i] = new NormalNode(tempCost);
+					m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Slow"));
+				}
+				else if (tempString == "Speed") {
+					m_Graph[j][i] = new NormalNode(tempCost);
+					m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Speed"));
+				}
+				else if (tempString == "Splash") {
+					m_Graph[j][i] = new NormalNode(tempCost);
+					m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Splash"));
+				}
+
+				//m_Graph[j][i] = new EmptyNode(1000);
+				//m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
+			}
+			else if (j == 0 or i == 0)
 			{
 				m_Graph[j][i] = new EmptyNode(1000);
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
@@ -23,16 +62,8 @@ Graph::Graph()
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 
 			}
-			else if (j == 6 and i == 4)
-			{
-				m_Graph[j][i] = new EmptyNode(1000);
-				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
-			}
-			else if (j == 4 and i == 5)
-			{
-				m_Graph[j][i] = new NormalNode(1.3);
-				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Splash"));
-			}
+			
+			
 			else {
 
 				m_Graph[j][i] = new NormalNode(1);
@@ -42,6 +73,20 @@ Graph::Graph()
 			}
 		}
 	}
+
+	for (int j = 0; j < m_fileReader->getNodeID().size(); j++)
+	{
+		
+		//tempx = m_fileReader->getNodeID().at(j).x; tempy = m_fileReader->getNodeID().at(j).y;
+
+		//delete m_Graph[tempx][tempy];
+		//m_Graph[tempx][tempy] = nullptr;
+
+		
+	}
+
+
+
 	
 }
 
