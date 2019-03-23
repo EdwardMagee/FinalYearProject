@@ -154,6 +154,7 @@
     <ClCompile Include="src\Graph.cpp" />
     <ClCompile Include="src\HUD.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MenuOne.cpp" />
     <ClCompile Include="src\NormalNode.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\StaticSprite.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\Graph.h" />
     <ClInclude Include="include\HUD.h" />
+    <ClInclude Include="include\MenuOne.h" />
     <ClInclude Include="include\NodeInterface.h" />
     <ClInclude Include="include\NormalNode.h" />
     <ClInclude Include="include\SpriteState.h" />

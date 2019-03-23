@@ -25,9 +25,8 @@ private:
 	int m_Level;
 
 public:
-	GameOne();
+	GameOne(int p_level);
 	~GameOne();
-	void insertTextures();
 	void updateGame(float p_time) override;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void handleInput(int p_InputEvent) override;

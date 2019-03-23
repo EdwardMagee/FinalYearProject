@@ -7,11 +7,10 @@
 #include<SFML\Graphics.hpp>
 
 
-GameOne::GameOne(){
+GameOne::GameOne(int p_level) {
     
 	m_reader = new FileReaderGameAssests("Assests/Levels\\Textures.txt", "Assests/Levels\\LevelList.txt");
-	insertTextures();
-	m_Level = 0;
+	m_Level = p_level;
 
 	for (auto i : m_reader->getLevels()) {
 		m_vectorLevels.push_back(i);
@@ -34,28 +33,7 @@ GameOne::~GameOne()
 	m_currentScene = nullptr;
 }
 
-void GameOne::insertTextures()
-{
-	for (auto j : m_reader->getTextures()){
-		m_textureHandler->instance()->insertTexture(j.first, j.second);
-	}
 
-	//m_textureHandler->instance()->insertTexture("Harold", "../VampiresVsKnights/Assests/Sprites/Harold.png");
-//	m_textureHandler->instance()->insertTexture("Owl", "../VampiresVsKnights/Assests/Sprites/Owl.jpg");
-	//m_textureHandler->instance()->insertTexture("Normal", "../VampiresVsKnights/Assests/Sprites/Normal.png");
-//	m_textureHandler->instance()->insertTexture("Empty", "../VampiresVsKnights/Assests/Sprites/Empty.png");
-	//m_textureHandler->instance()->insertTexture("space", "../VampiresVsKnights/Assests/Sprites/space.jpg");
-//	m_textureHandler->instance()->insertTexture("Bat", "../VampiresVsKnights/Assests/Sprites/Bat.png");
-	//m_textureHandler->instance()->insertTexture("Micheal", "../VampiresVsKnights/Assests/Sprites/Micheal.png");
-	//m_textureHandler->instance()->insertTexture("Slow", "../VampiresVsKnights/Assests/Sprites/Slow.png");
-//	m_textureHandler->instance()->insertTexture("Speed", "../VampiresVsKnights/Assests/Sprites/Speed.png");
-	//m_textureHandler->instance()->insertTexture("Splash", "../VampiresVsKnights/Assests/Sprites/Splash.png");
-	//m_textureHandler->instance()->insertTexture("Vampire", "../VampiresVsKnights/Assests/Sprites/Vampire.png");
-//	m_textureHandler->instance()->insertTexture("Selector", "../VampiresVsKnights/Assests/Sprites/Selector.png");
-//	m_textureHandler->instance()->insertTexture("Cyan", "../VampiresVsKnights/Assests/Sprites/Cyan.png");
-	//m_textureHandler->instance()->insertTexture("Knight", "../VampiresVsKnights/Assests/Sprites/KnightOne.png");
-  //  m_textureHandler->instance()->insertTexture("Zombie", "../VampiresVsKnights/Assests/Sprites/ZombieKnight.png");
-}
 
 void GameOne::updateGame(float p_time)
 {

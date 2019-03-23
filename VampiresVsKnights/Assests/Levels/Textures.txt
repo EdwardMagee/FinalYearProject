@@ -13,3 +13,6 @@ id: Selector file: ../VampiresVsKnights/Assests/Sprites/Selector.png
 id: Cyan file: ../VampiresVsKnights/Assests/Sprites/Cyan.png
 id: Knight file: ../VampiresVsKnights/Assests/Sprites/KnightOne.png
 id: Zombie file: ../VampiresVsKnights/Assests/Sprites/ZombieKnight.png
+id: Menu file: ../VampiresVsKnights/Assests/Sprites/Menu.png
+id: Blue file: ../VampiresVsKnights/Assests/Sprites/Blue.png
+id: Button file: ../VampiresVsKnights/Assests/Sprites/Button.png

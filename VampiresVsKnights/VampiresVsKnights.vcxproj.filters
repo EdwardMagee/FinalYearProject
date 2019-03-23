@@ -84,6 +84,9 @@
     <ClCompile Include="src\FileReaderNodes.cpp">
       <Filter>Source Files\FileReading</Filter>
     </ClCompile>
+    <ClCompile Include="src\MenuOne.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EmptyNode.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="include\FileReaderNodes.h">
       <Filter>Header Files\FileReading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MenuOne.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

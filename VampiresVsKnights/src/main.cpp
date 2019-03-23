@@ -1,24 +1,54 @@
 #include <iostream>
 #include <SFML\Graphics.hpp>
 #include "..\include\GameOne.h"
-
+#include "..\include\MenuOne.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(64 * 16 + 200, 64 * 8 + 100), "Vampires Vs Knights");
-	GameOne m_game;
 
-	sf::Clock timer;
-	float fFrameTime = 1.f / 60.f;
-	float fElapsedTime = 0.f;
 
+	sf::RenderWindow menuWindow(sf::VideoMode(600, 800), "Pick A Level, FOR THIS FIGHT!!");
+	
+
+	sf::Clock timer; MenuOne menu;
 	bool gameOver(false);
+
+	while (menuWindow.isOpen())
+	{
+		sf::Event event;
+		
+		while (menuWindow.pollEvent(event))
+		{
+			switch (event.type) {
+			case sf::Event::Closed:
+				menuWindow.close();
+				gameOver = true;
+				break;
+			case sf::Event::KeyPressed:
+				menu.handleInput(event.key.code);
+				break;
+
+			}
+
+		}
+
+		if (menu.isOver())
+		{
+            menuWindow.close();
+		}
+
+		menuWindow.clear();
+		menuWindow.draw(menu);
+		menuWindow.display();
+	}
+
+		GameOne * game; game = new GameOne(menu.getLevel()); 
+    sf::RenderWindow window(sf::VideoMode(64 * 16 + 200, 64 * 8 + 100), "Vampires Vs Knights");
+	float fFrameTime = 1.f / 60.f; 	float fElapsedTime = 0.f; 
 
 	while(window.isOpen() and !gameOver)
 	{
-
 		sf::Event event;
-
 		while (window.pollEvent(event))
 		{
 
@@ -27,8 +57,7 @@ int main()
 					window.close();
 					break;
 			case sf::Event::KeyPressed:
-
-				m_game.handleInput(event.key.code);
+				game->handleInput(event.key.code);
 				break;
 
 			}
@@ -36,23 +65,24 @@ int main()
 		}
 
 		fElapsedTime = timer.getElapsedTime().asSeconds();
-		if (fElapsedTime > fFrameTime)
-		{
-			m_game.updateGame(fFrameTime);
+		if (fElapsedTime > fFrameTime){
+			game->updateGame(fFrameTime);
 			timer.restart();
 		}
 
 		window.clear();
-		window.draw(m_game);
+		window.draw(*game);
 		window.display();
 
-		if (m_game.isOver())
+		if (game->isOver())
 		{
 			gameOver = true;
 		}
 
 	}
 
+	delete game;
+	game = nullptr;
 	window.close();
 
 	std::cout << "Game Over" << std::endl;
