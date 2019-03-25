@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\EmptyNode.cpp" />
+    <ClCompile Include="src\EndScreen.cpp" />
     <ClCompile Include="src\FileReader.cpp" />
     <ClCompile Include="src\FileReaderGameAssests.cpp" />
     <ClCompile Include="src\FileReaderNodes.cpp" />
@@ -162,6 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\EmptyNode.h" />
+    <ClInclude Include="include\EndScreen.h" />
+    <ClInclude Include="include\EndState.h" />
     <ClInclude Include="include\FileReader.h" />
     <ClInclude Include="include\FileReaderGameAssests.h" />
     <ClInclude Include="include\FileReaderNodes.h" />

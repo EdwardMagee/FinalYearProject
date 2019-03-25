@@ -32,7 +32,8 @@ Scene::Scene(std::string p_characters, std::string p_nodes)
 	m_selectorPos = sf::Vector2i(1, 1);
 	m_selector.setPosition(m_selectorPos.x * 64 + 100, m_selectorPos.y * 64 + 50);
 
-	m_gameOver = false;
+	//m_gameOver = false;
+	m_gameOverState = EndState::Defualt;
 
 	//m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
 	
@@ -194,35 +195,47 @@ void Scene::updateScene(float p_time)
 			bool tempTargetFound = false;
 			float tempLowestValue = 100.0f;
 			int tempSize = startofVampires;
-			for (int i = 0; i < tempSize; i++) {
 
-				if (3.3f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
-					sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y))) {
+			if(m_vectorSprites[currentEnemy] != m_vectorSprites.back() and m_vectorSprites[currentEnemy]->getHealth() < 2.0f)
+			{
+				m_vectorSprites[currentEnemy]->message("Escape");
+				Target = m_vectorSprites.back();
+				tempTargetFound = true;
+			}
+			else {
 
-					if (m_vectorSprites[i]->getHealth() < tempLowestValue)
-					{
-						tempLowestValue = m_vectorSprites[i]->getHealth();
-						Target = m_vectorSprites[i];
-						tempTargetFound = true;
+				for (int i = 0; i < tempSize; i++) {
+
+					if (3.3f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
+						sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y))) {
+
+						if (m_vectorSprites[i]->getHealth() < tempLowestValue)
+						{
+							tempLowestValue = m_vectorSprites[i]->getHealth();
+							Target = m_vectorSprites[i];
+							tempTargetFound = true;
+						}
+						else continue;
+
 					}
 					else continue;
 
+
 				}
-				else continue;
-					
-				
 			}
 
 
 			if (tempTargetFound) {
 
 				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
-					m_Graph->getGoal(Target->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites), 
+					m_Graph->getGoal(Target->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites),
 					m_vectorSprites[currentEnemy]->getSpeed(), m_vectorSprites);
 				//m_vectorSprites[currentEnemy]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
-				if (m_Graph->isGoalReached())
+				if (m_Graph->isGoalReached() and m_vectorSprites[currentEnemy]->getState() != SpriteState::FleeingState)
 					m_vectorSprites[currentEnemy]->message("Attack");
+				else if (m_Graph->isGoalReached() and m_vectorSprites[currentEnemy]->getState() == SpriteState::FleeingState)
+					m_vectorSprites[currentEnemy]->message("Heal");
 				//m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 			}
 			m_gameState = GameState::EnemyMove;
@@ -247,6 +260,13 @@ void Scene::updateScene(float p_time)
 				m_vectorSprites[currentEnemy]->message("Wait");
 			  // m_vectorSprites[currentEnemy]->doDamage(false);
 		    }
+			else if (m_vectorSprites[currentEnemy]->getState() == SpriteState::HealState)
+			{
+			
+				m_vectorSprites[currentEnemy]->setHealth(-2);
+				std::cout << m_vectorSprites[currentEnemy]->getHealth() << std::endl;
+				m_vectorSprites[currentEnemy]->message("Wait");
+			}
 
 			m_gameState = GameState::EnemyTurn;
 			currentEnemy++;
@@ -274,7 +294,7 @@ void Scene::updateScene(float p_time)
 
 	if (m_vectorSprites[0]->getHealth() < 0)
 	{
-		m_gameOver = true;
+		m_gameOverState = EndState::VampireWin;
 	}
 
 	int tempSize2 = startofVampires;
@@ -308,7 +328,7 @@ void Scene::updateScene(float p_time)
 
 	if (m_vectorSprites.back()->getHealth() < 0)
 	{
-		m_gameOver = true;
+		m_gameOverState = EndState::PlayerWin;
 	}
 	
 	int tempSize = m_vectorSprites.size() - 1;
@@ -361,10 +381,16 @@ void Scene::increaseOtherCounter() {
 
 }
 
-bool Scene::getGameOver()
+EndState Scene::getEndState()
 {
-	return m_gameOver;
+	return m_gameOverState;
 }
+
+int Scene::getRound()
+{
+	return m_round;
+}
+
 
 sf::Sprite Scene::getSelector()
 {

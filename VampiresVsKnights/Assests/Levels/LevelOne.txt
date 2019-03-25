@@ -1,7 +1,7 @@
 startofvamps: 3
 x 1 y 1 atk 10.5 Hp 12.0 spd 4.9 id Micheal
-x 2 y 2 atk 4.2 Hp 6.0 spd 3.9 id Knight
-x 1 y 2 atk 4.2 Hp 6.0 spd 3.9 id Knight
+x 2 y 2 atk 1.2 Hp 6.0 spd 3.9 id Knight
+x 1 y 2 atk 1.2 Hp 6.0 spd 3.9 id Knight
 x 8 y 5 atk 1.5 Hp 6.0 spd 3.6 id Harold
 x 4 y 6 atk 2.3 Hp 2.4 spd 6.2 id Bat
 x 1 y 6 atk 2.3 Hp 2.4 spd 6.2 id Bat

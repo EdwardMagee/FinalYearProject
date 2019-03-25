@@ -37,6 +37,14 @@ void StaticSprite::message(const std::string p_message)
 	{
 		m_spriteState = SpriteState::WaitingState;
 	}
+	else if (p_message == "Escape")
+	{
+		m_spriteState = SpriteState::FleeingState;
+	}
+	else if (p_message == "Heal")
+	{
+		m_spriteState = SpriteState::HealState;
+	}
 
 }
 

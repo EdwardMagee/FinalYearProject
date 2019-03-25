@@ -17,7 +17,7 @@ public:
 	void updateGame(float p_time) override;
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void handleInput(int p_InputEvent) override;
-	virtual bool isOver() override;
+	virtual EndState isOver() override;
 	virtual void loadLevel() override;
 	int getLevel();
 
@@ -41,7 +41,7 @@ private:
 	TextureHandler * m_textures;
 
 	int m_currentLevel;
-	bool m_over;
+	EndState m_over;
 
 
 };

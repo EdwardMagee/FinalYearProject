@@ -16,3 +16,4 @@ id: Zombie file: ../VampiresVsKnights/Assests/Sprites/ZombieKnight.png
 id: Menu file: ../VampiresVsKnights/Assests/Sprites/Menu.png
 id: Blue file: ../VampiresVsKnights/Assests/Sprites/Blue.png
 id: Button file: ../VampiresVsKnights/Assests/Sprites/Button.png
+id: End file: ../VampiresVsKnights/Assests/Sprites/End.png

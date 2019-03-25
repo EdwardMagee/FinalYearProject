@@ -24,7 +24,8 @@ GameOne::GameOne(int p_level) {
 	m_backgroundTexture = m_textureHandler->instance()->getTexture("space");
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setScale(0.77, 0.77);
-	m_over = false;
+	//m_over = false;
+	m_endState = EndState::Defualt;
 }
 
 GameOne::~GameOne()
@@ -39,10 +40,8 @@ void GameOne::updateGame(float p_time)
 {
 	m_currentScene->updateScene(p_time);
 
-	if (m_currentScene->getGameOver())
-	{
-		m_over = true;
-	}
+	m_endState = m_currentScene->getEndState();
+	
 }
 
 void GameOne::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -107,9 +106,9 @@ void GameOne::handleInput(int p_InputEvent)
 
 }
 
-bool GameOne::isOver()
+EndState GameOne::isOver()
 {
-	return m_over;
+	return m_endState;
 }
 
 void GameOne::loadLevel()
@@ -119,4 +118,9 @@ void GameOne::loadLevel()
 
 	m_currentScene = new Scene(m_vectorLevels[m_Level].first, m_vectorLevels[m_Level].second);
 
+}
+
+Scene * GameOne::getScene()
+{
+	return m_currentScene;
 }

@@ -2,5 +2,7 @@
 
 enum class SpriteState : unsigned int {
 	AttackingState,
-	WaitingState
+	WaitingState,
+	FleeingState,
+	HealState
 };

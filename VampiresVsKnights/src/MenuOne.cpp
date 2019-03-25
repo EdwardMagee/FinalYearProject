@@ -5,7 +5,7 @@
 MenuOne::MenuOne()
 {
 	m_currentLevel = 0;
-	m_over = false;
+	m_over = EndState::Defualt;
 
 	if (!m_font.loadFromFile("../VampiresVsKnights/Assests/Fonts/ariblk.ttf"))
 	{
@@ -121,13 +121,13 @@ void MenuOne::handleInput(int p_InputEvent)
 
 	case sf::Keyboard::Enter:
 		
-		m_over = true;
+		m_over = EndState::EndMenu;
 		break;
 
 	}
 }
 
-bool MenuOne::isOver()
+EndState MenuOne::isOver()
 {
 	return m_over;
 }

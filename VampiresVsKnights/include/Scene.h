@@ -6,6 +6,7 @@
 #include <math.h>
 #include "SpriteState.h"
 #include "GameState.h"
+#include "EndState.h"
 
 class TextureHandler;
 class SpriteInterface;
@@ -27,6 +28,7 @@ private:
 	SpriteInterface* Target;
 	//enum gameState {PlayersTurn, PlayersMoved, PlayersMoving, EnemyTurn, EnemyMove};
 	GameState m_gameState;
+	EndState m_gameOverState;
 
 	sf::Sprite m_selector;
 	sf::Texture m_selectorTexture;
@@ -58,7 +60,7 @@ private:
 	//bool isInOpenList;
 	//bool isOccupied;
 
-	bool m_gameOver;
+	//bool m_gameOver;
 	bool m_reachedGoal;
 
 	Graph * m_Graph;
@@ -78,7 +80,8 @@ public:
 	void increaseCounter();
 	//std::list<NodeInterface*> getPath(NodeInterface* p_start, NodeInterface* p_end);
 	void increaseOtherCounter();
-	bool getGameOver();
+	EndState getEndState();
+	int getRound();
 	//sf::Vector2i getGoal(NodeInterface* p_Goal, NodeInterface* p_Start);
 	sf::Sprite getSelector();
 	void incrementSelector(sf::Vector2i p_newPos);
