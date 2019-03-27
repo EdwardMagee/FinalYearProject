@@ -4,7 +4,7 @@
 EmptyNode::EmptyNode(int p_cost)
 {
 	m_movementCost = p_cost;
-	m_spriteUnit = nullptr;
+	//m_spriteUnit = nullptr;
 }
 
 EmptyNode::~EmptyNode()
@@ -15,8 +15,8 @@ EmptyNode::~EmptyNode()
 
 void EmptyNode::updateNode(float p_time)
 {
-	if (m_spriteUnit != nullptr)
-		m_spriteUnit->setSpritePos(m_id.x, m_id.y);
+//	if (m_spriteUnit != nullptr)
+	//	m_spriteUnit->setSpritePos(m_id.x, m_id.y);
 }
 
 sf::Sprite * EmptyNode::getSprite()
@@ -35,12 +35,12 @@ void EmptyNode::constructNode(int p_x, int p_y, sf::Texture p_T)
 	m_sprite->setPosition(p_x * 64 + 100, p_y * 64 + 50);
 }
 
-SpriteInterface * EmptyNode::getSpriteAttachedToNode()
-{
-	return m_spriteUnit;
-}
+//SpriteInterface * EmptyNode::getSpriteAttachedToNode()
+//{
+	//return m_spriteUnit;
+//}
 
-bool EmptyNode::containSprite(SpriteInterface* p_sprite)
+/*bool EmptyNode::containSprite(SpriteInterface* p_sprite)
 {
 	if (m_spriteUnit != nullptr) {
 		return false;
@@ -56,6 +56,7 @@ void EmptyNode::removeSprite()
 {
 	m_spriteUnit = nullptr;
 }
+*/
 
 //float EmptyNode::getG()
 //{

@@ -38,7 +38,7 @@ Scene::Scene(std::string p_characters, std::string p_nodes)
 	//m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
 	
 
-	counter2 = 0;
+
 
 	totalCharacters = m_fileReader->getPositions().size();
 	for (int j = 0; j < m_fileReader->getPositions().size(); j++) {
@@ -319,7 +319,6 @@ void Scene::updateScene(float p_time)
 			//m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture(m_fileReader->getTexture().at(j)), m_fileReader->getSpeedValues().at(j), m_fileReader->getHealth().at(j), m_fileReader->getAttack().at(j)));
 
 			playerkilled = true;
-			std::cout << test << std::endl;
 			
 			std::cout << m_vectorSprites[m]->getHealth() << std::endl;
 			std::cout << m_vectorSprites[m]->getAttack() << std::endl;
@@ -370,16 +369,7 @@ std::vector<sf::Sprite*> Scene::getSpriteVector(){
 	
 }
 
-void Scene::increaseCounter()
-{
-	counter2++;
-	//cout << m_vectorSprites[0]->
-}
 
-void Scene::increaseOtherCounter() {
-	counter4++;
-
-}
 
 EndState Scene::getEndState()
 {

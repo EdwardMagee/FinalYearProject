@@ -16,79 +16,80 @@ class FileReader;
 class Graph;
 class HUD;
 
+/*! This handles a lot of the game logic, each new scene can have diffrent nodes, characters etc*/
+
 class Scene : public SceneInterface
 {
 private:
-	bool playerkilled;
-	bool test;
-	//static const int m_iCol = 8;
-	//static const int m_iRow = 16;
-	TextureHandler * m_textureHandler;
-	FileReader * m_fileReader;
-	SpriteInterface* Target;
-	//enum gameState {PlayersTurn, PlayersMoved, PlayersMoving, EnemyTurn, EnemyMove};
-	GameState m_gameState;
-	EndState m_gameOverState;
+	bool playerkilled; //!< Was a unit killed
+	bool m_reachedGoal; //!< Did the unit reach the goal
 
-	sf::Sprite m_selector;
-	sf::Texture m_selectorTexture;
-	sf::Vector2i m_selectorPos;
+	TextureHandler * m_textureHandler; //!< Texture Handler 
+	FileReader * m_fileReader; //!< File reader
+	SpriteInterface* Target; //!< pointer to a target
+	
+	GameState m_gameState; //!< Stores the games current state
+	EndState m_gameOverState; //!< Stores the end state
 
-	std::vector<SpriteInterface*> m_vectorSprites;
-	SpriteInterface* m_playerTemp;
-	int currentPlayer;
-	int currentTarget;
-	int startofKnights;
-	int startofVampires;
-	int totalCharacters;
-	bool newcurrentPlayer;
-	std::vector<sf::Sprite*> m_vectorTemp;
-	//std::array<std::array<NodeInterface*, m_iCol>, m_iRow> m_Graph;
-	//std::list<NodeInterface*> closedList;
-	//std::list<NodeInterface*> openList;
-	//std::list<NodeInterface*> pathList;
-	std::list<NodeInterface*> m_pathList;
-	NodeInterface* m_prevoiusNode;
-	NodeInterface * temp;
-	int counter;
-	int counter2;
-	//int counter3;
-	int counter4;
-	int currentEnemy;
-	float movingCounter;
-	//bool isInClosedList;
-	//bool isInOpenList;
-	//bool isOccupied;
+	sf::Sprite m_selector; //!< Sprite of the selector
+	sf::Texture m_selectorTexture; //!< Texture of the selector
+	sf::Vector2i m_selectorPos; //!< Position of the selector
 
-	//bool m_gameOver;
-	bool m_reachedGoal;
+	std::vector<SpriteInterface*> m_vectorSprites; //!< A vector of all the sprites
+	SpriteInterface* m_playerTemp; //!< stores a temp of the player
+	int currentPlayer; //!< What is the current player
+	int currentTarget; //!< What is the current target
+	int startofKnights; //!< what is the start of the knights in the vector
+	int startofVampires; //!< Was a unit killed
+	int totalCharacters; //!< How many characters are ther
+	bool newcurrentPlayer; //!< is there a new current player
+	std::vector<sf::Sprite*> m_vectorTemp; //!< A temp vector containing sprites 
+	
+	std::list<NodeInterface*> m_pathList; //!< path the unit must take
+	NodeInterface* m_prevoiusNode; //!< Pointer to the prevoius node
+	NodeInterface * temp; //!< Holds on to a node
 
-	Graph * m_Graph;
-	HUD * m_gameHud;
+	Graph * m_Graph; //!< Game object Graph used to create the grid 
+	HUD * m_gameHud; //!< Game object used to display some text to the screen
 
-	int m_round;
-	float m_time;
+	int m_round; //!< Stores the current round
+	int currentEnemy; //!< What is the current enemy
+	float m_time; //!< Stores the time
+	float movingCounter; //!< counter used to slow characters down
 	
 public:
 
-	//std::list<NodeInterface*> aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos, float p_speed);
-	void updateScene(float p_time) override;
-	bool loadLevel(std::string p_level) override;
-	std::vector<sf::Sprite*> getSpriteVector() override;
-	//std::list<NodeInterface*> gatherChildren(NodeInterface* p_currentNode);
-	//float calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos);
-	void increaseCounter();
-	//std::list<NodeInterface*> getPath(NodeInterface* p_start, NodeInterface* p_end);
-	void increaseOtherCounter();
-	EndState getEndState();
-	int getRound();
-	//sf::Vector2i getGoal(NodeInterface* p_Goal, NodeInterface* p_Start);
-	sf::Sprite getSelector();
-	void incrementSelector(sf::Vector2i p_newPos);
-	void decreaseSelector(sf::Vector2i p_newPos);
-	void PlayersMove();
-	virtual HUD * getHUD() override;
-	Scene(std::string p_characters, std::string p_nodes);
-	~Scene();
+	
+	void updateScene(float p_time) override; //!< Update scene
+											 /*!
+											 \param p_time contains information on the time
+											 */
+	bool loadLevel(std::string p_level) override; //!< Load level 
+												  /*!
+												  \param p_level passes in level information
+												  */
+
+	std::vector<sf::Sprite*> getSpriteVector() override; //!< Gets a vector of sprites to draw
+	
+	EndState getEndState(); //!< Gets the scenes end state
+	int getRound(); //!< What round is it
+	
+	sf::Sprite getSelector(); //!< Gets the selector to draw
+	void incrementSelector(sf::Vector2i p_newPos); //!< Moves the selector
+												   /*!
+												   \param p_newPos used to move the selector
+												   */
+	void decreaseSelector(sf::Vector2i p_newPos); //!< Moves the selector down
+												  /*!
+												  \param p_newPos used to move the selector
+												  */
+	void PlayersMove(); //!< When the player hits enter key there move begins
+	HUD * getHUD() override; //!< Gets the HUD
+	Scene(std::string p_characters, std::string p_nodes); //!< Constructor
+														  /*!
+														  \param p_characaters contains information the game scharacaters 
+														  \param p_nodes contains information the game nodes
+														  */
+	~Scene(); //!< Deconstructor
 
 };

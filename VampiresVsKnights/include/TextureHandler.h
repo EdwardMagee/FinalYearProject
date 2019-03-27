@@ -7,19 +7,28 @@
 
 using namespace std;
 
+/*! Singleton that handles all the textures in the game making it possible to get a texture whenever is needed*/
+
 class TextureHandler
 {
 private:
-	map<string, sf::Texture> m_mapOfTextures; 
-	static TextureHandler * s_Instance; 
-	TextureHandler();	
-	std::vector<std::string> IDs;
+	map<string, sf::Texture> m_mapOfTextures;  //!< Map holding textures
+	static TextureHandler * s_Instance; //!< Create a instance of this 
+	TextureHandler(); //!< Constructor
+	std::vector<std::string> IDs; //!< A vector containing the ID's of the strings
 
 public:
-	~TextureHandler(); 
-	static TextureHandler * instance(); 
-	void insertTexture(string p_Path, string p_Filename); 
-	sf::Texture getTexture(string p_FileName); 
-	TextureHandler(TextureHandler const&) = delete; 
-	TextureHandler& operator=(TextureHandler const&) = delete; 
+	~TextureHandler(); //!< Deconstructor
+	static TextureHandler * instance();  //!< calling the instance of the class
+	void insertTexture(string p_Path, string p_Filename);  //!< add a texture 
+														   /*!
+														   \param p_Path to get the texture
+														   \param p_Filename name of the file
+														   */
+	sf::Texture getTexture(string p_FileName);  //!< get me the texture
+												/*!
+												\param p_FileName the name of the file
+												*/
+	TextureHandler(TextureHandler const&) = delete;  //!< Deletes the assigment operator
+	TextureHandler& operator=(TextureHandler const&) = delete; //!< deletes the copy operator
 };

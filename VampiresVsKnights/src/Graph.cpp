@@ -127,8 +127,6 @@ std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 				tempNode = i;
 			}
 		}
-
-		counter3++;
 		m_openList.remove(tempNode);
 		m_closedList.push_back(tempNode);
 

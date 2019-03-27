@@ -3,35 +3,26 @@
 
 class SpriteInterface;
 
+/*! A node that the user can move too*/
+
 class NormalNode : public NodeInterface
 {
 public:
 
-    NormalNode(int p_cost);
-	~NormalNode();
-	void updateNode(float p_time) override;
-    sf::Sprite* getSprite() override;
-	void constructNode(int p_x, int p_y, sf::Texture p_T) override;
-	SpriteInterface* getSpriteAttachedToNode() override;
-	bool containSprite(SpriteInterface* p_sprite) override;
-	void removeSprite() override;
+    NormalNode(int p_cost); //!< Construct Node
+							/*!
+							\param p_cost the cost of the current node
+							*/
+	~NormalNode(); //!< Deconstructor
+	void updateNode(float p_time) override; //!< Update method
+											/*!
+											\param p_time contains information on the time
+											*/
+    sf::Sprite* getSprite() override; //!< Get sprite of node
+	void constructNode(int p_x, int p_y, sf::Texture p_T) override; //!< Construct node
 
-	//float getG() override;
-	//float getH() override;
-   // float getF() override;
-	//float getTerrainCost() override;
-	//sf::Vector2i getID() override;
-	
-	//void setG(float p_g) override;
-   // void setF(float p_f) override;
-	//void setH(float p_H) override;
-	//void setDiagonal(bool p_b) override;
+	std::string checkNodeType() override; //!< get node type
 
-	//NodeInterface* getPerant();
-	//void setPerant(NodeInterface* p_NI);
-
-	std::string checkNodeType() override;
-	//bool isDiagonal() override;
 
 private:
 

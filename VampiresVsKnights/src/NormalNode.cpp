@@ -4,7 +4,7 @@
 NormalNode::NormalNode(int p_cost)
 {
 	m_movementCost = p_cost;
-	m_spriteUnit = nullptr;
+	//m_spriteUnit = nullptr;
 	//m_
 }
 
@@ -37,12 +37,12 @@ void NormalNode::constructNode(int p_x, int p_y, sf::Texture p_T)
 	m_sprite->setPosition(p_x* 64 + 100, p_y * 64 + 50);
 }
 
-SpriteInterface * NormalNode::getSpriteAttachedToNode()
-{
-	return m_spriteUnit;
-}
+//SpriteInterface * NormalNode::getSpriteAttachedToNode()
+//{
+//	return m_spriteUnit;
+//}
 
-bool NormalNode::containSprite(SpriteInterface* p_sprite)
+/*bool NormalNode::containSprite(SpriteInterface* p_sprite)
 {
 	if (m_spriteUnit != nullptr){
 		return false;
@@ -52,12 +52,12 @@ bool NormalNode::containSprite(SpriteInterface* p_sprite)
 	   return true;
 	}
 
-}
+}*/
 
-void NormalNode::removeSprite()
-{
-	m_spriteUnit = nullptr;
-}
+//void NormalNode::removeSprite()
+//{
+//	m_spriteUnit = nullptr;
+//}
 
 //float NormalNode::getG()
 //{
