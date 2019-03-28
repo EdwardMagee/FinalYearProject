@@ -26,6 +26,8 @@ EndScreen::EndScreen(std::string p_rounds, std::string p_time, std::string p_tex
 
 EndScreen::~EndScreen()
 {
+	delete m_textures;
+	m_textures = nullptr;
 }
 
 void EndScreen::updateGame(float p_time)

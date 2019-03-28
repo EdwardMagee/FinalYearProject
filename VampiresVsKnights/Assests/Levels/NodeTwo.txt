@@ -8,10 +8,6 @@ x: 4 y: 4 type: Empty cost: 1000
 x: 4 y: 3 type: Empty cost: 1000
 x: 4 y: 2 type: Empty cost: 1000
 x: 3 y: 2 type: Empty cost: 1000
-x: 7 y: 6 type: Empty cost: 1000
-x: 6 y: 6 type: Empty cost: 1000
-x: 7 y: 7 type: Empty cost: 1000
-x: 7 y: 5 type: Empty cost: 1000
 x: 7 y: 4 type: Empty cost: 1000
 x: 7 y: 3 type: Empty cost: 1000
 x: 8 y: 3 type: Empty cost: 1000

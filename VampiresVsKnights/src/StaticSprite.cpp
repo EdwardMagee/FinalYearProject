@@ -18,13 +18,14 @@ StaticSprite::StaticSprite(int p_col, int p_row, sf::Texture p_T, float p_speed,
 StaticSprite::~StaticSprite(){
 	delete m_sprite;
 	m_sprite = nullptr;
+
+	delete m_node;
+	m_node = nullptr;
 }
 
 void StaticSprite::update(float p_time)
 {
-	//std::cout << m_sprite->getPosition().x << std::endl;
 	setSpritePos(m_node->getID().x, m_node->getID().y);
-
 }
 
 void StaticSprite::message(const std::string p_message)
@@ -67,20 +68,6 @@ NodeInterface * StaticSprite::getNode()
 	return m_node;
 }
 
-//float StaticSprite::getSpeed()
-//{
-//	return m_speed;
-//}
-
-//float StaticSprite::getAttack()
-//{/
-	//return m_attack;
-//}
-
-//float StaticSprite::getHealth()
-//{
-//	return m_health;
-//}
 
 void StaticSprite::setHealth(float p_damageTaken)
 {

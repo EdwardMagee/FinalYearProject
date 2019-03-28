@@ -18,14 +18,6 @@ MenuOne::MenuOne()
 			m_textures->instance()->insertTexture(j.first, j.second);
 	}
 
-	//m_Time.setFont(m_Font); m_Round.setFont(m_Font); m_Level.setFont(m_Font);
-    //	m_Time.setCharacterSize(19), m_Round.setCharacterSize(19); m_Level.setCharacterSize(19);
-	//m_Time.setPosition(20, 20), m_Round.setPosition(270, 20); m_Level.setPosition(140, 20);
-
-	//m_bannerOne.setSize(sf::Vector2f(392, 50)); m_bannerTwo.setSize(sf::Vector2f(400, 60));
-	//m_bannerOne.setPosition(sf::Vector2f(0, 13)); m_bannerTwo.setPosition(sf::Vector2f(0, 9));
-	//m_bannerOne.setFillColor(sf::Color::Black); m_bannerTwo.setFillColor(sf::Color::Cyan);
-
 	m_tBackground = m_textures->instance()->getTexture("Menu");
 	m_sBackground.setTexture(m_tBackground);
 	m_sBackground.setPosition(sf::Vector2f(0, 0));
@@ -72,6 +64,13 @@ MenuOne::~MenuOne()
 	}
 
 	m_buttonText.clear();
+
+	delete m_reader;
+	m_reader = nullptr;
+
+	delete m_textures;
+	m_textures = nullptr;
+
 }
 
 void MenuOne::updateGame(float p_time)

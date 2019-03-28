@@ -32,24 +32,16 @@ Scene::Scene(std::string p_characters, std::string p_nodes)
 	m_selectorPos = sf::Vector2i(1, 1);
 	m_selector.setPosition(m_selectorPos.x * 64 + 100, m_selectorPos.y * 64 + 50);
 
-	//m_gameOver = false;
 	m_gameOverState = EndState::Defualt;
-
-	//m_fileReader = new FileReader("Assests/Levels\\LevelOne.txt");
-	
-
-
 
 	totalCharacters = m_fileReader->getPositions().size();
 	for (int j = 0; j < m_fileReader->getPositions().size(); j++) {
 
 		m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture(m_fileReader->getTexture().at(j)), m_fileReader->getSpeedValues().at(j), m_fileReader->getHealth().at(j), m_fileReader->getAttack().at(j)));
-		//m_vectorSprites.push_back(new StaticSprite(0, 0, m_textureHandler->instance()->getTexture("Harold")));
 	}
 
 	for (int k = 0; k < m_fileReader->getPositions().size(); k++) {
 
-		//m_vectorSprites[k]->setNode(m_Graph[m_fileReader->getPositions().at(k).x][m_fileReader->getPositions().at(k).y]); // ->containSprite(m_vectorSprites[0]);
 		m_vectorSprites[k]->setNode(m_Graph->getNode(sf::Vector2i(m_fileReader->getPositions().at(k).x, m_fileReader->getPositions().at(k).y)));
 	}
 
@@ -72,14 +64,36 @@ Scene::~Scene()
 	}
 
 	m_vectorSprites.clear();
+
+	delete m_playerTemp;
+	m_playerTemp = nullptr;
+
+	delete m_Graph;
+	m_Graph = nullptr;
+
+	delete m_gameHud;
+	m_gameHud = nullptr;
+
+	delete temp;
+	temp = nullptr;
+
+	delete m_prevoiusNode;
+	m_prevoiusNode = nullptr;
+
+	for (auto * i : m_pathList) { delete i; i = nullptr; }
+
+	delete Target;
+	Target = nullptr;
+
+	delete m_fileReader;
+	m_fileReader = nullptr;
+
+	delete m_textureHandler;
+	m_textureHandler = nullptr;
 }
 
 void Scene::updateScene(float p_time)
 {
-	//std::cout << m_vectorSprites[0]->getHealth() << std::endl;
-
-	//m_selector.set
-
 	switch (m_gameState)
 	{
 	case GameState::PlayersTurn:
@@ -127,14 +141,6 @@ void Scene::updateScene(float p_time)
 			{
 				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[i]->getNode(), m_vectorSprites[currentPlayer]->getNode(), m_vectorSprites),
 					m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
-				//tempList = aStar(sf::Vector2i(m_vectorSprites[0]->getNode()->getID().x, m_vectorSprites[0]->getNode()->getID().y), sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y), m_vectorSprites[0]->getSpeed());
-				//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
-
-				//if (reachedGoal) {
-					//m_vectorSprites[i]->setHealth(m_vectorSprites[0]->getAttack());
-				//	m_gameState = PlayersMoving;
-				//	break;
-				//}
 
 				if (m_pathList.back() == m_vectorSprites[i]->getNode())
 				{
@@ -151,7 +157,6 @@ void Scene::updateScene(float p_time)
 		if (m_gameState != GameState::PlayersMoving)
 		{
 			m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), temp->getID(), m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
-			//m_vectorSprites[0]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 			m_gameState = GameState::PlayersMoving;
 		}
 
@@ -189,7 +194,6 @@ void Scene::updateScene(float p_time)
 
 	case GameState::EnemyTurn:
 
-		//for (int j = 1; j < m_vectorSprites.size(); j++) {
 		if (currentEnemy != m_vectorSprites.size() and playerkilled != true) {
 
 			bool tempTargetFound = false;
@@ -230,13 +234,11 @@ void Scene::updateScene(float p_time)
 				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
 					m_Graph->getGoal(Target->getNode(), m_vectorSprites[currentEnemy]->getNode(), m_vectorSprites),
 					m_vectorSprites[currentEnemy]->getSpeed(), m_vectorSprites);
-				//m_vectorSprites[currentEnemy]->setNode(m_Graph[tempList.back()->getID().x][tempList.back()->getID().y]);
 
 				if (m_Graph->isGoalReached() and m_vectorSprites[currentEnemy]->getState() != SpriteState::FleeingState)
 					m_vectorSprites[currentEnemy]->message("Attack");
 				else if (m_Graph->isGoalReached() and m_vectorSprites[currentEnemy]->getState() == SpriteState::FleeingState)
 					m_vectorSprites[currentEnemy]->message("Heal");
-				//m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 			}
 			m_gameState = GameState::EnemyMove;
 			break;
@@ -252,13 +254,9 @@ void Scene::updateScene(float p_time)
 		
 		if (m_pathList.empty()) {
 
-			//if (reachedGoal)
-			//	m_vectorSprites[0]->setHealth(m_vectorSprites[currentEnemy]->getAttack());
-
 			if (m_vectorSprites[currentEnemy]->getState() == SpriteState::AttackingState) {
 				Target->setHealth(m_vectorSprites[currentEnemy]->getAttack());
 				m_vectorSprites[currentEnemy]->message("Wait");
-			  // m_vectorSprites[currentEnemy]->doDamage(false);
 		    }
 			else if (m_vectorSprites[currentEnemy]->getState() == SpriteState::HealState)
 			{
@@ -316,7 +314,6 @@ void Scene::updateScene(float p_time)
 			int tempSize; tempSize = m_vectorSprites.size() - 1;
 			m_vectorSprites.insert(tempIt, new StaticSprite(temp.x, temp.y, m_textureHandler->instance()->getTexture("Zombie"), 2.0f, 1.0f, 0.5f));
 			m_vectorSprites[tempSize]->setNode(m_Graph->getNode(sf::Vector2i(temp.x, temp.y)));
-			//m_vectorSprites.push_back(new StaticSprite(m_fileReader->getPositions().at(j).x, m_fileReader->getPositions().at(j).y, m_textureHandler->instance()->getTexture(m_fileReader->getTexture().at(j)), m_fileReader->getSpeedValues().at(j), m_fileReader->getHealth().at(j), m_fileReader->getAttack().at(j)));
 
 			playerkilled = true;
 			
@@ -338,8 +335,6 @@ void Scene::updateScene(float p_time)
 			m_vectorSprites.erase(m_vectorSprites.begin() + j);
 		}
 	}
-	////////////////std::cout << m_vectorSprites[1]->getHealth() << std::endl;
-
 }
 
 
@@ -352,7 +347,7 @@ std::vector<sf::Sprite*> Scene::getSpriteVector(){
 	
 	m_vectorTemp.clear();
 
-	for (int i = 0; i < m_Graph->getColRow().first; i++) // m_iCol; i++)
+	for (int i = 0; i < m_Graph->getColRow().first; i++) 
 	{
 		for (int j = 0; j < m_Graph->getColRow().second; j++)
 		{
@@ -368,8 +363,6 @@ std::vector<sf::Sprite*> Scene::getSpriteVector(){
 	return m_vectorTemp;
 	
 }
-
-
 
 EndState Scene::getEndState()
 {

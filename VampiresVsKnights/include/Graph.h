@@ -21,6 +21,7 @@ public:
 								/*!
 								\param p_Nodes contains data on where to put nodes
 								*/
+	~Graph(); //!< Deconstructor
 	std::list<NodeInterface*> aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos, float p_speed, std::vector<SpriteInterface*> p_vectorSprites); //!< A star alogirthm used to find the shortest path to its goal
 																																				   /*!
 																																				   \param p_startPos this is the start of the search
@@ -65,7 +66,7 @@ protected:
 	float tempCost; //!< a temp for the cost 
 	std::string tempString; //!< a temp containing a string
 
-	std::array<std::array<NodeInterface*, m_iCol>, m_iRow> m_Graph; //!< Array of Nodes
+	std::array<std::array<NodeInterface*, m_iCol>, m_iRow> m_Graph; //!< 2D Array of Nodes
 	TextureHandler * m_textureHandler; //!< Get the textures for the nodes
 	FileReaderNodes * m_fileReader; //!< gets the node information 
 

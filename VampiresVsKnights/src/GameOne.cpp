@@ -16,15 +16,11 @@ GameOne::GameOne(int p_level) {
 		m_vectorLevels.push_back(i);
 	}
 
-	//m_vectorLevels.push_back("Assests/Levels\\LevelOne.txt");
-  //  m_vectorLevels.push_back("Assests/Levels\\LevelTwo.txt");
-	//m_vectorLevels.push_back("Assests/Levels\\LevelThree.txt");
-
 	m_currentScene = new Scene(m_vectorLevels[m_Level].first, m_vectorLevels[m_Level].second);
 	m_backgroundTexture = m_textureHandler->instance()->getTexture("space");
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setScale(0.77, 0.77);
-	//m_over = false;
+	
 	m_endState = EndState::Defualt;
 }
 
@@ -32,6 +28,13 @@ GameOne::~GameOne()
 {
 	delete m_currentScene;
 	m_currentScene = nullptr;
+
+	delete m_reader;
+	m_reader = nullptr;
+
+	delete m_textureHandler;
+	m_textureHandler = nullptr;
+
 }
 
 

@@ -7,9 +7,9 @@
 
 int main()
 {
-	sf::RenderWindow menuWindow(sf::VideoMode(600, 800), "Pick A Level, FOR THIS FIGHT!!");
+	sf::RenderWindow menuWindow(sf::VideoMode(600, 800), "Pick A Level, FOR THIS FIGHT!!"); 
 	
-	sf::Clock timer; MenuOne menu;
+	sf::Clock timer; MenuOne menu;   //This part creates the first window 
 	bool gameOver(false);
 
 	while (menuWindow.isOpen())
@@ -33,7 +33,7 @@ int main()
 
 		if (menu.isOver() == EndState::EndMenu)
 		{
-            menuWindow.close();
+            menuWindow.close(); //Once this is over it will move onto the game using the int it gets from the menu
 		}
 
 		menuWindow.clear();
@@ -41,8 +41,9 @@ int main()
 		menuWindow.display();
 	}
 
-		GameOne * game; game = new GameOne(menu.getLevel()); 
-    sf::RenderWindow window(sf::VideoMode(64 * 16 + 200, 64 * 8 + 100), "Vampires Vs Knights");
+	sf::RenderWindow window(sf::VideoMode(64 * 16 + 200, 64 * 8 + 100), "Vampires Vs Knights");
+		GameOne * game; game = new GameOne(menu.getLevel()); //Game object, this is were all the game code is
+
 	float fFrameTime = 1.f / 60.f; 	float fElapsedTime = 0.f; float totalTime; totalTime = 0;
 
 	while(window.isOpen() and !gameOver)
@@ -80,16 +81,16 @@ int main()
 
 	}
 
-	sf::RenderWindow endWindow(sf::VideoMode(600, 800), "GAME OVER!!!");
+	sf::RenderWindow endWindow(sf::VideoMode(600, 800), "GAME OVER!!!");//Displays diffrent endings
 	EndScreen * endScreen;
 
-	if (game->getScene()->getEndState() == EndState::PlayerWin)
+	if (game->getScene()->getEndState() == EndState::PlayerWin) 
 	{
 		endScreen = new EndScreen("Rounds took to Win : " + std::to_string(game->getScene()->getRound()), "Time Played: " + std::to_string((int)totalTime), "Knights Prevailed, the Vampires \n have been fought back");
 	}
 	else if(game->getScene()->getEndState() == EndState::VampireWin)
 	{
-		endScreen = new EndScreen("Round took to Lose : " + std::to_string(game->getScene()->getRound()), "Time Played: " + std::to_string((int)totalTime), "You have been converted the to vampire amry, Knights have lost");
+		endScreen = new EndScreen("Round took to Lose : " + std::to_string(game->getScene()->getRound()), "Time Played: " + std::to_string((int)totalTime), "You have been converted to the \n Vampire army!!!!!, \n Knights have lost");
 	}
 	else {
 		endScreen = new EndScreen("Rounds : " + std::to_string(game->getScene()->getRound()), "Time Played: " + std::to_string((int)totalTime), "Thank you for playing");

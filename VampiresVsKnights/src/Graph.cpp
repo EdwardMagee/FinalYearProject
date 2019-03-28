@@ -46,9 +46,6 @@ Graph::Graph(std::string p_Nodes)
 					m_Graph[j][i] = new NormalNode(tempCost);
 					m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Splash"));
 				}
-
-				//m_Graph[j][i] = new EmptyNode(1000);
-				//m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 			}
 			else if (j == 0 or i == 0)
 			{
@@ -62,8 +59,6 @@ Graph::Graph(std::string p_Nodes)
 				m_Graph[j][i]->constructNode(j, i, m_textureHandler->instance()->getTexture("Empty"));
 
 			}
-			
-			
 			else {
 
 				m_Graph[j][i] = new NormalNode(1);
@@ -72,21 +67,30 @@ Graph::Graph(std::string p_Nodes)
 
 			}
 		}
-	}
+	}	
+}
 
-	for (int j = 0; j < m_fileReader->getNodeID().size(); j++)
+Graph::~Graph()
+{
+	for (int i = 0; i < m_iCol; i++)
 	{
-		
-		//tempx = m_fileReader->getNodeID().at(j).x; tempy = m_fileReader->getNodeID().at(j).y;
-
-		//delete m_Graph[tempx][tempy];
-		//m_Graph[tempx][tempy] = nullptr;
-
-		
+		for (int j = 0; j < m_iRow; j++)
+		{
+			delete m_Graph[j][i];
+			m_Graph[j][i] = nullptr;
+		}
 	}
 
+	delete m_textureHandler;
+	m_textureHandler = nullptr;
 
+	delete m_fileReader;
+	m_fileReader = nullptr;
 
+	for (auto * i1 : m_closedList) { delete i1; i1 = nullptr; }
+	for (auto * i2 : m_openList) { delete i2; i2 = nullptr; }
+	for (auto * i3 : m_pathList) { delete i3; i3 = nullptr; }
+	for (auto * i4 : m_tempList) { delete i4; i4 = nullptr; }
 	
 }
 
@@ -127,6 +131,7 @@ std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 				tempNode = i;
 			}
 		}
+
 		m_openList.remove(tempNode);
 		m_closedList.push_back(tempNode);
 
@@ -213,7 +218,7 @@ std::list<NodeInterface*> Graph::gatherChildren(NodeInterface * p_currentNode)
 	m_tempList.clear();
 
 	auto getCloseNode = [&](std::list<NodeInterface*> p_TempList, int x = 0, int y = 0) {
-		m_tempList.push_back(m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]); //Left (1)
+		m_tempList.push_back(m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]); 
 		m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]->setDiagonal(false);
 	};
 	getCloseNode(m_tempList, -1, 0);
@@ -293,11 +298,6 @@ sf::Vector2i Graph::getGoal(NodeInterface * p_Goal, NodeInterface * p_Start, std
 
 		tempVector.push_back(sf::Vector2i(i->getID().x, i->getID().y));
 
-		//temp.x = i->getID().x;
-		//temp.y = i->getID().y;
-
-		//return temp;
-
 	}
 
 	for (int j = 0; j < tempVector.size(); j++)
@@ -309,8 +309,6 @@ sf::Vector2i Graph::getGoal(NodeInterface * p_Goal, NodeInterface * p_Start, std
 		}
 
 	}
-
-
 
 	return temp2i;
 }
