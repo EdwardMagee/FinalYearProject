@@ -1,0 +1,226 @@
+\hypertarget{class_node_interface}{}\section{Node\+Interface Class Reference}
+\label{class_node_interface}\index{Node\+Interface@{Node\+Interface}}
+
+
+{\ttfamily \#include $<$Node\+Interface.\+h$>$}
+
+Inheritance diagram for Node\+Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_node_interface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_node_interface_a3d79c567537e9ffa7d2fc821495879fb}\label{class_node_interface_a3d79c567537e9ffa7d2fc821495879fb}} 
+virtual sf\+::\+Sprite $\ast$ \mbox{\hyperlink{class_node_interface_a3d79c567537e9ffa7d2fc821495879fb}{get\+Sprite}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the sprite of the node so its drawn. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_aba153b8ff03f15ce596887357a11aed8}\label{class_node_interface_aba153b8ff03f15ce596887357a11aed8}} 
+virtual void \mbox{\hyperlink{class_node_interface_aba153b8ff03f15ce596887357a11aed8}{construct\+Node}} (int p\+\_\+row, int p\+\_\+col, sf\+::\+Texture p\+\_\+T)=0
+\begin{DoxyCompactList}\small\item\em Constructs Node. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_node_interface_a9aeb69f061905e96ef6b1983c7a88fe3}{update\+Node}} (float p\+\_\+time)=0
+\begin{DoxyCompactList}\small\item\em Updates the game. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_node_interface_a944dbfa74de55bdef1d583f318888aeb}{check\+Node\+Type}} ()=0
+\begin{DoxyCompactList}\small\item\em Checks the type of the node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_acc8dffd1dde9232e7541fff5b54783f0}\label{class_node_interface_acc8dffd1dde9232e7541fff5b54783f0}} 
+virtual float {\bfseries getG} ()
+\item 
+\mbox{\Hypertarget{class_node_interface_a934ef1f220c6f61fa86200bd19586224}\label{class_node_interface_a934ef1f220c6f61fa86200bd19586224}} 
+virtual float \mbox{\hyperlink{class_node_interface_a934ef1f220c6f61fa86200bd19586224}{getH}} ()
+\begin{DoxyCompactList}\small\item\em Get the G value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_abb64234aaa72e26967985af6a3eef54d}\label{class_node_interface_abb64234aaa72e26967985af6a3eef54d}} 
+virtual float \mbox{\hyperlink{class_node_interface_abb64234aaa72e26967985af6a3eef54d}{getF}} ()
+\begin{DoxyCompactList}\small\item\em Get the H value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a3071ba4b47011558bf75ba0de9a1b8bb}\label{class_node_interface_a3071ba4b47011558bf75ba0de9a1b8bb}} 
+virtual float \mbox{\hyperlink{class_node_interface_a3071ba4b47011558bf75ba0de9a1b8bb}{get\+Terrain\+Cost}} ()
+\begin{DoxyCompactList}\small\item\em Get the F value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a667925c62ad01dea0f5943cea165c533}\label{class_node_interface_a667925c62ad01dea0f5943cea165c533}} 
+virtual sf\+::\+Vector2i \mbox{\hyperlink{class_node_interface_a667925c62ad01dea0f5943cea165c533}{get\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get Cost. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a1bb8d872c0b8f0794bf621be24ea0ca3}\label{class_node_interface_a1bb8d872c0b8f0794bf621be24ea0ca3}} 
+virtual void \mbox{\hyperlink{class_node_interface_a1bb8d872c0b8f0794bf621be24ea0ca3}{setG}} (float p\+\_\+g)
+\begin{DoxyCompactList}\small\item\em Get id. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_node_interface_a8750e3c16815db5f6bae6de6b3335a8f}{setF}} (float p\+\_\+f)
+\begin{DoxyCompactList}\small\item\em Set G. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_node_interface_a4159fd7efddfb97216b7b6b4916bf003}{setH}} (float p\+\_\+H)
+\begin{DoxyCompactList}\small\item\em Set F. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_node_interface_a759b060003767c5319c1c568705696e0}{set\+Diagonal}} (bool p\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Set H. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_node_interface_ade5a090eeac6a245475f49589c79be8a}{get\+Perant}} ()
+\begin{DoxyCompactList}\small\item\em Set Diagonal method. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a6b1ea79473c66ffc69454d798943d4a0}\label{class_node_interface_a6b1ea79473c66ffc69454d798943d4a0}} 
+virtual void \mbox{\hyperlink{class_node_interface_a6b1ea79473c66ffc69454d798943d4a0}{set\+Perant}} (\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+\+NI)
+\begin{DoxyCompactList}\small\item\em Get the perant of the node. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_node_interface_a4baa534fe0139637524fcd05cf9f5fe6}{is\+Diagonal}} ()
+\begin{DoxyCompactList}\small\item\em Set the perant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite $\ast$ \mbox{\hyperlink{class_node_interface_a11c603f391c23f2ea6c7ff228f8f40e6}{m\+\_\+sprite}}
+\begin{DoxyCompactList}\small\item\em Is it Diagonal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_ac3ba2fd8d5ec51b3432a6092d059131a}\label{class_node_interface_ac3ba2fd8d5ec51b3432a6092d059131a}} 
+sf\+::\+Texture \mbox{\hyperlink{class_node_interface_ac3ba2fd8d5ec51b3432a6092d059131a}{m\+\_\+texture}}
+\begin{DoxyCompactList}\small\item\em Contains texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a221bbac677de84cd72b03ec14322f6d4}\label{class_node_interface_a221bbac677de84cd72b03ec14322f6d4}} 
+\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_node_interface_a221bbac677de84cd72b03ec14322f6d4}{m\+\_\+perant}}
+\begin{DoxyCompactList}\small\item\em Stores pointer to the perant. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a90b046dd5869a936ecfd91e381693d50}\label{class_node_interface_a90b046dd5869a936ecfd91e381693d50}} 
+sf\+::\+Vector2i \mbox{\hyperlink{class_node_interface_a90b046dd5869a936ecfd91e381693d50}{m\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Stores id. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a4d839e467a94e8f68d0a92dd63d51c58}\label{class_node_interface_a4d839e467a94e8f68d0a92dd63d51c58}} 
+float \mbox{\hyperlink{class_node_interface_a4d839e467a94e8f68d0a92dd63d51c58}{m\+\_\+movement\+Cost}}
+\begin{DoxyCompactList}\small\item\em stores movment cost \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_a93fbc84071fcaefe031ae65927701814}\label{class_node_interface_a93fbc84071fcaefe031ae65927701814}} 
+float \mbox{\hyperlink{class_node_interface_a93fbc84071fcaefe031ae65927701814}{m\+\_\+f\+Value}}
+\begin{DoxyCompactList}\small\item\em Store F. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_af3c69e17a7eb84a082001443d7670d3c}\label{class_node_interface_af3c69e17a7eb84a082001443d7670d3c}} 
+float \mbox{\hyperlink{class_node_interface_af3c69e17a7eb84a082001443d7670d3c}{m\+\_\+g\+Value}}
+\begin{DoxyCompactList}\small\item\em Store G. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_af6dd7f4959cfb1a8402a7202060eacc2}\label{class_node_interface_af6dd7f4959cfb1a8402a7202060eacc2}} 
+float \mbox{\hyperlink{class_node_interface_af6dd7f4959cfb1a8402a7202060eacc2}{m\+\_\+h\+Value}}
+\begin{DoxyCompactList}\small\item\em Set H. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_node_interface_aa0366b52d789726dfef6a806f1081dd9}\label{class_node_interface_aa0366b52d789726dfef6a806f1081dd9}} 
+bool \mbox{\hyperlink{class_node_interface_aa0366b52d789726dfef6a806f1081dd9}{m\+\_\+is\+Diagonal}}
+\begin{DoxyCompactList}\small\item\em Stores bool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+States what each node must have, if i wanted a new type of Node i could inherit from this and not worry about copying this code 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_node_interface_a944dbfa74de55bdef1d583f318888aeb}\label{class_node_interface_a944dbfa74de55bdef1d583f318888aeb}} 
+\index{Node\+Interface@{Node\+Interface}!check\+Node\+Type@{check\+Node\+Type}}
+\index{check\+Node\+Type@{check\+Node\+Type}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{check\+Node\+Type()}{checkNodeType()}}
+{\footnotesize\ttfamily virtual std\+::string Node\+Interface\+::check\+Node\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Checks the type of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_empty_node_a2281f852354a5b95ba06f4e2a7e8de34}{Empty\+Node}}, and \mbox{\hyperlink{class_normal_node_aa11cbf32f7395ce3fd01113942c6351f}{Normal\+Node}}.
+
+\mbox{\Hypertarget{class_node_interface_ade5a090eeac6a245475f49589c79be8a}\label{class_node_interface_ade5a090eeac6a245475f49589c79be8a}} 
+\index{Node\+Interface@{Node\+Interface}!get\+Perant@{get\+Perant}}
+\index{get\+Perant@{get\+Perant}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{get\+Perant()}{getPerant()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_node_interface}{Node\+Interface}}$\ast$ Node\+Interface\+::get\+Perant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set Diagonal method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+b} & information of the m\+\_\+is\+Diaognal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_interface_a4baa534fe0139637524fcd05cf9f5fe6}\label{class_node_interface_a4baa534fe0139637524fcd05cf9f5fe6}} 
+\index{Node\+Interface@{Node\+Interface}!is\+Diagonal@{is\+Diagonal}}
+\index{is\+Diagonal@{is\+Diagonal}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{is\+Diagonal()}{isDiagonal()}}
+{\footnotesize\ttfamily virtual bool Node\+Interface\+::is\+Diagonal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the perant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+NI} & the node that will be set as the perant \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_interface_a759b060003767c5319c1c568705696e0}\label{class_node_interface_a759b060003767c5319c1c568705696e0}} 
+\index{Node\+Interface@{Node\+Interface}!set\+Diagonal@{set\+Diagonal}}
+\index{set\+Diagonal@{set\+Diagonal}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{set\+Diagonal()}{setDiagonal()}}
+{\footnotesize\ttfamily virtual void Node\+Interface\+::set\+Diagonal (\begin{DoxyParamCaption}\item[{bool}]{p\+\_\+b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set H. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+h} & information on the H value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_interface_a8750e3c16815db5f6bae6de6b3335a8f}\label{class_node_interface_a8750e3c16815db5f6bae6de6b3335a8f}} 
+\index{Node\+Interface@{Node\+Interface}!setF@{setF}}
+\index{setF@{setF}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{set\+F()}{setF()}}
+{\footnotesize\ttfamily virtual void Node\+Interface\+::setF (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set G. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+g} & information on the G value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_interface_a4159fd7efddfb97216b7b6b4916bf003}\label{class_node_interface_a4159fd7efddfb97216b7b6b4916bf003}} 
+\index{Node\+Interface@{Node\+Interface}!setH@{setH}}
+\index{setH@{setH}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{set\+H()}{setH()}}
+{\footnotesize\ttfamily virtual void Node\+Interface\+::setH (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+H }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set F. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+f} & information on the F value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_interface_a9aeb69f061905e96ef6b1983c7a88fe3}\label{class_node_interface_a9aeb69f061905e96ef6b1983c7a88fe3}} 
+\index{Node\+Interface@{Node\+Interface}!update\+Node@{update\+Node}}
+\index{update\+Node@{update\+Node}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{update\+Node()}{updateNode()}}
+{\footnotesize\ttfamily virtual void Node\+Interface\+::update\+Node (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updates the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+row} & the row the node is on \\
+\hline
+{\em p\+\_\+col} & the column the row is on \\
+\hline
+{\em p\+\_\+T} & the texture of the node \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_empty_node_ae11626adf3ad771cfcc68599c67ff354}{Empty\+Node}}, and \mbox{\hyperlink{class_normal_node_a4a846f6117353fe7483e1348a4da6e1f}{Normal\+Node}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_node_interface_a11c603f391c23f2ea6c7ff228f8f40e6}\label{class_node_interface_a11c603f391c23f2ea6c7ff228f8f40e6}} 
+\index{Node\+Interface@{Node\+Interface}!m\+\_\+sprite@{m\+\_\+sprite}}
+\index{m\+\_\+sprite@{m\+\_\+sprite}!Node\+Interface@{Node\+Interface}}
+\subsubsection{\texorpdfstring{m\+\_\+sprite}{m\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite$\ast$ Node\+Interface\+::m\+\_\+sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Is it Diagonal. 
+
+Contains node sprite 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Node\+Interface.\+h\end{DoxyCompactItemize}

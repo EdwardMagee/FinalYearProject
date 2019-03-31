@@ -1,0 +1,214 @@
+\hypertarget{class_sprite_interface}{}\section{Sprite\+Interface Class Reference}
+\label{class_sprite_interface}\index{Sprite\+Interface@{Sprite\+Interface}}
+
+
+{\ttfamily \#include $<$Sprite\+Interface.\+h$>$}
+
+Inheritance diagram for Sprite\+Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sprite_interface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_interface_ad3bcdb5a25c5fe0315c9938a7c8ed395}\label{class_sprite_interface_ad3bcdb5a25c5fe0315c9938a7c8ed395}} 
+Sprite\+State \mbox{\hyperlink{class_sprite_interface_ad3bcdb5a25c5fe0315c9938a7c8ed395}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the sprite state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a548fdaa1e0443386b42326e69702fc13}\label{class_sprite_interface_a548fdaa1e0443386b42326e69702fc13}} 
+virtual sf\+::\+Sprite $\ast$ {\bfseries get\+Sprite} ()
+\item 
+\mbox{\Hypertarget{class_sprite_interface_aab826769df1222d5dd2ff426c8551bb2}\label{class_sprite_interface_aab826769df1222d5dd2ff426c8551bb2}} 
+virtual void \mbox{\hyperlink{class_sprite_interface_aab826769df1222d5dd2ff426c8551bb2}{set\+Node}} (\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+\+NI)
+\begin{DoxyCompactList}\small\item\em Gets the sprite. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_sprite_interface_a0cda548d74975cb3dd3f4d163a1763b6}{get\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Sets a node to each sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a69b0d3d856aa935d533e2d4ad323235a}\label{class_sprite_interface_a69b0d3d856aa935d533e2d4ad323235a}} 
+virtual float \mbox{\hyperlink{class_sprite_interface_a69b0d3d856aa935d533e2d4ad323235a}{get\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Gets the node within each sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a9acb8edb465672a3e55d0b972a20c768}\label{class_sprite_interface_a9acb8edb465672a3e55d0b972a20c768}} 
+virtual float \mbox{\hyperlink{class_sprite_interface_a9acb8edb465672a3e55d0b972a20c768}{get\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em Sets characater speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a4552ddf09fb794495ce4697c5af753b9}\label{class_sprite_interface_a4552ddf09fb794495ce4697c5af753b9}} 
+virtual float \mbox{\hyperlink{class_sprite_interface_a4552ddf09fb794495ce4697c5af753b9}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Get attack. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_sprite_interface_a91a747b887e19cfc6e5256d4afc2f64c}{is\+Doing\+Damage}} ()=0
+\begin{DoxyCompactList}\small\item\em Get Health. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a98f300b8d8e40f3dcd18c853353a1ac9}\label{class_sprite_interface_a98f300b8d8e40f3dcd18c853353a1ac9}} 
+virtual void \mbox{\hyperlink{class_sprite_interface_a98f300b8d8e40f3dcd18c853353a1ac9}{do\+Damage}} (bool p\+\_\+bool)=0
+\begin{DoxyCompactList}\small\item\em Do the damage. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sprite_interface_a56abad058843e3e4a7801f5b12cc6e18}{set\+Health}} (float p\+\_\+damage\+Taken)=0
+\begin{DoxyCompactList}\small\item\em Takeaways from its current health. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sprite_interface_a30511b7aaf2661d4f53db5b172dd365b}{set\+Sprite\+Pos}} (int p\+\_\+col, int p\+\_\+row)=0
+\begin{DoxyCompactList}\small\item\em Sets its position. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sprite_interface_ad5335c5370f97cd81a52769cb0a25559}{message}} (const std\+::string p\+\_\+message)=0
+\begin{DoxyCompactList}\small\item\em Gives the sprite a message. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sprite_interface_a3153bba12e2561f1719a75dbff0e6b4a}{update}} (float p\+\_\+time)=0
+\begin{DoxyCompactList}\small\item\em Update method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite $\ast$ \mbox{\hyperlink{class_sprite_interface_ad39fe3c5309c30a22ddfce60fa9f7c09}{m\+\_\+sprite}}
+\begin{DoxyCompactList}\small\item\em The sprite of the sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a6085987c42f63d186dfc69353dae76f1}\label{class_sprite_interface_a6085987c42f63d186dfc69353dae76f1}} 
+sf\+::\+Texture \mbox{\hyperlink{class_sprite_interface_a6085987c42f63d186dfc69353dae76f1}{m\+\_\+texture}}
+\begin{DoxyCompactList}\small\item\em Texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a3535d0dbdd54673a67692aecac6c2052}\label{class_sprite_interface_a3535d0dbdd54673a67692aecac6c2052}} 
+\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_sprite_interface_a3535d0dbdd54673a67692aecac6c2052}{m\+\_\+node}}
+\begin{DoxyCompactList}\small\item\em Pointer to a node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_ab06d7faea880bcf73267dffb3fcb855c}\label{class_sprite_interface_ab06d7faea880bcf73267dffb3fcb855c}} 
+float \mbox{\hyperlink{class_sprite_interface_ab06d7faea880bcf73267dffb3fcb855c}{m\+\_\+speed}}
+\begin{DoxyCompactList}\small\item\em Speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a43bacc6a76b45b80ef61daafbcc879b5}\label{class_sprite_interface_a43bacc6a76b45b80ef61daafbcc879b5}} 
+float \mbox{\hyperlink{class_sprite_interface_a43bacc6a76b45b80ef61daafbcc879b5}{m\+\_\+attack}}
+\begin{DoxyCompactList}\small\item\em Attack. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a8b0b188a190e0c1a7b30a7b0ca911b0f}\label{class_sprite_interface_a8b0b188a190e0c1a7b30a7b0ca911b0f}} 
+float \mbox{\hyperlink{class_sprite_interface_a8b0b188a190e0c1a7b30a7b0ca911b0f}{m\+\_\+health}}
+\begin{DoxyCompactList}\small\item\em H\+E\+A\+L\+TH. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a161675cd2b32e41a30925da4617003b3}\label{class_sprite_interface_a161675cd2b32e41a30925da4617003b3}} 
+bool \mbox{\hyperlink{class_sprite_interface_a161675cd2b32e41a30925da4617003b3}{m\+\_\+is\+Doing\+Damage}}
+\begin{DoxyCompactList}\small\item\em Is it doing damage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_interface_a4a0986e0b5bd14defa82eb7d9fe1886e}\label{class_sprite_interface_a4a0986e0b5bd14defa82eb7d9fe1886e}} 
+Sprite\+State \mbox{\hyperlink{class_sprite_interface_a4a0986e0b5bd14defa82eb7d9fe1886e}{m\+\_\+sprite\+State}}
+\begin{DoxyCompactList}\small\item\em State of the sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+States all the information a character should have 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sprite_interface_a0cda548d74975cb3dd3f4d163a1763b6}\label{class_sprite_interface_a0cda548d74975cb3dd3f4d163a1763b6}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!get\+Node@{get\+Node}}
+\index{get\+Node@{get\+Node}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{get\+Node()}{getNode()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_node_interface}{Node\+Interface}}$\ast$ Sprite\+Interface\+::get\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets a node to each sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+NI} & this node will become m\+\_\+node \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_static_sprite_a672bb6e3425bbc15cd9034ab9e2802fd}{Static\+Sprite}}.
+
+\mbox{\Hypertarget{class_sprite_interface_a91a747b887e19cfc6e5256d4afc2f64c}\label{class_sprite_interface_a91a747b887e19cfc6e5256d4afc2f64c}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!is\+Doing\+Damage@{is\+Doing\+Damage}}
+\index{is\+Doing\+Damage@{is\+Doing\+Damage}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{is\+Doing\+Damage()}{isDoingDamage()}}
+{\footnotesize\ttfamily virtual bool Sprite\+Interface\+::is\+Doing\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get Health. 
+
+Is it doing damage 
+
+Implemented in \mbox{\hyperlink{class_static_sprite_a4b037abeff328dd42777875fd145aae3}{Static\+Sprite}}.
+
+\mbox{\Hypertarget{class_sprite_interface_ad5335c5370f97cd81a52769cb0a25559}\label{class_sprite_interface_ad5335c5370f97cd81a52769cb0a25559}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!message@{message}}
+\index{message@{message}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{message()}{message()}}
+{\footnotesize\ttfamily virtual void Sprite\+Interface\+::message (\begin{DoxyParamCaption}\item[{const std\+::string}]{p\+\_\+message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gives the sprite a message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+row} & sets the row its in \\
+\hline
+{\em p\+\_\+col} & used to set what col its in \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_static_sprite_afe24127ebfb8a93de80fb42729a5f249}{Static\+Sprite}}.
+
+\mbox{\Hypertarget{class_sprite_interface_a56abad058843e3e4a7801f5b12cc6e18}\label{class_sprite_interface_a56abad058843e3e4a7801f5b12cc6e18}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!set\+Health@{set\+Health}}
+\index{set\+Health@{set\+Health}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{set\+Health()}{setHealth()}}
+{\footnotesize\ttfamily virtual void Sprite\+Interface\+::set\+Health (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+damage\+Taken }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Takeaways from its current health. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bool} & used to set the damage \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_static_sprite_a975babf5d18d76c800a72a416558d7a4}{Static\+Sprite}}.
+
+\mbox{\Hypertarget{class_sprite_interface_a30511b7aaf2661d4f53db5b172dd365b}\label{class_sprite_interface_a30511b7aaf2661d4f53db5b172dd365b}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!set\+Sprite\+Pos@{set\+Sprite\+Pos}}
+\index{set\+Sprite\+Pos@{set\+Sprite\+Pos}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{set\+Sprite\+Pos()}{setSpritePos()}}
+{\footnotesize\ttfamily virtual void Sprite\+Interface\+::set\+Sprite\+Pos (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+col,  }\item[{int}]{p\+\_\+row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Sets its position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+damage\+Taken} & this is taken away from the health \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_static_sprite_add5e0038c152e9d7e65afd47ba36abce}{Static\+Sprite}}.
+
+\mbox{\Hypertarget{class_sprite_interface_a3153bba12e2561f1719a75dbff0e6b4a}\label{class_sprite_interface_a3153bba12e2561f1719a75dbff0e6b4a}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!update@{update}}
+\index{update@{update}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Sprite\+Interface\+::update (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Update method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+message} & its a message to the class \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_static_sprite_a2dd0c3a98082f45d0d77d53d1af13b90}{Static\+Sprite}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sprite_interface_ad39fe3c5309c30a22ddfce60fa9f7c09}\label{class_sprite_interface_ad39fe3c5309c30a22ddfce60fa9f7c09}} 
+\index{Sprite\+Interface@{Sprite\+Interface}!m\+\_\+sprite@{m\+\_\+sprite}}
+\index{m\+\_\+sprite@{m\+\_\+sprite}!Sprite\+Interface@{Sprite\+Interface}}
+\subsubsection{\texorpdfstring{m\+\_\+sprite}{m\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite$\ast$ Sprite\+Interface\+::m\+\_\+sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The sprite of the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Sprite\+Interface.\+h\end{DoxyCompactItemize}

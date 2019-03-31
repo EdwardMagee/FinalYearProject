@@ -1,0 +1,79 @@
+\hypertarget{class_file_reader}{}\section{File\+Reader Class Reference}
+\label{class_file_reader}\index{File\+Reader@{File\+Reader}}
+
+
+{\ttfamily \#include $<$File\+Reader.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_file_reader_a1382969e8f1468f3b04ad4b44ab39dee}\label{class_file_reader_a1382969e8f1468f3b04ad4b44ab39dee}} 
+\mbox{\hyperlink{class_file_reader_a1382969e8f1468f3b04ad4b44ab39dee}{$\sim$\+File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a746a2d82fb15782f219cb38fa5bd643a}\label{class_file_reader_a746a2d82fb15782f219cb38fa5bd643a}} 
+\mbox{\hyperlink{class_file_reader_a746a2d82fb15782f219cb38fa5bd643a}{File\+Reader}} (std\+::string p\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Constructor the File counts as its own object. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_file_reader_ae3af120919f987fec28d577d9e67a7d6}{get\+Speed\+Values}} ()
+\begin{DoxyCompactList}\small\item\em a get method that returns a vector of floats used to give characters their speed value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_aed6a77a700fd3e5201dc13535833e50f}\label{class_file_reader_aed6a77a700fd3e5201dc13535833e50f}} 
+std\+::vector$<$ sf\+::\+Vector2i $>$ \mbox{\hyperlink{class_file_reader_aed6a77a700fd3e5201dc13535833e50f}{get\+Positions}} ()
+\begin{DoxyCompactList}\small\item\em used to get all the characters positions within the grid \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a6bc93c7b23eddf37b5be069a954ed0d9}\label{class_file_reader_a6bc93c7b23eddf37b5be069a954ed0d9}} 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_file_reader_a6bc93c7b23eddf37b5be069a954ed0d9}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em gets all the characters health\textquotesingle{}s \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_af5057b4e395f53fd8fdbc50d52c21605}\label{class_file_reader_af5057b4e395f53fd8fdbc50d52c21605}} 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_file_reader_af5057b4e395f53fd8fdbc50d52c21605}{get\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em gets all the characaters attack stats \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_ae527378ff9f7cae400c526d2580149cd}\label{class_file_reader_ae527378ff9f7cae400c526d2580149cd}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_file_reader_ae527378ff9f7cae400c526d2580149cd}{get\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em This tells the character what its texture is. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a8e7d0a24c23871079074ee522f904401}\label{class_file_reader_a8e7d0a24c23871079074ee522f904401}} 
+int \mbox{\hyperlink{class_file_reader_a8e7d0a24c23871079074ee522f904401}{get\+Start\+Of\+Vamps}} ()
+\begin{DoxyCompactList}\small\item\em tells the scene when the vampires start in the vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_file_reader_a5a8ec51093ebc6e21a82a151e0672375}\label{class_file_reader_a5a8ec51093ebc6e21a82a151e0672375}} 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_file_reader_a5a8ec51093ebc6e21a82a151e0672375}{m\+\_\+speed\+Values}}
+\begin{DoxyCompactList}\small\item\em stores the speed values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a1987e0f71700746437cee5b9231d5cfe}\label{class_file_reader_a1987e0f71700746437cee5b9231d5cfe}} 
+std\+::vector$<$ sf\+::\+Vector2i $>$ \mbox{\hyperlink{class_file_reader_a1987e0f71700746437cee5b9231d5cfe}{m\+\_\+\+Positions}}
+\begin{DoxyCompactList}\small\item\em stores the positions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a4fc27357cabaa49c75dcb2d07617e4d4}\label{class_file_reader_a4fc27357cabaa49c75dcb2d07617e4d4}} 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_file_reader_a4fc27357cabaa49c75dcb2d07617e4d4}{m\+\_\+health}}
+\begin{DoxyCompactList}\small\item\em stores health \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a48a65dfc7c279d5e5773f2bdf7a40f5c}\label{class_file_reader_a48a65dfc7c279d5e5773f2bdf7a40f5c}} 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_file_reader_a48a65dfc7c279d5e5773f2bdf7a40f5c}{m\+\_\+attack}}
+\begin{DoxyCompactList}\small\item\em stores attack \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_a7579fb5818df13d3f241bf22e46502b3}\label{class_file_reader_a7579fb5818df13d3f241bf22e46502b3}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_file_reader_a7579fb5818df13d3f241bf22e46502b3}{m\+\_\+texture}}
+\begin{DoxyCompactList}\small\item\em stores texture id \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_file_reader_ad5eb0b8736cea57b3823f50d8bf4929a}\label{class_file_reader_ad5eb0b8736cea57b3823f50d8bf4929a}} 
+int \mbox{\hyperlink{class_file_reader_ad5eb0b8736cea57b3823f50d8bf4929a}{m\+\_\+start\+Of\+Vampires}}
+\begin{DoxyCompactList}\small\item\em stores an int used for to determine when the vampires start in a vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File Reader that is used to load in characters and there stats 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_file_reader_ae3af120919f987fec28d577d9e67a7d6}\label{class_file_reader_ae3af120919f987fec28d577d9e67a7d6}} 
+\index{File\+Reader@{File\+Reader}!get\+Speed\+Values@{get\+Speed\+Values}}
+\index{get\+Speed\+Values@{get\+Speed\+Values}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{get\+Speed\+Values()}{getSpeedValues()}}
+{\footnotesize\ttfamily std\+::vector$<$float$>$ File\+Reader\+::get\+Speed\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+a get method that returns a vector of floats used to give characters their speed value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+level} & dt used to tell the change in time \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/File\+Reader.\+h\end{DoxyCompactItemize}

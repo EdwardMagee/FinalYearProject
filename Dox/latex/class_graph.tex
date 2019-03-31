@@ -1,0 +1,244 @@
+\hypertarget{class_graph}{}\section{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a46dc3eb41a95c8173c20fea26c17b925}\label{class_graph_a46dc3eb41a95c8173c20fea26c17b925}} 
+\mbox{\hyperlink{class_graph_a46dc3eb41a95c8173c20fea26c17b925}{Graph}} (std\+::string p\+\_\+\+Nodes)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph_a902c5b3eacb66d60752525ab23297a95}{$\sim$\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a3ee5732e000ce109e64c8aa5b2402781}\label{class_graph_a3ee5732e000ce109e64c8aa5b2402781}} 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_a3ee5732e000ce109e64c8aa5b2402781}{a\+Star}} (sf\+::\+Vector2i p\+\_\+start\+Pos, sf\+::\+Vector2i p\+\_\+end\+Pos, float p\+\_\+speed, std\+::vector$<$ \mbox{\hyperlink{class_sprite_interface}{Sprite\+Interface}} $\ast$$>$ p\+\_\+vector\+Sprites)
+\begin{DoxyCompactList}\small\item\em A star alogirthm used to find the shortest path to its goal. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_afe3384c94b3e2c3aeedf177092323598}{gather\+Children}} (\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+current\+Node)
+\begin{DoxyCompactList}\small\item\em Gets the all the nodes around the current one. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_graph_a66983deab81766b4d71b38786f9a896b}{calculate\+H\+Value}} (sf\+::\+Vector2i p\+\_\+start\+Pos, sf\+::\+Vector2i p\+\_\+end\+Pos)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between the. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_ab788836d3cf46d033d1ebb5b7f7fdcc6}{get\+Path}} (\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+start, \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+end)
+\begin{DoxyCompactList}\small\item\em returns the trip the unit takes across the board \end{DoxyCompactList}\item 
+sf\+::\+Vector2i \mbox{\hyperlink{class_graph_aff088c38171a1a97a8a956e24f40474c}{get\+Goal}} (\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+\+Goal, \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+\+Start, std\+::vector$<$ \mbox{\hyperlink{class_sprite_interface}{Sprite\+Interface}} $\ast$$>$ p\+\_\+vector\+Sprites)
+\begin{DoxyCompactList}\small\item\em Gets the goal that the unit must take. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_graph_a673511cfc6e5e532dfd881e63e852a13}{get\+Node}} (sf\+::\+Vector2i p\+\_\+get\+Node)
+\begin{DoxyCompactList}\small\item\em Gets a node. \end{DoxyCompactList}\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_graph_ada86b34b07b41dadb779a91f7db3849c}{get\+Col\+Row}} ()
+\begin{DoxyCompactList}\small\item\em Gets the size of the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a35879647c28ab4ca4c4711b25e8d94c0}\label{class_graph_a35879647c28ab4ca4c4711b25e8d94c0}} 
+bool \mbox{\hyperlink{class_graph_a35879647c28ab4ca4c4711b25e8d94c0}{is\+Goal\+Reached}} ()
+\begin{DoxyCompactList}\small\item\em Has the goal been reached. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_ab0941b61b65e6153f0bcf2a3f43f20b3}\label{class_graph_ab0941b61b65e6153f0bcf2a3f43f20b3}} 
+bool \mbox{\hyperlink{class_graph_ab0941b61b65e6153f0bcf2a3f43f20b3}{is\+Target\+A\+Neighbour}} (\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+\+Target, \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$p\+\_\+\+Start)
+\begin{DoxyCompactList}\small\item\em Saves having to use the A$\ast$ when a unit is next to another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a3fd8940b448e540391fc0510fcaa3d42}\label{class_graph_a3fd8940b448e540391fc0510fcaa3d42}} 
+float \mbox{\hyperlink{class_graph_a3fd8940b448e540391fc0510fcaa3d42}{temp\+Cost}}
+\begin{DoxyCompactList}\small\item\em a temp for the cost \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a7daeb04b06c3e9aa9c3060b3c1b020c3}\label{class_graph_a7daeb04b06c3e9aa9c3060b3c1b020c3}} 
+std\+::string \mbox{\hyperlink{class_graph_a7daeb04b06c3e9aa9c3060b3c1b020c3}{temp\+String}}
+\begin{DoxyCompactList}\small\item\em a temp containing a string \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a7c44dfa4f34c911eec1076d255c6fd10}\label{class_graph_a7c44dfa4f34c911eec1076d255c6fd10}} 
+std\+::array$<$ std\+::array$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$, \mbox{\hyperlink{class_graph_aaf5b79ca84f573eb07c1b2a0f2baec25}{m\+\_\+i\+Col}} $>$, \mbox{\hyperlink{class_graph_aefa8c02f516b89b5a9e5361f1ba48786}{m\+\_\+i\+Row}} $>$ \mbox{\hyperlink{class_graph_a7c44dfa4f34c911eec1076d255c6fd10}{m\+\_\+\+Graph}}
+\begin{DoxyCompactList}\small\item\em 2D Array of Nodes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_abf383bcf1a1426860ff8c89a1ba0e1ef}\label{class_graph_abf383bcf1a1426860ff8c89a1ba0e1ef}} 
+\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_graph_abf383bcf1a1426860ff8c89a1ba0e1ef}{m\+\_\+texture\+Handler}}
+\begin{DoxyCompactList}\small\item\em Get the textures for the nodes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a688da5c14a6fdb07e3c477af438f8e52}\label{class_graph_a688da5c14a6fdb07e3c477af438f8e52}} 
+\mbox{\hyperlink{class_file_reader_nodes}{File\+Reader\+Nodes}} $\ast$ \mbox{\hyperlink{class_graph_a688da5c14a6fdb07e3c477af438f8e52}{m\+\_\+file\+Reader}}
+\begin{DoxyCompactList}\small\item\em gets the node information \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_aac9c8808c01f24849a133d6d7a2f6da1}\label{class_graph_aac9c8808c01f24849a133d6d7a2f6da1}} 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_aac9c8808c01f24849a133d6d7a2f6da1}{m\+\_\+closed\+List}}
+\begin{DoxyCompactList}\small\item\em Closed list for Algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a0c8c07939ba82d13c37e4d90ee7e0a03}\label{class_graph_a0c8c07939ba82d13c37e4d90ee7e0a03}} 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_a0c8c07939ba82d13c37e4d90ee7e0a03}{m\+\_\+open\+List}}
+\begin{DoxyCompactList}\small\item\em for a star \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_adab78319a2cd41cabcbb84d091c85e00}\label{class_graph_adab78319a2cd41cabcbb84d091c85e00}} 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_adab78319a2cd41cabcbb84d091c85e00}{m\+\_\+path\+List}}
+\begin{DoxyCompactList}\small\item\em used to store the path the player takes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a58a686e87cde1ce128b3bc5212c3104d}\label{class_graph_a58a686e87cde1ce128b3bc5212c3104d}} 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_graph_a58a686e87cde1ce128b3bc5212c3104d}{m\+\_\+temp\+List}}
+\begin{DoxyCompactList}\small\item\em Stores a temp list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a6654863b002b834e645b6987e56f8fae}\label{class_graph_a6654863b002b834e645b6987e56f8fae}} 
+\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_graph_a6654863b002b834e645b6987e56f8fae}{m\+\_\+store\+LastG}}
+\begin{DoxyCompactList}\small\item\em Stores the last G this will be used to calculate the last node to go to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_aa6465aa8769c0558c5cc45ed7f0c872c}\label{class_graph_aa6465aa8769c0558c5cc45ed7f0c872c}} 
+bool \mbox{\hyperlink{class_graph_aa6465aa8769c0558c5cc45ed7f0c872c}{m\+\_\+is\+In\+Closed\+List}}
+\begin{DoxyCompactList}\small\item\em Bool to determine if a node is the closed list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a0bd49d06c83bc659df2491f9efc2af5e}\label{class_graph_a0bd49d06c83bc659df2491f9efc2af5e}} 
+bool \mbox{\hyperlink{class_graph_a0bd49d06c83bc659df2491f9efc2af5e}{m\+\_\+is\+In\+Open\+List}}
+\begin{DoxyCompactList}\small\item\em Bool to determine if a node is the open list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_ae70699a31c78b4f465573ebd88526e05}\label{class_graph_ae70699a31c78b4f465573ebd88526e05}} 
+bool \mbox{\hyperlink{class_graph_ae70699a31c78b4f465573ebd88526e05}{m\+\_\+is\+Occupied}}
+\begin{DoxyCompactList}\small\item\em Is the node Occupied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a9aed85b6200272857406d2b6d03d4c70}\label{class_graph_a9aed85b6200272857406d2b6d03d4c70}} 
+bool \mbox{\hyperlink{class_graph_a9aed85b6200272857406d2b6d03d4c70}{m\+\_\+reached\+Goal}}
+\begin{DoxyCompactList}\small\item\em Did the player reach the goal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a71ec88e2167f0bd2aeccd9f3baad0ec6}\label{class_graph_a71ec88e2167f0bd2aeccd9f3baad0ec6}} 
+bool \mbox{\hyperlink{class_graph_a71ec88e2167f0bd2aeccd9f3baad0ec6}{m\+\_\+use\+Current}}
+\begin{DoxyCompactList}\small\item\em used to tell if there is a custon node from file if not it will give default \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{class_graph_aaf5b79ca84f573eb07c1b2a0f2baec25}{m\+\_\+i\+Col}} = 8
+\begin{DoxyCompactList}\small\item\em How many Columns in game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_aefa8c02f516b89b5a9e5361f1ba48786}\label{class_graph_aefa8c02f516b89b5a9e5361f1ba48786}} 
+static const int \mbox{\hyperlink{class_graph_aefa8c02f516b89b5a9e5361f1ba48786}{m\+\_\+i\+Row}} = 16
+\begin{DoxyCompactList}\small\item\em How many Rows in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that created the two d array and handles all the pathfinding 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graph_a902c5b3eacb66d60752525ab23297a95}\label{class_graph_a902c5b3eacb66d60752525ab23297a95}} 
+\index{Graph@{Graph}!````~Graph@{$\sim$\+Graph}}
+\index{````~Graph@{$\sim$\+Graph}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{$\sim$\+Graph()}{~Graph()}}
+{\footnotesize\ttfamily Graph\+::$\sim$\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deconstructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Nodes} & contains data on where to put nodes \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a66983deab81766b4d71b38786f9a896b}\label{class_graph_a66983deab81766b4d71b38786f9a896b}} 
+\index{Graph@{Graph}!calculate\+H\+Value@{calculate\+H\+Value}}
+\index{calculate\+H\+Value@{calculate\+H\+Value}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{calculate\+H\+Value()}{calculateHValue()}}
+{\footnotesize\ttfamily float Graph\+::calculate\+H\+Value (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{p\+\_\+start\+Pos,  }\item[{sf\+::\+Vector2i}]{p\+\_\+end\+Pos }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance between the. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+current\+Node} & gets all the nodes around this one \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_afe3384c94b3e2c3aeedf177092323598}\label{class_graph_afe3384c94b3e2c3aeedf177092323598}} 
+\index{Graph@{Graph}!gather\+Children@{gather\+Children}}
+\index{gather\+Children@{gather\+Children}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{gather\+Children()}{gatherChildren()}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{class_node_interface}{Node\+Interface}}$\ast$$>$ Graph\+::gather\+Children (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$}]{p\+\_\+current\+Node }\end{DoxyParamCaption})}
+
+
+
+Gets the all the nodes around the current one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+start\+Pos} & this is the start of the search \\
+\hline
+{\em p\+\_\+end\+Pos} & this is the end of the search \\
+\hline
+{\em p\+\_\+speed} & what is units speed \\
+\hline
+{\em p\+\_\+vector} & of sprites so it knows what nodes to advoid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_ada86b34b07b41dadb779a91f7db3849c}\label{class_graph_ada86b34b07b41dadb779a91f7db3849c}} 
+\index{Graph@{Graph}!get\+Col\+Row@{get\+Col\+Row}}
+\index{get\+Col\+Row@{get\+Col\+Row}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Col\+Row()}{getColRow()}}
+{\footnotesize\ttfamily std\+::pair$<$int, int$>$ Graph\+::get\+Col\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the size of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+get\+Node} & id of the desired node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_aff088c38171a1a97a8a956e24f40474c}\label{class_graph_aff088c38171a1a97a8a956e24f40474c}} 
+\index{Graph@{Graph}!get\+Goal@{get\+Goal}}
+\index{get\+Goal@{get\+Goal}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Goal()}{getGoal()}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Graph\+::get\+Goal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$}]{p\+\_\+\+Goal,  }\item[{\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$}]{p\+\_\+\+Start,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_sprite_interface}{Sprite\+Interface}} $\ast$$>$}]{p\+\_\+vector\+Sprites }\end{DoxyParamCaption})}
+
+
+
+Gets the goal that the unit must take. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+start} & the start of the path \\
+\hline
+{\em p\+\_\+end\+Pos} & end of the path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a673511cfc6e5e532dfd881e63e852a13}\label{class_graph_a673511cfc6e5e532dfd881e63e852a13}} 
+\index{Graph@{Graph}!get\+Node@{get\+Node}}
+\index{get\+Node@{get\+Node}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Node()}{getNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_node_interface}{Node\+Interface}}$\ast$ Graph\+::get\+Node (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{p\+\_\+get\+Node }\end{DoxyParamCaption})}
+
+
+
+Gets a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Goal} & a node interface pointer \\
+\hline
+{\em p\+\_\+\+Start} & so it knows which node is the starting node \\
+\hline
+{\em p\+\_\+vector\+Sprites} & so it knows which sprites to advoid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_ab788836d3cf46d033d1ebb5b7f7fdcc6}\label{class_graph_ab788836d3cf46d033d1ebb5b7f7fdcc6}} 
+\index{Graph@{Graph}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Path()}{getPath()}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{class_node_interface}{Node\+Interface}}$\ast$$>$ Graph\+::get\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$}]{p\+\_\+start,  }\item[{\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$}]{p\+\_\+end }\end{DoxyParamCaption})}
+
+
+
+returns the trip the unit takes across the board 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+start\+Pos} & start of the calcualtion \\
+\hline
+{\em p\+\_\+end\+Pos} & goal of the calaculation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_graph_aaf5b79ca84f573eb07c1b2a0f2baec25}\label{class_graph_aaf5b79ca84f573eb07c1b2a0f2baec25}} 
+\index{Graph@{Graph}!m\+\_\+i\+Col@{m\+\_\+i\+Col}}
+\index{m\+\_\+i\+Col@{m\+\_\+i\+Col}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+Col}{m\_iCol}}
+{\footnotesize\ttfamily const int Graph\+::m\+\_\+i\+Col = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+How many Columns in game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Target} & so it knows which node you want to attack \\
+\hline
+{\em p\+\_\+\+Start} & so it knows which node is the starting node \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Graph.\+h\end{DoxyCompactItemize}

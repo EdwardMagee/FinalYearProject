@@ -1,0 +1,102 @@
+\hypertarget{class_empty_node}{}\section{Empty\+Node Class Reference}
+\label{class_empty_node}\index{Empty\+Node@{Empty\+Node}}
+
+
+{\ttfamily \#include $<$Empty\+Node.\+h$>$}
+
+Inheritance diagram for Empty\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_empty_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_empty_node_a9e18fe1b046d001ca7b2daf87d2fd5bb}\label{class_empty_node_a9e18fe1b046d001ca7b2daf87d2fd5bb}} 
+\mbox{\hyperlink{class_empty_node_a9e18fe1b046d001ca7b2daf87d2fd5bb}{Empty\+Node}} (int p\+\_\+cost)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_empty_node_aa8c8d6db9649c4ff5624be87953092d1}{$\sim$\+Empty\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_empty_node_ae11626adf3ad771cfcc68599c67ff354}\label{class_empty_node_ae11626adf3ad771cfcc68599c67ff354}} 
+void \mbox{\hyperlink{class_empty_node_ae11626adf3ad771cfcc68599c67ff354}{update\+Node}} (float p\+\_\+time) override
+\begin{DoxyCompactList}\small\item\em update method \end{DoxyCompactList}\item 
+sf\+::\+Sprite $\ast$ \mbox{\hyperlink{class_empty_node_a1f449e50eefe1388f5b255a5dc027cc8}{get\+Sprite}} () override
+\begin{DoxyCompactList}\small\item\em Gets a sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_empty_node_a50183fa0423e94904facd89bd70062f4}\label{class_empty_node_a50183fa0423e94904facd89bd70062f4}} 
+void \mbox{\hyperlink{class_empty_node_a50183fa0423e94904facd89bd70062f4}{construct\+Node}} (int p\+\_\+x, int p\+\_\+y, sf\+::\+Texture p\+\_\+T) override
+\begin{DoxyCompactList}\small\item\em Constructs the node. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_empty_node_a2281f852354a5b95ba06f4e2a7e8de34}{check\+Node\+Type}} () override
+\begin{DoxyCompactList}\small\item\em Method to check what type the node is. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class is designed to be the wall, a node that should not allow the unit to move too 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_empty_node_aa8c8d6db9649c4ff5624be87953092d1}\label{class_empty_node_aa8c8d6db9649c4ff5624be87953092d1}} 
+\index{Empty\+Node@{Empty\+Node}!````~Empty\+Node@{$\sim$\+Empty\+Node}}
+\index{````~Empty\+Node@{$\sim$\+Empty\+Node}!Empty\+Node@{Empty\+Node}}
+\subsubsection{\texorpdfstring{$\sim$\+Empty\+Node()}{~EmptyNode()}}
+{\footnotesize\ttfamily Empty\+Node\+::$\sim$\+Empty\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deconstructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+cost} & what is the cost of the node \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_empty_node_a2281f852354a5b95ba06f4e2a7e8de34}\label{class_empty_node_a2281f852354a5b95ba06f4e2a7e8de34}} 
+\index{Empty\+Node@{Empty\+Node}!check\+Node\+Type@{check\+Node\+Type}}
+\index{check\+Node\+Type@{check\+Node\+Type}!Empty\+Node@{Empty\+Node}}
+\subsubsection{\texorpdfstring{check\+Node\+Type()}{checkNodeType()}}
+{\footnotesize\ttfamily std\+::string Empty\+Node\+::check\+Node\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to check what type the node is. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+x} & it is the x posiiton \\
+\hline
+{\em p\+\_\+y} & it is the y position \\
+\hline
+{\em p\+\_\+T} & the texture of the node \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_node_interface_a944dbfa74de55bdef1d583f318888aeb}{Node\+Interface}}.
+
+\mbox{\Hypertarget{class_empty_node_a1f449e50eefe1388f5b255a5dc027cc8}\label{class_empty_node_a1f449e50eefe1388f5b255a5dc027cc8}} 
+\index{Empty\+Node@{Empty\+Node}!get\+Sprite@{get\+Sprite}}
+\index{get\+Sprite@{get\+Sprite}!Empty\+Node@{Empty\+Node}}
+\subsubsection{\texorpdfstring{get\+Sprite()}{getSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite$\ast$ Empty\+Node\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets a sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_node_interface_a3d79c567537e9ffa7d2fc821495879fb}{Node\+Interface}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Empty\+Node.\+h\end{DoxyCompactItemize}

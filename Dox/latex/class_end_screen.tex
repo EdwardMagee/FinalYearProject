@@ -1,0 +1,145 @@
+\hypertarget{class_end_screen}{}\section{End\+Screen Class Reference}
+\label{class_end_screen}\index{End\+Screen@{End\+Screen}}
+Inheritance diagram for End\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_end_screen}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_end_screen_a1da4fb23f00049e554bc5da3506248a3}\label{class_end_screen_a1da4fb23f00049e554bc5da3506248a3}} 
+\mbox{\hyperlink{class_end_screen_a1da4fb23f00049e554bc5da3506248a3}{End\+Screen}} (std\+::string p\+\_\+rounds, std\+::string p\+\_\+time, std\+::string p\+\_\+text)
+\begin{DoxyCompactList}\small\item\em Constructs the end screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_end_screen_a2bf71fd8fe94ee4ff206ff5303110864}{$\sim$\+End\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_acd68d144cfdf319138fb301f7f005fb0}\label{class_end_screen_acd68d144cfdf319138fb301f7f005fb0}} 
+void \mbox{\hyperlink{class_end_screen_acd68d144cfdf319138fb301f7f005fb0}{update\+Game}} (float p\+\_\+time) override
+\begin{DoxyCompactList}\small\item\em Updates the \mbox{\hyperlink{class_end_screen}{End\+Screen}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_end_screen_a7116698624a0a4af8e746c50800fe432}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em draws the end screen \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_end_screen_a33052db95f0c2aab9e4b2e0cbeec9e8e}{handle\+Input}} (int p\+\_\+\+Input\+Event) override
+\begin{DoxyCompactList}\small\item\em Handles the. \end{DoxyCompactList}\item 
+virtual End\+State \mbox{\hyperlink{class_end_screen_acd13799a074bb1984352a5262c3e3f29}{is\+Over}} () override
+\begin{DoxyCompactList}\small\item\em Returns the end state of the class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_aaca6fd16b77f8c78f8eb0f87aa6772ff}\label{class_end_screen_aaca6fd16b77f8c78f8eb0f87aa6772ff}} 
+virtual void \mbox{\hyperlink{class_end_screen_aaca6fd16b77f8c78f8eb0f87aa6772ff}{load\+Level}} () override
+\begin{DoxyCompactList}\small\item\em interface demands this to be here needed in other classes \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_end_screen_a731fe85d621665a781f5b9754f9fd8bf}\label{class_end_screen_a731fe85d621665a781f5b9754f9fd8bf}} 
+\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_end_screen_a731fe85d621665a781f5b9754f9fd8bf}{m\+\_\+textures}}
+\begin{DoxyCompactList}\small\item\em Gets the textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_a981ca19d838d0b2c669eb0f34a9900bc}\label{class_end_screen_a981ca19d838d0b2c669eb0f34a9900bc}} 
+End\+State \mbox{\hyperlink{class_end_screen_a981ca19d838d0b2c669eb0f34a9900bc}{m\+\_\+over}}
+\begin{DoxyCompactList}\small\item\em stores the end screen state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_a4a997b23ab2d79fe75dd7ceea33ea1ae}\label{class_end_screen_a4a997b23ab2d79fe75dd7ceea33ea1ae}} 
+sf\+::\+Font \mbox{\hyperlink{class_end_screen_a4a997b23ab2d79fe75dd7ceea33ea1ae}{m\+\_\+font}}
+\begin{DoxyCompactList}\small\item\em Stores the font. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_a1f1c5b95fd0a4956ca424b9cb648baba}\label{class_end_screen_a1f1c5b95fd0a4956ca424b9cb648baba}} 
+sf\+::\+Text \mbox{\hyperlink{class_end_screen_a1f1c5b95fd0a4956ca424b9cb648baba}{m\+\_\+round\+Text}}
+\begin{DoxyCompactList}\small\item\em used to display what round the player was on to the screen \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_af88c60579eafb6a373f27e91bb9e979a}\label{class_end_screen_af88c60579eafb6a373f27e91bb9e979a}} 
+sf\+::\+Text \mbox{\hyperlink{class_end_screen_af88c60579eafb6a373f27e91bb9e979a}{m\+\_\+time\+Text}}
+\begin{DoxyCompactList}\small\item\em Displays the time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_a63e6204ce588b54205a973d9607cb34d}\label{class_end_screen_a63e6204ce588b54205a973d9607cb34d}} 
+sf\+::\+Text \mbox{\hyperlink{class_end_screen_a63e6204ce588b54205a973d9607cb34d}{m\+\_\+screen\+Text}}
+\begin{DoxyCompactList}\small\item\em Displays text to the end screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_aeb22f5f583972358483e76eb0ae34e68}\label{class_end_screen_aeb22f5f583972358483e76eb0ae34e68}} 
+sf\+::\+Sprite \mbox{\hyperlink{class_end_screen_aeb22f5f583972358483e76eb0ae34e68}{m\+\_\+s\+Background}}
+\begin{DoxyCompactList}\small\item\em The Background sprite of the end screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_end_screen_a2c4defa1110c242bef3ada6e6404d549}\label{class_end_screen_a2c4defa1110c242bef3ada6e6404d549}} 
+sf\+::\+Texture \mbox{\hyperlink{class_end_screen_a2c4defa1110c242bef3ada6e6404d549}{m\+\_\+t\+Background}}
+\begin{DoxyCompactList}\small\item\em Texture of the background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_end_screen_a2bf71fd8fe94ee4ff206ff5303110864}\label{class_end_screen_a2bf71fd8fe94ee4ff206ff5303110864}} 
+\index{End\+Screen@{End\+Screen}!````~End\+Screen@{$\sim$\+End\+Screen}}
+\index{````~End\+Screen@{$\sim$\+End\+Screen}!End\+Screen@{End\+Screen}}
+\subsubsection{\texorpdfstring{$\sim$\+End\+Screen()}{~EndScreen()}}
+{\footnotesize\ttfamily End\+Screen\+::$\sim$\+End\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deconstructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+rounds} & contains the string for text \\
+\hline
+{\em p\+\_\+time} & contains string text \\
+\hline
+{\em p\+\_\+text} & contains text to be added to the screen \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_end_screen_a7116698624a0a4af8e746c50800fe432}\label{class_end_screen_a7116698624a0a4af8e746c50800fe432}} 
+\index{End\+Screen@{End\+Screen}!draw@{draw}}
+\index{draw@{draw}!End\+Screen@{End\+Screen}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void End\+Screen\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draws the end screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_ab33712e6b22b934982896ea0cab1699a}{Game\+Interface}}.
+
+\mbox{\Hypertarget{class_end_screen_a33052db95f0c2aab9e4b2e0cbeec9e8e}\label{class_end_screen_a33052db95f0c2aab9e4b2e0cbeec9e8e}} 
+\index{End\+Screen@{End\+Screen}!handle\+Input@{handle\+Input}}
+\index{handle\+Input@{handle\+Input}!End\+Screen@{End\+Screen}}
+\subsubsection{\texorpdfstring{handle\+Input()}{handleInput()}}
+{\footnotesize\ttfamily void End\+Screen\+::handle\+Input (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+\+Input\+Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & draw this \\
+\hline
+{\em states} & paramater needed for the draw method \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_a48b4f6059c14c79359d30b77016a28f0}{Game\+Interface}}.
+
+\mbox{\Hypertarget{class_end_screen_acd13799a074bb1984352a5262c3e3f29}\label{class_end_screen_acd13799a074bb1984352a5262c3e3f29}} 
+\index{End\+Screen@{End\+Screen}!is\+Over@{is\+Over}}
+\index{is\+Over@{is\+Over}!End\+Screen@{End\+Screen}}
+\subsubsection{\texorpdfstring{is\+Over()}{isOver()}}
+{\footnotesize\ttfamily virtual End\+State End\+Screen\+::is\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the end state of the class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Input\+Event} & information needed to know what key is pressed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_a5bad60f237214cb1ec013e221ed16f45}{Game\+Interface}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/End\+Screen.\+h\end{DoxyCompactItemize}

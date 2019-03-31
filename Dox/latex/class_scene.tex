@@ -1,0 +1,236 @@
+\hypertarget{class_scene}{}\section{Scene Class Reference}
+\label{class_scene}\index{Scene@{Scene}}
+
+
+{\ttfamily \#include $<$Scene.\+h$>$}
+
+Inheritance diagram for Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_ac0b5325e1196ae9fb1a4d1d6adde0795}\label{class_scene_ac0b5325e1196ae9fb1a4d1d6adde0795}} 
+void \mbox{\hyperlink{class_scene_ac0b5325e1196ae9fb1a4d1d6adde0795}{update\+Scene}} (float p\+\_\+time) override
+\begin{DoxyCompactList}\small\item\em Update scene. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_scene_a27a8b36b21dd9475d47c13db8cfdae64}{load\+Level}} (std\+::string p\+\_\+level) override
+\begin{DoxyCompactList}\small\item\em Load level. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Sprite $\ast$ $>$ \mbox{\hyperlink{class_scene_a595b66ffbd3efe4a0dd40f704a84c378}{get\+Sprite\+Vector}} () override
+\begin{DoxyCompactList}\small\item\em Gets a vector of sprites to draw. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a3a3d817613f8d775fd6fb244c54ec5b1}\label{class_scene_a3a3d817613f8d775fd6fb244c54ec5b1}} 
+End\+State \mbox{\hyperlink{class_scene_a3a3d817613f8d775fd6fb244c54ec5b1}{get\+End\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the scenes end state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a7c64740eba60afdacf9622122b8a4348}\label{class_scene_a7c64740eba60afdacf9622122b8a4348}} 
+int \mbox{\hyperlink{class_scene_a7c64740eba60afdacf9622122b8a4348}{get\+Round}} ()
+\begin{DoxyCompactList}\small\item\em What round is it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a507df51d6597c3e84590c579a26d0856}\label{class_scene_a507df51d6597c3e84590c579a26d0856}} 
+void \mbox{\hyperlink{class_scene_a507df51d6597c3e84590c579a26d0856}{check\+Stats}} ()
+\begin{DoxyCompactList}\small\item\em Display the units stats. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_af2908989883758468fc2add26b3637e6}\label{class_scene_af2908989883758468fc2add26b3637e6}} 
+sf\+::\+Sprite \mbox{\hyperlink{class_scene_af2908989883758468fc2add26b3637e6}{get\+Selector}} ()
+\begin{DoxyCompactList}\small\item\em Gets the selector to draw. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_ac8eec69b021a9cd85f39aaaeb9de8785}\label{class_scene_ac8eec69b021a9cd85f39aaaeb9de8785}} 
+void \mbox{\hyperlink{class_scene_ac8eec69b021a9cd85f39aaaeb9de8785}{increment\+Selector}} (sf\+::\+Vector2i p\+\_\+new\+Pos)
+\begin{DoxyCompactList}\small\item\em Moves the selector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a2b3d2bde3505a1626ad5c8435025e9fc}{decrease\+Selector}} (sf\+::\+Vector2i p\+\_\+new\+Pos)
+\begin{DoxyCompactList}\small\item\em Moves the selector down. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a33e61bb927aa8a3e1070a907ffff24a5}{Players\+Move}} ()
+\begin{DoxyCompactList}\small\item\em When the player hits enter key there move begins. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a3ebc1a157e63088eb47ff6cea6dd6d56}\label{class_scene_a3ebc1a157e63088eb47ff6cea6dd6d56}} 
+\mbox{\hyperlink{class_h_u_d}{H\+UD}} $\ast$ \mbox{\hyperlink{class_scene_a3ebc1a157e63088eb47ff6cea6dd6d56}{get\+H\+UD}} () override
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_h_u_d}{H\+UD}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a8a67c7ff953a4808b45981f8a40bafa3}\label{class_scene_a8a67c7ff953a4808b45981f8a40bafa3}} 
+\mbox{\hyperlink{class_scene_a8a67c7ff953a4808b45981f8a40bafa3}{Scene}} (std\+::string p\+\_\+characters, std\+::string p\+\_\+nodes)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{$\sim$\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_a8d7c43876336f52c76a288532e681c7c}\label{class_scene_a8d7c43876336f52c76a288532e681c7c}} 
+bool \mbox{\hyperlink{class_scene_a8d7c43876336f52c76a288532e681c7c}{playerkilled}}
+\begin{DoxyCompactList}\small\item\em Was a unit killed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a5d79aa70e9ac8b5851ad8c28d5629c35}\label{class_scene_a5d79aa70e9ac8b5851ad8c28d5629c35}} 
+bool \mbox{\hyperlink{class_scene_a5d79aa70e9ac8b5851ad8c28d5629c35}{m\+\_\+reached\+Goal}}
+\begin{DoxyCompactList}\small\item\em Did the unit reach the goal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a70a2c4620c467044155309b945fe4c33}\label{class_scene_a70a2c4620c467044155309b945fe4c33}} 
+\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_scene_a70a2c4620c467044155309b945fe4c33}{m\+\_\+texture\+Handler}}
+\begin{DoxyCompactList}\small\item\em Texture Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a3736d22281ac82fd3a16f434487442d3}\label{class_scene_a3736d22281ac82fd3a16f434487442d3}} 
+\mbox{\hyperlink{class_file_reader}{File\+Reader}} $\ast$ \mbox{\hyperlink{class_scene_a3736d22281ac82fd3a16f434487442d3}{m\+\_\+file\+Reader}}
+\begin{DoxyCompactList}\small\item\em File reader. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a2191f78a6e675382488cdaca6e371c32}\label{class_scene_a2191f78a6e675382488cdaca6e371c32}} 
+\mbox{\hyperlink{class_sprite_interface}{Sprite\+Interface}} $\ast$ \mbox{\hyperlink{class_scene_a2191f78a6e675382488cdaca6e371c32}{Target}}
+\begin{DoxyCompactList}\small\item\em pointer to a target \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_ab736eefd11ca6f4b90c0240895c316c4}\label{class_scene_ab736eefd11ca6f4b90c0240895c316c4}} 
+Game\+State \mbox{\hyperlink{class_scene_ab736eefd11ca6f4b90c0240895c316c4}{m\+\_\+game\+State}}
+\begin{DoxyCompactList}\small\item\em Stores the games current state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_abf242918885f639abdb059385a35dfda}\label{class_scene_abf242918885f639abdb059385a35dfda}} 
+End\+State \mbox{\hyperlink{class_scene_abf242918885f639abdb059385a35dfda}{m\+\_\+game\+Over\+State}}
+\begin{DoxyCompactList}\small\item\em Stores the end state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_aa2a82603f5db50e33fae8f444c6986ac}\label{class_scene_aa2a82603f5db50e33fae8f444c6986ac}} 
+sf\+::\+Sprite \mbox{\hyperlink{class_scene_aa2a82603f5db50e33fae8f444c6986ac}{m\+\_\+selector}}
+\begin{DoxyCompactList}\small\item\em Sprite of the selector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a1bfd679d50e896a6e56e73690001eb8b}\label{class_scene_a1bfd679d50e896a6e56e73690001eb8b}} 
+sf\+::\+Texture \mbox{\hyperlink{class_scene_a1bfd679d50e896a6e56e73690001eb8b}{m\+\_\+selector\+Texture}}
+\begin{DoxyCompactList}\small\item\em Texture of the selector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a30daf51f6f59d17c526be427856457ce}\label{class_scene_a30daf51f6f59d17c526be427856457ce}} 
+sf\+::\+Vector2i \mbox{\hyperlink{class_scene_a30daf51f6f59d17c526be427856457ce}{m\+\_\+selector\+Pos}}
+\begin{DoxyCompactList}\small\item\em Position of the selector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_ae5339ca6ff15be177b1ed83f5a894801}\label{class_scene_ae5339ca6ff15be177b1ed83f5a894801}} 
+std\+::vector$<$ \mbox{\hyperlink{class_sprite_interface}{Sprite\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_scene_ae5339ca6ff15be177b1ed83f5a894801}{m\+\_\+vector\+Sprites}}
+\begin{DoxyCompactList}\small\item\em A vector of all the sprites. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a4f25002a15f8f1549f8337bc84ff83e4}\label{class_scene_a4f25002a15f8f1549f8337bc84ff83e4}} 
+\mbox{\hyperlink{class_sprite_interface}{Sprite\+Interface}} $\ast$ \mbox{\hyperlink{class_scene_a4f25002a15f8f1549f8337bc84ff83e4}{m\+\_\+player\+Temp}}
+\begin{DoxyCompactList}\small\item\em stores a temp of the player \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_abb000b09241752a5acc17bdcd3936c6e}\label{class_scene_abb000b09241752a5acc17bdcd3936c6e}} 
+int \mbox{\hyperlink{class_scene_abb000b09241752a5acc17bdcd3936c6e}{current\+Player}}
+\begin{DoxyCompactList}\small\item\em What is the current player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a012fe2d4370deb5bdac43bd5e607ca42}\label{class_scene_a012fe2d4370deb5bdac43bd5e607ca42}} 
+int \mbox{\hyperlink{class_scene_a012fe2d4370deb5bdac43bd5e607ca42}{current\+Target}}
+\begin{DoxyCompactList}\small\item\em What is the current target. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a3c8813c62033911d9a602a49a8beca76}\label{class_scene_a3c8813c62033911d9a602a49a8beca76}} 
+int \mbox{\hyperlink{class_scene_a3c8813c62033911d9a602a49a8beca76}{startof\+Knights}}
+\begin{DoxyCompactList}\small\item\em what is the start of the knights in the vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a903aebbd9a63f70dbb9df52a253e83ce}\label{class_scene_a903aebbd9a63f70dbb9df52a253e83ce}} 
+int \mbox{\hyperlink{class_scene_a903aebbd9a63f70dbb9df52a253e83ce}{startof\+Vampires}}
+\begin{DoxyCompactList}\small\item\em Was a unit killed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a4a072bf6c3a790daef87ff8268e4556d}\label{class_scene_a4a072bf6c3a790daef87ff8268e4556d}} 
+int \mbox{\hyperlink{class_scene_a4a072bf6c3a790daef87ff8268e4556d}{total\+Characters}}
+\begin{DoxyCompactList}\small\item\em How many characters are ther. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_abbb010c89e64b117c17ed75fbfd13e49}\label{class_scene_abbb010c89e64b117c17ed75fbfd13e49}} 
+bool \mbox{\hyperlink{class_scene_abbb010c89e64b117c17ed75fbfd13e49}{newcurrent\+Player}}
+\begin{DoxyCompactList}\small\item\em is there a new current player \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_ade40d20e64f9d4ccc1448936b47b9c00}\label{class_scene_ade40d20e64f9d4ccc1448936b47b9c00}} 
+std\+::vector$<$ sf\+::\+Sprite $\ast$ $>$ \mbox{\hyperlink{class_scene_ade40d20e64f9d4ccc1448936b47b9c00}{m\+\_\+vector\+Temp}}
+\begin{DoxyCompactList}\small\item\em A temp vector containing sprites. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a91f8a53d7d0e9f6087baa3fa30c432e4}\label{class_scene_a91f8a53d7d0e9f6087baa3fa30c432e4}} 
+std\+::list$<$ \mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ $>$ \mbox{\hyperlink{class_scene_a91f8a53d7d0e9f6087baa3fa30c432e4}{m\+\_\+path\+List}}
+\begin{DoxyCompactList}\small\item\em path the unit must take \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_ad0e56315eddcb1259330fcd33340cdf6}\label{class_scene_ad0e56315eddcb1259330fcd33340cdf6}} 
+\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_scene_ad0e56315eddcb1259330fcd33340cdf6}{m\+\_\+prevoius\+Node}}
+\begin{DoxyCompactList}\small\item\em Pointer to the prevoius node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_af60873fd6cdd2e5c28ab765866d048f5}\label{class_scene_af60873fd6cdd2e5c28ab765866d048f5}} 
+\mbox{\hyperlink{class_node_interface}{Node\+Interface}} $\ast$ \mbox{\hyperlink{class_scene_af60873fd6cdd2e5c28ab765866d048f5}{temp}}
+\begin{DoxyCompactList}\small\item\em Holds on to a node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a4d3a38106693ded1bbdc4bc850711bc0}\label{class_scene_a4d3a38106693ded1bbdc4bc850711bc0}} 
+\mbox{\hyperlink{class_graph}{Graph}} $\ast$ \mbox{\hyperlink{class_scene_a4d3a38106693ded1bbdc4bc850711bc0}{m\+\_\+\+Graph}}
+\begin{DoxyCompactList}\small\item\em Game object \mbox{\hyperlink{class_graph}{Graph}} used to create the grid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_afb32c22792c8aeb990d043e3abd79c7e}\label{class_scene_afb32c22792c8aeb990d043e3abd79c7e}} 
+\mbox{\hyperlink{class_h_u_d}{H\+UD}} $\ast$ \mbox{\hyperlink{class_scene_afb32c22792c8aeb990d043e3abd79c7e}{m\+\_\+game\+Hud}}
+\begin{DoxyCompactList}\small\item\em Game object used to display some text to the screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_afbc60d92daf6a7ce27403484313b1dcb}\label{class_scene_afbc60d92daf6a7ce27403484313b1dcb}} 
+int \mbox{\hyperlink{class_scene_afbc60d92daf6a7ce27403484313b1dcb}{m\+\_\+round}}
+\begin{DoxyCompactList}\small\item\em Stores the current round. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a6aaf00569c8fb13c0f970effb31ad340}\label{class_scene_a6aaf00569c8fb13c0f970effb31ad340}} 
+int \mbox{\hyperlink{class_scene_a6aaf00569c8fb13c0f970effb31ad340}{current\+Enemy}}
+\begin{DoxyCompactList}\small\item\em What is the current enemy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a082957d9d74447aa8acbb7192074510e}\label{class_scene_a082957d9d74447aa8acbb7192074510e}} 
+float \mbox{\hyperlink{class_scene_a082957d9d74447aa8acbb7192074510e}{m\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Stores the time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a39f11954b4d7250aeedc2a60e78fbb18}\label{class_scene_a39f11954b4d7250aeedc2a60e78fbb18}} 
+float \mbox{\hyperlink{class_scene_a39f11954b4d7250aeedc2a60e78fbb18}{moving\+Counter}}
+\begin{DoxyCompactList}\small\item\em counter used to slow characters down \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This handles a lot of the game logic, each new scene can have diffrent nodes, characters etc 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scene_a3b8cec2e32546713915f8c6303c951f1}\label{class_scene_a3b8cec2e32546713915f8c6303c951f1}} 
+\index{Scene@{Scene}!````~Scene@{$\sim$\+Scene}}
+\index{````~Scene@{$\sim$\+Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{$\sim$\+Scene()}{~Scene()}}
+{\footnotesize\ttfamily Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deconstructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+characaters} & contains information the game scharacaters \\
+\hline
+{\em p\+\_\+nodes} & contains information the game nodes \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_a2b3d2bde3505a1626ad5c8435025e9fc}\label{class_scene_a2b3d2bde3505a1626ad5c8435025e9fc}} 
+\index{Scene@{Scene}!decrease\+Selector@{decrease\+Selector}}
+\index{decrease\+Selector@{decrease\+Selector}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{decrease\+Selector()}{decreaseSelector()}}
+{\footnotesize\ttfamily void Scene\+::decrease\+Selector (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{p\+\_\+new\+Pos }\end{DoxyParamCaption})}
+
+
+
+Moves the selector down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+new\+Pos} & used to move the selector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a595b66ffbd3efe4a0dd40f704a84c378}\label{class_scene_a595b66ffbd3efe4a0dd40f704a84c378}} 
+\index{Scene@{Scene}!get\+Sprite\+Vector@{get\+Sprite\+Vector}}
+\index{get\+Sprite\+Vector@{get\+Sprite\+Vector}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Sprite\+Vector()}{getSpriteVector()}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Sprite$\ast$$>$ Scene\+::get\+Sprite\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets a vector of sprites to draw. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+level} & passes in level information \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_scene_interface_af4cdfa0df6cbbba34d66870ea83b2a0a}{Scene\+Interface}}.
+
+\mbox{\Hypertarget{class_scene_a27a8b36b21dd9475d47c13db8cfdae64}\label{class_scene_a27a8b36b21dd9475d47c13db8cfdae64}} 
+\index{Scene@{Scene}!load\+Level@{load\+Level}}
+\index{load\+Level@{load\+Level}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{load\+Level()}{loadLevel()}}
+{\footnotesize\ttfamily bool Scene\+::load\+Level (\begin{DoxyParamCaption}\item[{std\+::string}]{p\+\_\+level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Load level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_scene_interface_a54c0b8784bcb2278aeb9b6030df9a158}{Scene\+Interface}}.
+
+\mbox{\Hypertarget{class_scene_a33e61bb927aa8a3e1070a907ffff24a5}\label{class_scene_a33e61bb927aa8a3e1070a907ffff24a5}} 
+\index{Scene@{Scene}!Players\+Move@{Players\+Move}}
+\index{Players\+Move@{Players\+Move}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{Players\+Move()}{PlayersMove()}}
+{\footnotesize\ttfamily void Scene\+::\+Players\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+When the player hits enter key there move begins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+new\+Pos} & used to move the selector \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Scene.\+h\end{DoxyCompactItemize}

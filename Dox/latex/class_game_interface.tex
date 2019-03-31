@@ -1,0 +1,97 @@
+\hypertarget{class_game_interface}{}\section{Game\+Interface Class Reference}
+\label{class_game_interface}\index{Game\+Interface@{Game\+Interface}}
+
+
+{\ttfamily \#include $<$Game\+Interface.\+h$>$}
+
+Inheritance diagram for Game\+Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_game_interface}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_interface_a5704fbd5713a20e95032dcf1631bdd67}\label{class_game_interface_a5704fbd5713a20e95032dcf1631bdd67}} 
+virtual void \mbox{\hyperlink{class_game_interface_a5704fbd5713a20e95032dcf1631bdd67}{update\+Game}} (float p\+\_\+time)=0
+\begin{DoxyCompactList}\small\item\em Every game needs to be updated. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_game_interface_ab33712e6b22b934982896ea0cab1699a}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const =0
+\begin{DoxyCompactList}\small\item\em Every game needs to be drawn. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_game_interface_a48b4f6059c14c79359d30b77016a28f0}{handle\+Input}} (int p\+\_\+\+Input\+Event)=0
+\begin{DoxyCompactList}\small\item\em Every game needs key inputs. \end{DoxyCompactList}\item 
+virtual End\+State \mbox{\hyperlink{class_game_interface_a5bad60f237214cb1ec013e221ed16f45}{is\+Over}} ()=0
+\begin{DoxyCompactList}\small\item\em Every game needs an end state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_interface_a48c841b894ea37938996e3d5a40353b5}\label{class_game_interface_a48c841b894ea37938996e3d5a40353b5}} 
+virtual void \mbox{\hyperlink{class_game_interface_a48c841b894ea37938996e3d5a40353b5}{load\+Level}} ()=0
+\begin{DoxyCompactList}\small\item\em Every game needs to be loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An interface class used for each window origanlly ment to be just for the game but it had values the menu\textquotesingle{}s could use 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_interface_ab33712e6b22b934982896ea0cab1699a}\label{class_game_interface_ab33712e6b22b934982896ea0cab1699a}} 
+\index{Game\+Interface@{Game\+Interface}!draw@{draw}}
+\index{draw@{draw}!Game\+Interface@{Game\+Interface}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily virtual void Game\+Interface\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Every game needs to be drawn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_game_one_af4df2785640103b623be240fa8be1e8a}{Game\+One}}, \mbox{\hyperlink{class_end_screen_a7116698624a0a4af8e746c50800fe432}{End\+Screen}}, and \mbox{\hyperlink{class_menu_one_a861529b6fcc30daebc753186714e3cc9}{Menu\+One}}.
+
+\mbox{\Hypertarget{class_game_interface_a48b4f6059c14c79359d30b77016a28f0}\label{class_game_interface_a48b4f6059c14c79359d30b77016a28f0}} 
+\index{Game\+Interface@{Game\+Interface}!handle\+Input@{handle\+Input}}
+\index{handle\+Input@{handle\+Input}!Game\+Interface@{Game\+Interface}}
+\subsubsection{\texorpdfstring{handle\+Input()}{handleInput()}}
+{\footnotesize\ttfamily virtual void Game\+Interface\+::handle\+Input (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+\+Input\+Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Every game needs key inputs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & draw this \\
+\hline
+{\em states} & paramater needed for the draw method \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_game_one_ae1ecd54039b4a3650f0d113ef4629da3}{Game\+One}}, \mbox{\hyperlink{class_end_screen_a33052db95f0c2aab9e4b2e0cbeec9e8e}{End\+Screen}}, and \mbox{\hyperlink{class_menu_one_aee28812124909d8734eeeaecfde35f0f}{Menu\+One}}.
+
+\mbox{\Hypertarget{class_game_interface_a5bad60f237214cb1ec013e221ed16f45}\label{class_game_interface_a5bad60f237214cb1ec013e221ed16f45}} 
+\index{Game\+Interface@{Game\+Interface}!is\+Over@{is\+Over}}
+\index{is\+Over@{is\+Over}!Game\+Interface@{Game\+Interface}}
+\subsubsection{\texorpdfstring{is\+Over()}{isOver()}}
+{\footnotesize\ttfamily virtual End\+State Game\+Interface\+::is\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Every game needs an end state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Input\+Event} & information needed to know what key is pressed \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_game_one_a9e9050de230336fac769ab5e8b23f7f8}{Game\+One}}, \mbox{\hyperlink{class_end_screen_acd13799a074bb1984352a5262c3e3f29}{End\+Screen}}, and \mbox{\hyperlink{class_menu_one_aa1d50806994903b77d44d241d7755404}{Menu\+One}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Game\+Interface.\+h\end{DoxyCompactItemize}

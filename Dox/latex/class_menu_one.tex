@@ -1,0 +1,149 @@
+\hypertarget{class_menu_one}{}\section{Menu\+One Class Reference}
+\label{class_menu_one}\index{Menu\+One@{Menu\+One}}
+
+
+{\ttfamily \#include $<$Menu\+One.\+h$>$}
+
+Inheritance diagram for Menu\+One\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_menu_one}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_menu_one_af646b18d41ccf6412d40c4534c87859b}\label{class_menu_one_af646b18d41ccf6412d40c4534c87859b}} 
+\mbox{\hyperlink{class_menu_one_af646b18d41ccf6412d40c4534c87859b}{Menu\+One}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a42980aef723c12ee5fcb3a7b2be9490e}\label{class_menu_one_a42980aef723c12ee5fcb3a7b2be9490e}} 
+\mbox{\hyperlink{class_menu_one_a42980aef723c12ee5fcb3a7b2be9490e}{$\sim$\+Menu\+One}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_ac0d1bdcb57588c6efd661979afd384e1}\label{class_menu_one_ac0d1bdcb57588c6efd661979afd384e1}} 
+void \mbox{\hyperlink{class_menu_one_ac0d1bdcb57588c6efd661979afd384e1}{update\+Game}} (float p\+\_\+time) override
+\begin{DoxyCompactList}\small\item\em update the menu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_one_a861529b6fcc30daebc753186714e3cc9}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em draw the menu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_one_aee28812124909d8734eeeaecfde35f0f}{handle\+Input}} (int p\+\_\+\+Input\+Event) override
+\begin{DoxyCompactList}\small\item\em Handles menu input. \end{DoxyCompactList}\item 
+virtual End\+State \mbox{\hyperlink{class_menu_one_aa1d50806994903b77d44d241d7755404}{is\+Over}} () override
+\begin{DoxyCompactList}\small\item\em What is the end stae. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_ae4b7ffe12a5e54975c2cf7c75982c47b}\label{class_menu_one_ae4b7ffe12a5e54975c2cf7c75982c47b}} 
+virtual void \mbox{\hyperlink{class_menu_one_ae4b7ffe12a5e54975c2cf7c75982c47b}{load\+Level}} () override
+\begin{DoxyCompactList}\small\item\em Load the level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a62021e82a91bcfefe2508c1abc89af39}\label{class_menu_one_a62021e82a91bcfefe2508c1abc89af39}} 
+int \mbox{\hyperlink{class_menu_one_a62021e82a91bcfefe2508c1abc89af39}{get\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Get the level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_menu_one_adc87ccaf60520d5eff34b4132e09a9e4}\label{class_menu_one_adc87ccaf60520d5eff34b4132e09a9e4}} 
+\mbox{\hyperlink{class_file_reader_game_assests}{File\+Reader\+Game\+Assests}} $\ast$ \mbox{\hyperlink{class_menu_one_adc87ccaf60520d5eff34b4132e09a9e4}{m\+\_\+reader}}
+\begin{DoxyCompactList}\small\item\em Game Assests reader. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a7d04616d482ed54b3f84b6f9e3b4de09}\label{class_menu_one_a7d04616d482ed54b3f84b6f9e3b4de09}} 
+sf\+::\+Sprite \mbox{\hyperlink{class_menu_one_a7d04616d482ed54b3f84b6f9e3b4de09}{m\+\_\+s\+Background}}
+\begin{DoxyCompactList}\small\item\em Backround. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a53ba11130fd8062dfbf49bbea7726266}\label{class_menu_one_a53ba11130fd8062dfbf49bbea7726266}} 
+sf\+::\+Texture \mbox{\hyperlink{class_menu_one_a53ba11130fd8062dfbf49bbea7726266}{m\+\_\+t\+Background}}
+\begin{DoxyCompactList}\small\item\em Texture of background. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a4d39bd33df8d3fcbf177ff096f6ff453}\label{class_menu_one_a4d39bd33df8d3fcbf177ff096f6ff453}} 
+std\+::vector$<$ sf\+::\+Sprite $\ast$ $>$ \mbox{\hyperlink{class_menu_one_a4d39bd33df8d3fcbf177ff096f6ff453}{m\+\_\+s\+Buttons}}
+\begin{DoxyCompactList}\small\item\em Buttons on the menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_af8eb4784fa6e62496705c89e9aab7d86}\label{class_menu_one_af8eb4784fa6e62496705c89e9aab7d86}} 
+sf\+::\+Texture \mbox{\hyperlink{class_menu_one_af8eb4784fa6e62496705c89e9aab7d86}{m\+\_\+t\+Buttons}}
+\begin{DoxyCompactList}\small\item\em Texture of those buttons. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a1e7bb22ae51a05f0927fd01e05ea3116}\label{class_menu_one_a1e7bb22ae51a05f0927fd01e05ea3116}} 
+sf\+::\+Sprite \mbox{\hyperlink{class_menu_one_a1e7bb22ae51a05f0927fd01e05ea3116}{m\+\_\+s\+Selector}}
+\begin{DoxyCompactList}\small\item\em The selector changing what the button looks like. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a8bd621656e2106144772e92ce2e1d42c}\label{class_menu_one_a8bd621656e2106144772e92ce2e1d42c}} 
+sf\+::\+Texture \mbox{\hyperlink{class_menu_one_a8bd621656e2106144772e92ce2e1d42c}{m\+\_\+t\+Selector}}
+\begin{DoxyCompactList}\small\item\em Texture of the changer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a785b997d5cc3bb1515ba61f45971624a}\label{class_menu_one_a785b997d5cc3bb1515ba61f45971624a}} 
+sf\+::\+Font \mbox{\hyperlink{class_menu_one_a785b997d5cc3bb1515ba61f45971624a}{m\+\_\+font}}
+\begin{DoxyCompactList}\small\item\em Menu Font. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a36b54bfaec07fa54a752649fdd29954f}\label{class_menu_one_a36b54bfaec07fa54a752649fdd29954f}} 
+sf\+::\+Text \mbox{\hyperlink{class_menu_one_a36b54bfaec07fa54a752649fdd29954f}{m\+\_\+menu\+Text}}
+\begin{DoxyCompactList}\small\item\em Text on the menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_aa80508cb857fab740bef53b81affd3e0}\label{class_menu_one_aa80508cb857fab740bef53b81affd3e0}} 
+std\+::vector$<$ sf\+::\+Text $\ast$ $>$ \mbox{\hyperlink{class_menu_one_aa80508cb857fab740bef53b81affd3e0}{m\+\_\+button\+Text}}
+\begin{DoxyCompactList}\small\item\em Text in the button. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a56f390ef6e56c20246fa6b5cca02e181}\label{class_menu_one_a56f390ef6e56c20246fa6b5cca02e181}} 
+\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_menu_one_a56f390ef6e56c20246fa6b5cca02e181}{m\+\_\+textures}}
+\begin{DoxyCompactList}\small\item\em Texture Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_ab8b2c807616861d67f442b7757012479}\label{class_menu_one_ab8b2c807616861d67f442b7757012479}} 
+int \mbox{\hyperlink{class_menu_one_ab8b2c807616861d67f442b7757012479}{m\+\_\+current\+Level}}
+\begin{DoxyCompactList}\small\item\em Stores the current level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_one_a7b8b398cbbcd5702c7fa27a5546d0ca1}\label{class_menu_one_a7b8b398cbbcd5702c7fa27a5546d0ca1}} 
+End\+State \mbox{\hyperlink{class_menu_one_a7b8b398cbbcd5702c7fa27a5546d0ca1}{m\+\_\+over}}
+\begin{DoxyCompactList}\small\item\em End state is stored here. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class is used for the starting menu\textquotesingle{}s it allows the user what level they want to play 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_one_a861529b6fcc30daebc753186714e3cc9}\label{class_menu_one_a861529b6fcc30daebc753186714e3cc9}} 
+\index{Menu\+One@{Menu\+One}!draw@{draw}}
+\index{draw@{draw}!Menu\+One@{Menu\+One}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Menu\+One\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw the menu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_ab33712e6b22b934982896ea0cab1699a}{Game\+Interface}}.
+
+\mbox{\Hypertarget{class_menu_one_aee28812124909d8734eeeaecfde35f0f}\label{class_menu_one_aee28812124909d8734eeeaecfde35f0f}} 
+\index{Menu\+One@{Menu\+One}!handle\+Input@{handle\+Input}}
+\index{handle\+Input@{handle\+Input}!Menu\+One@{Menu\+One}}
+\subsubsection{\texorpdfstring{handle\+Input()}{handleInput()}}
+{\footnotesize\ttfamily void Menu\+One\+::handle\+Input (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+\+Input\+Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles menu input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & draw this \\
+\hline
+{\em states} & paramater needed for the draw method \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_a48b4f6059c14c79359d30b77016a28f0}{Game\+Interface}}.
+
+\mbox{\Hypertarget{class_menu_one_aa1d50806994903b77d44d241d7755404}\label{class_menu_one_aa1d50806994903b77d44d241d7755404}} 
+\index{Menu\+One@{Menu\+One}!is\+Over@{is\+Over}}
+\index{is\+Over@{is\+Over}!Menu\+One@{Menu\+One}}
+\subsubsection{\texorpdfstring{is\+Over()}{isOver()}}
+{\footnotesize\ttfamily virtual End\+State Menu\+One\+::is\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+What is the end stae. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Input\+Event} & information needed to know what key is pressed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_a5bad60f237214cb1ec013e221ed16f45}{Game\+Interface}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Menu\+One.\+h\end{DoxyCompactItemize}

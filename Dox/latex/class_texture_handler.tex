@@ -1,0 +1,95 @@
+\hypertarget{class_texture_handler}{}\section{Texture\+Handler Class Reference}
+\label{class_texture_handler}\index{Texture\+Handler@{Texture\+Handler}}
+
+
+{\ttfamily \#include $<$Texture\+Handler.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_handler_a6c6cfe48db6e9b582bc29b44c37758e6}\label{class_texture_handler_a6c6cfe48db6e9b582bc29b44c37758e6}} 
+\mbox{\hyperlink{class_texture_handler_a6c6cfe48db6e9b582bc29b44c37758e6}{$\sim$\+Texture\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_handler_ae3c5e0e1c61458009817ea91d4aa6eec}\label{class_texture_handler_ae3c5e0e1c61458009817ea91d4aa6eec}} 
+void \mbox{\hyperlink{class_texture_handler_ae3c5e0e1c61458009817ea91d4aa6eec}{insert\+Texture}} (string p\+\_\+\+Path, string p\+\_\+\+Filename)
+\begin{DoxyCompactList}\small\item\em add a texture \end{DoxyCompactList}\item 
+sf\+::\+Texture \mbox{\hyperlink{class_texture_handler_a14f9286e41340937add40ec11453b2b4}{get\+Texture}} (string p\+\_\+\+File\+Name)
+\begin{DoxyCompactList}\small\item\em get me the texture \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_texture_handler_a1e980f198f0f1ec4bea0f670d8f72e88}{Texture\+Handler}} (\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} const \&)=delete
+\begin{DoxyCompactList}\small\item\em Deletes the assigment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_handler_adb37fce7620b391fd3ee6b1c2d8596e5}\label{class_texture_handler_adb37fce7620b391fd3ee6b1c2d8596e5}} 
+\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} \& \mbox{\hyperlink{class_texture_handler_adb37fce7620b391fd3ee6b1c2d8596e5}{operator=}} (\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} const \&)=delete
+\begin{DoxyCompactList}\small\item\em deletes the copy operator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_handler_a4f7833f068be40b04495c529bdbb8eb7}\label{class_texture_handler_a4f7833f068be40b04495c529bdbb8eb7}} 
+static \mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_texture_handler_a4f7833f068be40b04495c529bdbb8eb7}{instance}} ()
+\begin{DoxyCompactList}\small\item\em calling the instance of the class \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_handler_a9056de3d9a44b2e696c8e8b39462dd46}\label{class_texture_handler_a9056de3d9a44b2e696c8e8b39462dd46}} 
+\mbox{\hyperlink{class_texture_handler_a9056de3d9a44b2e696c8e8b39462dd46}{Texture\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_handler_a65e3f9aa7333e9fd82259516f9c48c68}\label{class_texture_handler_a65e3f9aa7333e9fd82259516f9c48c68}} 
+map$<$ string, sf\+::\+Texture $>$ \mbox{\hyperlink{class_texture_handler_a65e3f9aa7333e9fd82259516f9c48c68}{m\+\_\+map\+Of\+Textures}}
+\begin{DoxyCompactList}\small\item\em Map holding textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_handler_a5449a61c7307806056cdb7dbfc3b8889}\label{class_texture_handler_a5449a61c7307806056cdb7dbfc3b8889}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_texture_handler_a5449a61c7307806056cdb7dbfc3b8889}{I\+Ds}}
+\begin{DoxyCompactList}\small\item\em A vector containing the ID\textquotesingle{}s of the strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_handler_af6548c4fd46c81523e63854ec4a54d01}\label{class_texture_handler_af6548c4fd46c81523e63854ec4a54d01}} 
+static \mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_texture_handler_af6548c4fd46c81523e63854ec4a54d01}{s\+\_\+\+Instance}}
+\begin{DoxyCompactList}\small\item\em Create a instance of this. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Singleton that handles all the textures in the game making it possible to get a texture whenever is needed 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_texture_handler_a1e980f198f0f1ec4bea0f670d8f72e88}\label{class_texture_handler_a1e980f198f0f1ec4bea0f670d8f72e88}} 
+\index{Texture\+Handler@{Texture\+Handler}!Texture\+Handler@{Texture\+Handler}}
+\index{Texture\+Handler@{Texture\+Handler}!Texture\+Handler@{Texture\+Handler}}
+\subsubsection{\texorpdfstring{Texture\+Handler()}{TextureHandler()}}
+{\footnotesize\ttfamily Texture\+Handler\+::\+Texture\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deletes the assigment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+File\+Name} & the name of the file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_texture_handler_a14f9286e41340937add40ec11453b2b4}\label{class_texture_handler_a14f9286e41340937add40ec11453b2b4}} 
+\index{Texture\+Handler@{Texture\+Handler}!get\+Texture@{get\+Texture}}
+\index{get\+Texture@{get\+Texture}!Texture\+Handler@{Texture\+Handler}}
+\subsubsection{\texorpdfstring{get\+Texture()}{getTexture()}}
+{\footnotesize\ttfamily sf\+::\+Texture Texture\+Handler\+::get\+Texture (\begin{DoxyParamCaption}\item[{string}]{p\+\_\+\+File\+Name }\end{DoxyParamCaption})}
+
+
+
+get me the texture 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Path} & to get the texture \\
+\hline
+{\em p\+\_\+\+Filename} & name of the file \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Texture\+Handler.\+h\end{DoxyCompactItemize}

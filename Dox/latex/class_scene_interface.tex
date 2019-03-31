@@ -1,0 +1,74 @@
+\hypertarget{class_scene_interface}{}\section{Scene\+Interface Class Reference}
+\label{class_scene_interface}\index{Scene\+Interface@{Scene\+Interface}}
+
+
+{\ttfamily \#include $<$Scene\+Interface.\+h$>$}
+
+Inheritance diagram for Scene\+Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scene_interface}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_interface_a3944b25997f846ce54128e10fccd69c5}\label{class_scene_interface_a3944b25997f846ce54128e10fccd69c5}} 
+virtual void \mbox{\hyperlink{class_scene_interface_a3944b25997f846ce54128e10fccd69c5}{update\+Scene}} (float p\+\_\+time)=0
+\begin{DoxyCompactList}\small\item\em Update method. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_scene_interface_a54c0b8784bcb2278aeb9b6030df9a158}{load\+Level}} (std\+::string p\+\_\+level)=0
+\begin{DoxyCompactList}\small\item\em load level \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ sf\+::\+Sprite $\ast$ $>$ \mbox{\hyperlink{class_scene_interface_af4cdfa0df6cbbba34d66870ea83b2a0a}{get\+Sprite\+Vector}} ()=0
+\begin{DoxyCompactList}\small\item\em gets a list of sprites \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_interface_a7c5194abd1f623d4e4da61779a164a12}\label{class_scene_interface_a7c5194abd1f623d4e4da61779a164a12}} 
+virtual \mbox{\hyperlink{class_h_u_d}{H\+UD}} $\ast$ \mbox{\hyperlink{class_scene_interface_a7c5194abd1f623d4e4da61779a164a12}{get\+H\+UD}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_h_u_d}{H\+UD}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This states what every scene should have 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_interface_af4cdfa0df6cbbba34d66870ea83b2a0a}\label{class_scene_interface_af4cdfa0df6cbbba34d66870ea83b2a0a}} 
+\index{Scene\+Interface@{Scene\+Interface}!get\+Sprite\+Vector@{get\+Sprite\+Vector}}
+\index{get\+Sprite\+Vector@{get\+Sprite\+Vector}!Scene\+Interface@{Scene\+Interface}}
+\subsubsection{\texorpdfstring{get\+Sprite\+Vector()}{getSpriteVector()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$sf\+::\+Sprite$\ast$$>$ Scene\+Interface\+::get\+Sprite\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+gets a list of sprites 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+level} & contains information on the level \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_scene_a595b66ffbd3efe4a0dd40f704a84c378}{Scene}}.
+
+\mbox{\Hypertarget{class_scene_interface_a54c0b8784bcb2278aeb9b6030df9a158}\label{class_scene_interface_a54c0b8784bcb2278aeb9b6030df9a158}} 
+\index{Scene\+Interface@{Scene\+Interface}!load\+Level@{load\+Level}}
+\index{load\+Level@{load\+Level}!Scene\+Interface@{Scene\+Interface}}
+\subsubsection{\texorpdfstring{load\+Level()}{loadLevel()}}
+{\footnotesize\ttfamily virtual bool Scene\+Interface\+::load\+Level (\begin{DoxyParamCaption}\item[{std\+::string}]{p\+\_\+level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+load level 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+time} & contains information on the time \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_scene_a27a8b36b21dd9475d47c13db8cfdae64}{Scene}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Scene\+Interface.\+h\end{DoxyCompactItemize}

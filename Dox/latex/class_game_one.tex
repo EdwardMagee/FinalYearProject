@@ -1,0 +1,133 @@
+\hypertarget{class_game_one}{}\section{Game\+One Class Reference}
+\label{class_game_one}\index{Game\+One@{Game\+One}}
+
+
+{\ttfamily \#include $<$Game\+One.\+h$>$}
+
+Inheritance diagram for Game\+One\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_game_one}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_one_aa7870529dfdb7ed178dbf2fc00a80f1e}\label{class_game_one_aa7870529dfdb7ed178dbf2fc00a80f1e}} 
+\mbox{\hyperlink{class_game_one_aa7870529dfdb7ed178dbf2fc00a80f1e}{Game\+One}} (int p\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_one_a216b9c400f6e70b7fb6814e8b96d1cc9}{$\sim$\+Game\+One}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_abb235d1a7d7415707bf07389e91f6296}\label{class_game_one_abb235d1a7d7415707bf07389e91f6296}} 
+void \mbox{\hyperlink{class_game_one_abb235d1a7d7415707bf07389e91f6296}{update\+Game}} (float p\+\_\+time) override
+\begin{DoxyCompactList}\small\item\em updates the game \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_af4df2785640103b623be240fa8be1e8a}\label{class_game_one_af4df2785640103b623be240fa8be1e8a}} 
+void \mbox{\hyperlink{class_game_one_af4df2785640103b623be240fa8be1e8a}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em draw game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_one_ae1ecd54039b4a3650f0d113ef4629da3}{handle\+Input}} (int p\+\_\+\+Input\+Event) override
+\begin{DoxyCompactList}\small\item\em Handles the inputs of the game. \end{DoxyCompactList}\item 
+End\+State \mbox{\hyperlink{class_game_one_a9e9050de230336fac769ab5e8b23f7f8}{is\+Over}} () override
+\begin{DoxyCompactList}\small\item\em What state is the end state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_ac8a6b9bdcd077157106d79f79310f057}\label{class_game_one_ac8a6b9bdcd077157106d79f79310f057}} 
+void \mbox{\hyperlink{class_game_one_ac8a6b9bdcd077157106d79f79310f057}{load\+Level}} () override
+\begin{DoxyCompactList}\small\item\em load the level \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_a681cbdadb061d7713f323dea331e5a31}\label{class_game_one_a681cbdadb061d7713f323dea331e5a31}} 
+\mbox{\hyperlink{class_scene}{Scene}} $\ast$ \mbox{\hyperlink{class_game_one_a681cbdadb061d7713f323dea331e5a31}{get\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em get the scene \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_one_a5072e2a0c8f6161dd2f34a8ad643760e}\label{class_game_one_a5072e2a0c8f6161dd2f34a8ad643760e}} 
+\mbox{\hyperlink{class_file_reader_game_assests}{File\+Reader\+Game\+Assests}} $\ast$ \mbox{\hyperlink{class_game_one_a5072e2a0c8f6161dd2f34a8ad643760e}{m\+\_\+reader}}
+\begin{DoxyCompactList}\small\item\em Used to load in game assessts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_a8e393ac3370d069b3996f56a8c47ff33}\label{class_game_one_a8e393ac3370d069b3996f56a8c47ff33}} 
+\mbox{\hyperlink{class_scene}{Scene}} $\ast$ \mbox{\hyperlink{class_game_one_a8e393ac3370d069b3996f56a8c47ff33}{m\+\_\+current\+Scene}}
+\begin{DoxyCompactList}\small\item\em Current scene of the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_ac12bf28dc852ca8ef0628ba98d7d3a4e}\label{class_game_one_ac12bf28dc852ca8ef0628ba98d7d3a4e}} 
+\mbox{\hyperlink{class_texture_handler}{Texture\+Handler}} $\ast$ \mbox{\hyperlink{class_game_one_ac12bf28dc852ca8ef0628ba98d7d3a4e}{m\+\_\+texture\+Handler}}
+\begin{DoxyCompactList}\small\item\em handles the textures \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_a810562b54953c069d2e1dbc64d8f5421}\label{class_game_one_a810562b54953c069d2e1dbc64d8f5421}} 
+sf\+::\+Sprite \mbox{\hyperlink{class_game_one_a810562b54953c069d2e1dbc64d8f5421}{m\+\_\+background\+Sprite}}
+\begin{DoxyCompactList}\small\item\em The Background sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_a983b97428e90b5e77947b5dca0b3f59a}\label{class_game_one_a983b97428e90b5e77947b5dca0b3f59a}} 
+sf\+::\+Texture \mbox{\hyperlink{class_game_one_a983b97428e90b5e77947b5dca0b3f59a}{m\+\_\+background\+Texture}}
+\begin{DoxyCompactList}\small\item\em Background texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_ac5334da542d1e258cf355452744a2d90}\label{class_game_one_ac5334da542d1e258cf355452744a2d90}} 
+std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$ $>$ \mbox{\hyperlink{class_game_one_ac5334da542d1e258cf355452744a2d90}{m\+\_\+vector\+Levels}}
+\begin{DoxyCompactList}\small\item\em Stores the games level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_adaa91f89bc0a1485c8820ba000b81e53}\label{class_game_one_adaa91f89bc0a1485c8820ba000b81e53}} 
+End\+State \mbox{\hyperlink{class_game_one_adaa91f89bc0a1485c8820ba000b81e53}{m\+\_\+end\+State}}
+\begin{DoxyCompactList}\small\item\em Stores the end game state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_one_a6cdca32ede803a28dcad770826af33a3}\label{class_game_one_a6cdca32ede803a28dcad770826af33a3}} 
+int \mbox{\hyperlink{class_game_one_a6cdca32ede803a28dcad770826af33a3}{m\+\_\+\+Level}}
+\begin{DoxyCompactList}\small\item\em What level is the game currently on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class is is to run the game 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_one_a216b9c400f6e70b7fb6814e8b96d1cc9}\label{class_game_one_a216b9c400f6e70b7fb6814e8b96d1cc9}} 
+\index{Game\+One@{Game\+One}!````~Game\+One@{$\sim$\+Game\+One}}
+\index{````~Game\+One@{$\sim$\+Game\+One}!Game\+One@{Game\+One}}
+\subsubsection{\texorpdfstring{$\sim$\+Game\+One()}{~GameOne()}}
+{\footnotesize\ttfamily Game\+One\+::$\sim$\+Game\+One (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deconstructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+level} & passes in what level should be loaded \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_one_ae1ecd54039b4a3650f0d113ef4629da3}\label{class_game_one_ae1ecd54039b4a3650f0d113ef4629da3}} 
+\index{Game\+One@{Game\+One}!handle\+Input@{handle\+Input}}
+\index{handle\+Input@{handle\+Input}!Game\+One@{Game\+One}}
+\subsubsection{\texorpdfstring{handle\+Input()}{handleInput()}}
+{\footnotesize\ttfamily void Game\+One\+::handle\+Input (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+\+Input\+Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the inputs of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & draw this \\
+\hline
+{\em states} & paramater needed for the draw method \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_a48b4f6059c14c79359d30b77016a28f0}{Game\+Interface}}.
+
+\mbox{\Hypertarget{class_game_one_a9e9050de230336fac769ab5e8b23f7f8}\label{class_game_one_a9e9050de230336fac769ab5e8b23f7f8}} 
+\index{Game\+One@{Game\+One}!is\+Over@{is\+Over}}
+\index{is\+Over@{is\+Over}!Game\+One@{Game\+One}}
+\subsubsection{\texorpdfstring{is\+Over()}{isOver()}}
+{\footnotesize\ttfamily End\+State Game\+One\+::is\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+What state is the end state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+\+Input\+Event} & information needed to know what key is pressed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_game_interface_a5bad60f237214cb1ec013e221ed16f45}{Game\+Interface}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+The Stormtrooper/\+Source/\+Repos/\+Final\+Year\+Project9/\+Vampires\+Vs\+Knights/include/Game\+One.\+h\end{DoxyCompactItemize}
