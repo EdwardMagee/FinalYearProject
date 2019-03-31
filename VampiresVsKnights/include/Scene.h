@@ -73,6 +73,7 @@ public:
 	
 	EndState getEndState(); //!< Gets the scenes end state
 	int getRound(); //!< What round is it
+	void checkStats(); //!< Display the units stats
 	
 	sf::Sprite getSelector(); //!< Gets the selector to draw
 	void incrementSelector(sf::Vector2i p_newPos); //!< Moves the selector

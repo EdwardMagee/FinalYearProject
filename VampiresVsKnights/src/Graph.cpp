@@ -86,14 +86,10 @@ Graph::~Graph()
 
 	delete m_fileReader;
 	m_fileReader = nullptr;
-
-	for (auto * i1 : m_closedList) { delete i1; i1 = nullptr; }
-	for (auto * i2 : m_openList) { delete i2; i2 = nullptr; }
-	for (auto * i3 : m_pathList) { delete i3; i3 = nullptr; }
-	for (auto * i4 : m_tempList) { delete i4; i4 = nullptr; }
 	
 }
-
+ 
+//I should of changed this to take in nodes so that way it looks cleaner when passing in paramaters
 std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos, float p_speed, std::vector<SpriteInterface*> p_vectorSprites)
 {
 	m_reachedGoal = false;
@@ -138,19 +134,19 @@ std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 		if (tempNode->getID().x == p_endPos.x and tempNode->getID().y == p_endPos.y) {
 
 			std::cout << "found GOAL NODE!!" << std::endl;
-			m_reachedGoal = true;
+			m_reachedGoal = true; 
 			return getPath(m_Graph[p_startPos.x][p_startPos.y], m_Graph[p_endPos.x][p_endPos.y]);
 		}
 
 		if (tempSpeed > p_speed) {
-			std::cout << "Too tired" << std::endl;
+			std::cout << "Too tired" << std::endl; //If the cost to the goal is too great the unit will stop 
 			m_reachedGoal = false;
-			return getPath(m_Graph[p_startPos.x][p_startPos.y], tempNode);
+			return getPath(m_Graph[p_startPos.x][p_startPos.y], tempNode); //And get the last node it remmbers
 		}
 
 		for (auto* j : gatherChildren(tempNode))
 		{
-			if (j->checkNodeType() == "EmptyNode")
+			if (j->checkNodeType() == "EmptyNode") //So if its a wall ignore it
 				continue;
 
 			m_isInClosedList = false;
@@ -187,7 +183,7 @@ std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 			for (auto* l : m_openList)
 			{
 				if (l == j) {
-					m_isInOpenList = true;
+					m_isInOpenList = true; //This code checks to see if the current node is the open list
 				}
 			}
 
@@ -201,7 +197,8 @@ std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 
 				j->setPerant(tempNode);
 
-				tempSpeed = +j->getG();
+				tempSpeed = j->getG();
+				m_storeLastG = j;
 
 				if (!m_isInOpenList)
 					m_openList.push_back(j);
@@ -210,12 +207,16 @@ std::list<NodeInterface*> Graph::aStar(sf::Vector2i p_startPos, sf::Vector2i p_e
 
 		}
 
-	}
-}
+	} //Before i assumed it would always get tired but what if it gets to the end without being tired, the two ifs would always work but when it was trapped it wouldent
+	return getPath(m_Graph[p_startPos.x][p_startPos.y], m_storeLastG);//This makes sure the code does not crash, and always has a route to go down
+	m_reachedGoal = false; 
+}                                                                      //The price is the unit movments dont accuratly move to the desired location
+                                                                       //Instead it wonders which is good for the enemy but might annoy the player with thier own units
+                                                                       //Better then it crashing  
 
 std::list<NodeInterface*> Graph::gatherChildren(NodeInterface * p_currentNode)
 {
-	m_tempList.clear();
+	m_tempList.clear(); 
 
 	auto getCloseNode = [&](std::list<NodeInterface*> p_TempList, int x = 0, int y = 0) {
 		m_tempList.push_back(m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]); 
@@ -236,16 +237,18 @@ std::list<NodeInterface*> Graph::gatherChildren(NodeInterface * p_currentNode)
 
 float Graph::calculateHValue(sf::Vector2i p_startPos, sf::Vector2i p_endPos)
 {
+	//I also like to use this method to determine the sight of the enemy
+	//I could of added a new stat for each unit each with there own eye sight range 
+
 	float tempx;
-	float tempy;
+	float tempy; 
 	float tempH;
 
 	tempx = (float)p_startPos.x - p_endPos.x;
 	tempy = (float)p_startPos.y - p_endPos.y;
 	tempH = sqrt((tempx * tempx) + (tempy * tempy));
 
-	if (tempH < 0)
-	{
+	if (tempH < 0){
 		tempH = tempH * -1;
 	}
 
@@ -262,7 +265,9 @@ std::list<NodeInterface*> Graph::getPath(NodeInterface * p_start, NodeInterface 
 	while (currentNode != p_start)
 	{
 		m_pathList.push_front(currentNode);
-		currentNode = currentNode->getPerant();
+		currentNode = currentNode->getPerant(); 
+		
+		//So each node stores where it came from, and it will work backwards to create a the path
 	}
 
 	return m_pathList;
@@ -327,4 +332,18 @@ std::pair<int, int> Graph::getColRow()
 bool Graph::isGoalReached()
 {
 	return m_reachedGoal;
+}
+
+bool Graph::isTargetANeighbour(NodeInterface * p_Target, NodeInterface * p_Start)
+{
+
+	for (auto* i : gatherChildren(p_Target))
+	{
+		if (i == p_Start)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

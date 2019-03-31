@@ -74,9 +74,6 @@ Scene::~Scene()
 	delete m_gameHud;
 	m_gameHud = nullptr;
 
-	delete temp;
-	temp = nullptr;
-
 	delete m_prevoiusNode;
 	m_prevoiusNode = nullptr;
 
@@ -107,20 +104,20 @@ void Scene::updateScene(float p_time)
 	
 	case GameState::PlayersMoved:
 
-		temp = m_Graph->getNode(sf::Vector2i(m_selectorPos.x,m_selectorPos.y));
+		temp = m_Graph->getNode(sf::Vector2i(m_selectorPos.x,m_selectorPos.y)); //Gets the node that was selected
 
 		if (temp->checkNodeType() == "EmptyNode") {
 			m_gameState = GameState::PlayersTurn;
 			break;
 		}
 
-			for (int i = 0; i < startofVampires; i++)
+			for (int i = 0; i < startofVampires; i++) //Loops through the player untill it reaches the last (start of vampires would indicate end of loop)
 			{
 				
-				if (m_vectorSprites[i]->getNode() == temp)
+				if (m_vectorSprites[i]->getNode() == temp) //if enemy
 				{
 					currentPlayer = i;
-					m_gameState = GameState::PlayersTurn;
+					m_gameState = GameState::PlayersTurn; //This makes it so the player that is clicked on will become the focus
 					newcurrentPlayer = true;
 					break;
 					
@@ -135,26 +132,35 @@ void Scene::updateScene(float p_time)
 		}
 		
 		
-		for (int i = startofVampires; i < m_vectorSprites.size(); i++)
+		for (int i = startofVampires; i < m_vectorSprites.size(); i++) //This will loop through the enemy units
 		{
-			if (m_vectorSprites[i]->getNode() == temp)
+			if (m_vectorSprites[i]->getNode() == temp) // if it is equal to the enemy, temp is the selected area
 			{
-				m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), m_Graph->getGoal(m_vectorSprites[i]->getNode(), m_vectorSprites[currentPlayer]->getNode(), m_vectorSprites),
-					m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
+				if (!m_Graph->isTargetANeighbour(m_vectorSprites[currentPlayer]->getNode(), temp)) //I keep getting a error when a unit struggles to get to a blocked objective
+				{                                                                                  //Fixed it by adding to the end of the a star however this is better as it reduces the need to use the alogrith every time
 
-				if (m_pathList.back() == m_vectorSprites[i]->getNode())
-				{
-					m_pathList.pop_back();
+					m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y),
+						m_Graph->getGoal(m_vectorSprites[i]->getNode(), m_vectorSprites[currentPlayer]->getNode(), m_vectorSprites),
+						m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites); //This could of been reduced better its asking for the x, y of the player, enemy, player speed and a list of all units so it knows which nodes to avoid
+
+					if (m_pathList.back() == m_vectorSprites[i]->getNode())
+					{
+						m_pathList.pop_back();
+					}
+
+
+					m_gameState = GameState::PlayersMoving;
+					break;
 				}
-
-
-				m_gameState = GameState::PlayersMoving;
-				break;
-
+				else
+				{
+					m_vectorSprites[i]->setHealth(m_vectorSprites[currentPlayer]->getAttack());
+					m_gameState = GameState::EnemyTurn;
+				}
 			}
 		}
 
-		if (m_gameState != GameState::PlayersMoving)
+		if (m_gameState != GameState::PlayersMoving and m_gameState != GameState::EnemyTurn) 
 		{
 			m_pathList = m_Graph->aStar(sf::Vector2i(m_vectorSprites[currentPlayer]->getNode()->getID().x, m_vectorSprites[currentPlayer]->getNode()->getID().y), temp->getID(), m_vectorSprites[currentPlayer]->getSpeed(), m_vectorSprites);
 			m_gameState = GameState::PlayersMoving;
@@ -167,14 +173,17 @@ void Scene::updateScene(float p_time)
 
 		movingCounter += p_time;
 
-		if (movingCounter > 0.61f)
+		if (movingCounter > 0.61f) //To create the illusion of movement
 		{
 			if (!m_pathList.empty()) {
 
+				if(m_pathList.front() != nullptr)
 				m_vectorSprites[currentPlayer]->setNode(m_Graph->getNode(sf::Vector2i(m_pathList.front()->getID().x, m_pathList.front()->getID().y)));
+
 				m_pathList.pop_front();
 			}
 			else {
+
 				for (int i = startofVampires; i < m_vectorSprites.size(); i++)
 				{
 					if (m_vectorSprites[i]->getNode() == temp)
@@ -199,8 +208,10 @@ void Scene::updateScene(float p_time)
 			bool tempTargetFound = false;
 			float tempLowestValue = 100.0f;
 			int tempSize = startofVampires;
+			static const float rangeOfSight = 3.5f;
+			static const float healthCheck = 2.0f;
 
-			if(m_vectorSprites[currentEnemy] != m_vectorSprites.back() and m_vectorSprites[currentEnemy]->getHealth() < 2.0f)
+			if(m_vectorSprites[currentEnemy] != m_vectorSprites.back() and m_vectorSprites[currentEnemy]->getHealth() < healthCheck)
 			{
 				m_vectorSprites[currentEnemy]->message("Escape");
 				Target = m_vectorSprites.back();
@@ -210,7 +221,7 @@ void Scene::updateScene(float p_time)
 
 				for (int i = 0; i < tempSize; i++) {
 
-					if (3.3f > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
+					if (rangeOfSight > m_Graph->calculateHValue(sf::Vector2i(m_vectorSprites[currentEnemy]->getNode()->getID().x, m_vectorSprites[currentEnemy]->getNode()->getID().y),
 						sf::Vector2i(m_vectorSprites[i]->getNode()->getID().x, m_vectorSprites[i]->getNode()->getID().y))) {
 
 						if (m_vectorSprites[i]->getHealth() < tempLowestValue)
@@ -374,7 +385,6 @@ int Scene::getRound()
 	return m_round;
 }
 
-
 sf::Sprite Scene::getSelector()
 {
 	return m_selector;
@@ -403,11 +413,29 @@ void Scene::PlayersMove()
 	if (m_gameState == GameState::PlayersTurn)
 	{
 		m_gameState = GameState::PlayersMoved;
-		std::cout << m_vectorSprites[currentPlayer]->getHealth() << std::endl;
+		std::cout << "(Current Unit : " + std::to_string(currentPlayer) << ") Health is : " <<  m_vectorSprites[currentPlayer]->getHealth() << std::endl;
 		m_selectorTexture = m_textureHandler->instance()->getTexture("Cyan");
 		m_selector.setTexture(m_selectorTexture);
 		
 	}
+}
+
+void Scene::checkStats()
+{
+	NodeInterface * temp = m_Graph->getNode(sf::Vector2i(m_selectorPos.x, m_selectorPos.y));
+
+	for (auto * i : m_vectorSprites)
+	{
+		if (i->getNode() == temp)
+		{
+			std::cout << "This Unit has : " << i->getHealth() << " Health Points " << std::endl;
+			std::cout << "This Unit has : " << i->getSpeed() << " Speed Points " << std::endl;
+			std::cout << "This Unit has : " << i->getAttack() << " Attack Points " << std::endl;
+			std::cout << std::endl;
+
+		}
+	}
+
 }
 
 HUD * Scene::getHUD()

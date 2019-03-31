@@ -89,6 +89,10 @@ void GameOne::handleInput(int p_InputEvent)
 
 		m_currentScene->PlayersMove();
 		break;
+	case sf::Keyboard::X:
+
+		m_currentScene->checkStats();
+		break;
 	case sf::Keyboard::Space:
 		
 		m_Level++;

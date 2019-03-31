@@ -57,7 +57,11 @@ public:
 
 	std::pair<int, int> getColRow(); //!< Gets the size of the graph
 	bool isGoalReached(); //!< Has the goal been reached
-
+	bool isTargetANeighbour(NodeInterface* p_Target, NodeInterface* p_Start);//!< Saves having to use the A* when a unit is next to another
+																			 /*!
+																			 \param p_Target so it knows which node you want to attack
+																			 \param p_Start so it knows which node is the starting node
+																			 */
 protected:
 
 	static const int m_iCol = 8; //!< How many Columns in game
@@ -74,6 +78,7 @@ protected:
 	std::list<NodeInterface*> m_openList; //!< for a star
 	std::list<NodeInterface*> m_pathList; //!< used to store the path the player takes
 	std::list<NodeInterface*> m_tempList; //!< Stores a temp list
+	NodeInterface* m_storeLastG; //!< Stores the last G this will be used to calculate the last node to go to
 
 	bool m_isInClosedList; //!< Bool to determine if a node is the closed list
 	bool m_isInOpenList;  //!< Bool to determine if a node is the open list
