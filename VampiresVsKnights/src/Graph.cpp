@@ -221,6 +221,9 @@ std::list<NodeInterface*> Graph::gatherChildren(NodeInterface * p_currentNode)
 	auto getCloseNode = [&](std::list<NodeInterface*> p_TempList, int x = 0, int y = 0) {
 		m_tempList.push_back(m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]); 
 		m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]->setDiagonal(false);
+	    if (x != 0 and y != 0)	{
+			m_Graph[p_currentNode->getID().x + x][p_currentNode->getID().y + y]->setDiagonal(true);
+		}
 	};
 	getCloseNode(m_tempList, -1, 0);
 	getCloseNode(m_tempList, 1, 0);
