@@ -1,5 +1,9 @@
-#pragma once
+/**
+@file Graph.h
+@brief a graph of of the nodes that the plauyer can use to move around.
+*/
 
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <array>
 #include <list>
@@ -11,17 +15,25 @@ class TextureHandler;
 class SpriteInterface;
 class FileReaderNodes;
 
-/*! Class that created the two d array and handles all the pathfinding*/
+/*! \class Graph
+	\brief Class that created the 2d array and handles all the pathfinding
+*/
 
 class Graph {
 
 public:
 
-	Graph(std::string p_Nodes); //!< Constructor
-								/*!
-								\param p_Nodes contains data on where to put nodes
-								*/
-	~Graph(); //!< Deconstructor
+	/*!
+	\brief Constructs Graph
+    \param p_Nodes contains data on where to put nodes
+	*/
+	Graph(std::string p_Nodes); 
+								
+	/*!
+	\brief Deconstructs Graph
+	*/
+	~Graph(); 
+
 	std::list<NodeInterface*> aStar(sf::Vector2i p_startPos, sf::Vector2i p_endPos, float p_speed, std::vector<SpriteInterface*> p_vectorSprites); //!< A star alogirthm used to find the shortest path to its goal
 																																				   /*!
 																																				   \param p_startPos this is the start of the search

@@ -79,8 +79,8 @@ Scene::~Scene()
 
 	for (auto * i : m_pathList) { delete i; i = nullptr; }
 
-	delete Target;
-	Target = nullptr;
+	//delete Target;
+	//Target = nullptr;
 
 	delete m_fileReader;
 	m_fileReader = nullptr;
